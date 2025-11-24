@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv_ml/
+env/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dados sensíveis (se houver)
+# 01_dados_originais/*.xlsx
+
+# Arquivos temporários
+*.tmp
+*.bak
+~$*
+
+# Logs
+*.log

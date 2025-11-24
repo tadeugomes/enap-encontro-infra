@@ -1,0 +1,3 @@
+# exploratoria
+
+Análise exploratória inicial

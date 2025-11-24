@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 3 | Classificação - ENAP</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <i class="fas fa-chart-network"></i> ENAP <span
+                        style="font-weight: 300; color: var(--text-secondary)">| Infra Encontro</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Visão Geral</a>
+                    <a href="analise_descritiva.html">Análise Descritiva</a>
+                    <a href="fase1.html">1. Diagnóstico</a>
+                    <a href="fase2.html">2. Clusterização</a>
+                    <a href="fase3.html" class="active">3. Classificação</a>
+                    <a href="fase4.html">4. Detecção de Anomalias</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <span class="badge badge-success">Fase 3 Concluída</span>
+            <h1>Classificação de Risco (Predição)</h1>
+            <div
+                style="background: rgba(255,255,255,0.05); border-left: 4px solid #10b981; padding: 1rem; margin: 1.5rem 0; border-radius: 0 0.5rem 0.5rem 0;">
+                <i class="fas fa-question-circle" style="color: #10b981; margin-right: 0.5rem;"></i>
+                <strong>Pergunta de Negócio:</strong> <em>"É possível antecipar o resultado da análise técnica
+                    (Aprovação ou Reprovação) de um novo pedido antes mesmo de um humano abri-lo?"</em>
+            </div>
+            <p>Utilizamos um modelo de <strong>Random Forest</strong> (Floresta Aleatória) para prever, com alta
+                precisão, se um novo pedido de reconstrução será aprovado ou reprovado, antes mesmo de um analista
+                humano abrir o processo.</p>
+        </section>
+
+        <section class="grid grid-2" style="margin-top: 3rem;">
+            <div class="card">
+                <h3><i class="fas fa-microscope" style="color: #10b981;"></i> Por Dentro do Modelo (Deep Dive)</h3>
+                <p>Para gestores, o que importa é: <strong>"Posso confiar nessa IA?"</strong>. As métricas abaixo
+                    respondem a essa pergunta:</p>
+
+                <div style="margin-top: 2rem;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="font-weight: bold;">ROC-AUC Score: 0.80</span>
+                            <span class="badge badge-success">Excelente</span>
+                        </div>
+                        <div
+                            style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 80%; height: 100%; background: #34d399;"></div>
+                        </div>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-secondary);">
+                            <strong>Tradução:</strong> O modelo tem 80% de capacidade de distinguir corretamente entre
+                            um processo "bom" e um "ruim". É muito superior ao acaso (50%).
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="font-weight: bold;">Recall (Sensibilidade): 88%</span>
+                            <span class="badge badge-success">Alta Segurança</span>
+                        </div>
+                        <div
+                            style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 88%; height: 100%; background: #60a5fa;"></div>
+                        </div>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-secondary);">
+                            <strong>Tradução:</strong> De cada 100 processos que realmente deveriam ser aprovados, o
+                            modelo identifica corretamente 88. Ele raramente deixa passar uma oportunidade legítima.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-brain" style="color: #f59e0b;"></i> O "Cérebro" da Decisão</h3>
+                <p>O modelo aprendeu sozinho quais fatores mais pesam na decisão técnica. Veja o ranking de importância:
+                </p>
+                <ul style="list-style: none; margin-top: 1rem;">
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <span
+                            style="font-weight: bold; font-size: 1.2rem; margin-right: 1rem; color: #f59e0b;">1º</span>
+                        <div style="flex: 1;">
+                            <strong>Valor Solicitado (63%)</strong>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);">Valores fora do padrão (muito
+                                altos ou baixos) são o maior sinal de alerta.</div>
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <span
+                            style="font-weight: bold; font-size: 1.2rem; margin-right: 1rem; color: #f59e0b;">2º</span>
+                        <div style="flex: 1;">
+                            <strong>UF de Origem (10%)</strong>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);">Diferenças regionais na
+                                qualidade dos projetos influenciam a aprovação.</div>
+                        </div>
+                    </li>
+                    <li style="display: flex; align-items: center;">
+                        <span
+                            style="font-weight: bold; font-size: 1.2rem; margin-right: 1rem; color: #f59e0b;">3º</span>
+                        <div style="flex: 1;">
+                            <strong>Cluster Comportamental (8%)</strong>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);">O histórico do município pesa
+                                mais que sua Faixa ICM oficial.</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Evidências Visuais</h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h4>Curva ROC (Poder de Discriminação)</h4>
+                    <p>Quanto mais a curva azul se aproxima do canto superior esquerdo, melhor o modelo. Nossa curva
+                        mostra um desempenho robusto e consistente.</p>
+                    <div class="chart-container">
+                        <img src="assets/images/roc_curve.png" alt="Curva ROC">
+                    </div>
+                </div>
+                <div class="card">
+                    <h4>Matriz de Confusão (Acertos e Erros)</h4>
+                    <p>Mostra exatamente onde o modelo acerta e erra. Note a diagonal principal (azul escuro) indicando
+                        a alta taxa de acertos.</p>
+                    <div class="chart-container">
+                        <img src="assets/images/confusion_matrix.png" alt="Matriz de Confusão">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card"
+            style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1)); border: 1px solid rgba(16, 185, 129, 0.3);">
+            <h3><i class="fas fa-traffic-light"></i> Aplicação Prática: Triagem Inteligente</h3>
+            <p>Não queremos substituir o analista, mas sim <strong>priorizar seu trabalho</strong>. Com base na
+                probabilidade calculada (0 a 100%), sugerimos este fluxo:</p>
+            <div style="display: flex; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap;">
+                <div
+                    style="flex: 1; min-width: 200px; padding: 1rem; background: rgba(16, 185, 129, 0.1); border-radius: 0.5rem;">
+                    <span class="badge badge-success" style="margin-bottom: 0.5rem;">🟢 Fast Track (>80%)</span>
+                    <p style="font-size: 0.9rem;">Processos com alta chance de aprovação. Podem ir para uma fila
+                        expressa de validação documental.</p>
+                </div>
+                <div
+                    style="flex: 1; min-width: 200px; padding: 1rem; background: rgba(245, 158, 11, 0.1); border-radius: 0.5rem;">
+                    <span class="badge badge-warning" style="margin-bottom: 0.5rem;">🟡 Análise Padrão (40-80%)</span>
+                    <p style="font-size: 0.9rem;">Fluxo normal. Requer análise técnica detalhada de engenharia.</p>
+                </div>
+                <div
+                    style="flex: 1; min-width: 200px; padding: 1rem; background: rgba(239, 68, 68, 0.1); border-radius: 0.5rem;">
+                    <span class="badge badge-danger" style="margin-bottom: 0.5rem;">🔴 Alerta de Risco (<40%)< /span>
+                            <p style="font-size: 0.9rem;">Provável indeferimento. O sistema pode sugerir ao município
+                                revisar a documentação antes do envio oficial.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card"
+            style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3); margin-top: 3rem;">
+            <h3><i class="fas fa-clipboard-check"></i> Conclusão Detalhada</h3>
+            <p style="color: #e2e8f0; margin-bottom: 1rem;">
+                <strong>A resposta é SIM.</strong> Com um ROC-AUC de 80%, o modelo demonstra que a aprovação não é
+                aleatória, mas segue padrões previsíveis baseados principalmente no valor solicitado e na origem do
+                pedido.
+            </p>
+            <ul style="list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check"
+                        style="color: #34d399; margin-right: 0.5rem;"></i> <strong>Poder Preditivo:</strong> O modelo
+                    identifica corretamente 88% dos processos que seriam aprovados (Recall), minimizando o risco de
+                    ignorar pedidos legítimos.</li>
+                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check"
+                        style="color: #34d399; margin-right: 0.5rem;"></i> <strong>Transparência:</strong> Sabemos
+                    exatamente o que o modelo "olha" (Valor Solicitado = 63% da decisão), o que permite explicar as
+                    previsões aos gestores.</li>
+            </ul>
+            <p
+                style="margin-top: 1rem; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                <strong>Impacto na Gestão:</strong> Implementação imediata do "Semáforo de Processos". Isso transformará
+                a fila de análise de uma ordem cronológica (FIFO) para uma ordem baseada em risco e probabilidade de
+                sucesso.
+            </p>
+        </section>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="fase4.html" class="btn btn-primary">Próxima Fase: Detecção de Anomalias <i
+                    class="fas fa-arrow-right"></i></a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ENAP - Escola Nacional de Administração Pública.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise Descritiva - ENAP</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <i class="fas fa-chart-network"></i> ENAP <span
+                        style="font-weight: 300; color: var(--text-secondary)">| Infra Encontro</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Visão Geral</a>
+                    <a href="analise_descritiva.html" class="active">Análise Descritiva</a>
+                    <a href="fase1.html">1. Diagnóstico</a>
+                    <a href="fase2.html">2. Clusterização</a>
+                    <a href="fase3.html">3. Classificação</a>
+                    <a href="fase4.html">4. Detecção de Anomalias</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <span class="badge badge-success">Visão Panorâmica</span>
+            <h1>Análise Descritiva do Cenário</h1>
+            <p>Antes de aplicar Inteligência Artificial, realizamos um mergulho profundo nos dados históricos
+                (2017-2025) para entender o "quem", "onde" e "quanto" da reconstrução nacional.</p>
+        </section>
+
+        <section class="grid grid-2" style="margin-top: 3rem;">
+            <div class="card">
+                <h3><i class="fas fa-history" style="color: #3b82f6;"></i> Evolução Temporal</h3>
+                <p>Acompanhamento do volume de processos ao longo dos anos. Identificamos picos de demanda que
+                    correlacionam com grandes eventos climáticos.</p>
+                <div class="chart-container">
+                    <img src="assets/images/evolucao_processos.png" alt="Evolução de Processos">
+                </div>
+                <p style="font-size: 0.9rem; margin-top: 1rem;"><strong>Insight:</strong> O aumento na frequência de
+                    eventos extremos exige uma infraestrutura de análise cada vez mais ágil e automatizada.</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-map-marker-alt" style="color: #ef4444;"></i> Top UFs Solicitantes</h3>
+                <p>Quais estados mais demandam recursos federais? A concentração geográfica revela áreas prioritárias
+                    para políticas de prevenção.</p>
+                <div class="chart-container">
+                    <img src="assets/images/top_ufs.png" alt="Top UFs">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>O Que Estamos Reconstruindo?</h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h4>Principais Desastres</h4>
+                    <p>Chuvas Intensas e Enxurradas dominam o cenário, representando a maior fatia do orçamento.</p>
+                    <div class="chart-container">
+                        <img src="assets/images/top_desastres.png" alt="Top Desastres">
+                    </div>
+                </div>
+                <div class="card">
+                    <h4>Distribuição Regional</h4>
+                    <p>Como os pedidos se distribuem pelas regiões do país, cruzando com a capacidade municipal (ICM).
+                    </p>
+                    <div class="chart-container">
+                        <img src="assets/images/distribuicao_por_regiao.png" alt="Distribuição Regional">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card"
+            style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1)); border: 1px solid rgba(139, 92, 246, 0.3);">
+            <h3><i class="fas fa-database"></i> Raio-X da Base de Dados</h3>
+            <div class="grid"
+                style="grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; margin-bottom: 0;">
+                <div style="text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #fff;">6.385</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Processos Analisados</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #fff;">5.444</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Municípios Mapeados</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #fff;">R$ 27 Bi</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Montante Total</div>
+                </div>
+            </div>
+        </section>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="fase1.html" class="btn btn-primary">Ir para Fase 1: Diagnóstico <i
+                    class="fas fa-arrow-right"></i></a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ENAP - Escola Nacional de Administração Pública.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+================================================================================
+INVESTIGAÇÃO: POR QUE 5.613 REGISTROS SE O BRASIL TEM 5.570 MUNICÍPIOS?
+================================================================================
+
+Total de registros no arquivo: 5,613
+Total de municípios no Brasil: 5.570
+Diferença: 43 registros a mais
+
+--------------------------------------------------------------------------------
+EXAMINANDO ARQUIVOS ORIGINAIS POR FAIXA:
+--------------------------------------------------------------------------------
+
+
+Faixa A:
+  Total de linhas no arquivo original: 590
+  Primeiras 3 linhas:
+                                                                                                                          Unnamed: 0 Unnamed: 1  ... Unnamed: 30 Unnamed: 31
+0  Municípios na Faixa A (Alta) do Indicador de Capacidade Municipal (ICM) - 585 Municípios (64 prioritários e 521 não prioritários)        NaN  ...         NaN         NaN
+1                                                                                                                                NaN        NaN  ...         NaN         NaN
+2                                                                                                                        Código IBGE         UF  ...         NaN         NaN
+
+Faixa B:
+  Total de linhas no arquivo original: 1393
+  Primeiras 3 linhas:
+                                                                                                                                               Unnamed: 0 Unnamed: 1  ... Unnamed: 30 Unnamed: 31
+0  Municípios na Faixa B (Intermediária Avançada) do Indicador de Capacidade Municipal (ICM) - 1388 Municípios (351 prioritários e 1037 não prioritários)        NaN  ...         NaN         NaN
+1                                                                                                                                                     NaN        NaN  ...         NaN         NaN
+2                                                                                                                                             Código IBGE         UF  ...         NaN         NaN
+
+Faixa C:
+  Total de linhas no arquivo original: 2021
+  Primeiras 3 linhas:
+                                                                                                                                              Unnamed: 0 Unnamed: 1  ... Unnamed: 30 Unnamed: 31
+0  Municípios na Faixa C (Intermediária Inicial) do Indicador de Capacidade Municipal (ICM) - 2016 Municípios (884 prioritários e 1132 não prioritários)        NaN  ...         NaN         NaN
+1                                                                                                                                                    NaN        NaN  ...         NaN         NaN
+2                                                                                                                                            Código IBGE         UF  ...         NaN         NaN
+
+Faixa D:
+  Total de linhas no arquivo original: 1609
+  Primeiras 3 linhas:
+                                                                                                                               Unnamed: 0 Unnamed: 1  ... Unnamed: 30 Unnamed: 31
+0  Municípios na Faixa D (Inicial) do Indicador de Capacidade Municipal (ICM) - 1604 Municípios (757 prioritários e 847 não prioritários)        NaN  ...         NaN         NaN
+1                                                                                                                                     NaN        NaN  ...         NaN         NaN
+2                                                                                                                             Código IBGE         UF  ...         NaN         NaN
+
+
+Total de linhas nos arquivos originais: 5,613
+Total após consolidação: 5,613
+Diferença: 0
+
+--------------------------------------------------------------------------------
+VERIFICANDO LINHAS DE CABEÇALHO/TÍTULO:
+--------------------------------------------------------------------------------
+
+Linhas com 'Municípios na Faixa': 4
+
+Exemplos:
+                                                                                                                                                  Unnamed: 0 Unnamed: 1 Unnamed: 2 Unnamed: 3 Unnamed: 4 Unnamed: 5 Unnamed: 6  Unnamed: 7  Unnamed: 8  Unnamed: 9  Unnamed: 10  Unnamed: 11  Unnamed: 12  Unnamed: 13  Unnamed: 14  Unnamed: 15  Unnamed: 16  Unnamed: 17  Unnamed: 18  Unnamed: 19  Unnamed: 20  Unnamed: 21  Unnamed: 22  Unnamed: 23  Unnamed: 24  Unnamed: 25 Unnamed: 26 Unnamed: 27 Unnamed: 28 Unnamed: 29 Unnamed: 30 Unnamed: 31 Faixa
+0                          Municípios na Faixa A (Alta) do Indicador de Capacidade Municipal (ICM) - 585 Municípios (64 prioritários e 521 não prioritários)        NaN        NaN        NaN        NaN        NaN        NaN         NaN         NaN         NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN         NaN         NaN         NaN         NaN         NaN         NaN     A
+590   Municípios na Faixa B (Intermediária Avançada) do Indicador de Capacidade Municipal (ICM) - 1388 Municípios (351 prioritários e 1037 não prioritários)        NaN        NaN        NaN        NaN        NaN        NaN         NaN         NaN         NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN         NaN         NaN         NaN         NaN         NaN         NaN     B
+1983   Municípios na Faixa C (Intermediária Inicial) do Indicador de Capacidade Municipal (ICM) - 2016 Municípios (884 prioritários e 1132 não prioritários)        NaN        NaN        NaN        NaN        NaN        NaN         NaN         NaN         NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN         NaN         NaN         NaN         NaN         NaN         NaN     C
+4004                  Municípios na Faixa D (Inicial) do Indicador de Capacidade Municipal (ICM) - 1604 Municípios (757 prioritários e 847 não prioritários)        NaN        NaN        NaN        NaN        NaN        NaN         NaN         NaN         NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN         NaN         NaN         NaN         NaN         NaN         NaN     D
+
+--------------------------------------------------------------------------------
+LINHAS COM MUITOS VALORES NULOS:
+--------------------------------------------------------------------------------
+
+Linhas com mais de 25 valores nulos: 12
+
+--------------------------------------------------------------------------------
+IDENTIFICANDO POSSÍVEL COLUNA DE MUNICÍPIO:
+--------------------------------------------------------------------------------
+
+
+Unnamed: 0:
+  Valores únicos: 5,449
+  Primeiros 5: ['Municípios na Faixa A (Alta) do Indicador de Capacidade Municipal (ICM) - 585 Municípios (64 prioritários e 521 não prioritários)', 'Código IBGE', 1702109, 2800308, 3131901]
+
+Unnamed: 1:
+  Valores únicos: 28
+  Primeiros 5: ['UF', 'TO', 'SE', 'MG', 'PB']
+
+Unnamed: 2:
+  Valores únicos: 28
+  Primeiros 5: ['Código UF', 17, 28, 31, 25]
+
+Unnamed: 3:
+  Valores únicos: 5,187
+  Primeiros 5: ['Município', 'Araguaína', 'Aracaju', 'Itabirito', 'Campina Grande']
+
+Unnamed: 4:
+  Valores únicos: 8
+  Valores: {'3 - 10001 até 20000': 1352, '1 - Até 5000': 1212, '2 - 5001 até 10000': 1197, '4 - 20001 até 50000': 1142, '5 - 50001 até 100000': 360, '6 - 100001 até 500000': 280, '7 - Maior que 500000': 50, 'Faixa Populacional': 4}
+
+Unnamed: 5:
+  Valores únicos: 6
+  Valores: {'2 - Nordeste': 1823, '3 - Sudeste': 1671, '4 - Sul': 1205, '1 - Norte': 456, '5 - Centro-Oeste': 438, 'Região': 4}
+
+Unnamed: 6:
+  Valores únicos: 4
+  Valores: {1: 5354, 0: 243, 'Variáveis (1 a 20)': 3, 'Variáveis ( 1 a 20)': 1}
+
+Unnamed: 7:
+  Valores únicos: 3
+  Valores: {0.0: 3823, 1.0: 1770, 2.0: 4}
+
+Unnamed: 8:
+  Valores únicos: 3
+  Valores: {0.0: 4861, 1.0: 732, 3.0: 4}
+
+Unnamed: 9:
+  Valores únicos: 3
+  Valores: {0.0: 4774, 1.0: 819, 4.0: 4}

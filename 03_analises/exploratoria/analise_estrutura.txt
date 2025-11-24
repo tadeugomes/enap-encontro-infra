@@ -1,0 +1,152 @@
+================================================================================
+ANÁLISE DA ESTRUTURA DOS DADOS CONSOLIDADOS
+================================================================================
+
+📊 ARQUIVO 1: Relatório de Acompanhamento (2017-2025)
+--------------------------------------------------------------------------------
+Dimensões: 6385 linhas x 12 colunas
+
+Colunas:
+   1. UF                             | Tipo: object     | Nulos:     0 | Únicos:    26
+   2. Município                      | Tipo: object     | Nulos:     0 | Únicos:  2076
+   3. Desastres                      | Tipo: object     | Nulos:     0 | Únicos:    29
+   4. Processo                       | Tipo: object     | Nulos:  2619 | Únicos:  3766
+   5. Protocolo                      | Tipo: object     | Nulos:     0 | Únicos:  6385
+   6. Data Criação                   | Tipo: object     | Nulos:     0 | Únicos:  1890
+   7. Data Solicitação               | Tipo: object     | Nulos:  2619 | Únicos:  1449
+   8. Valor Solicitado               | Tipo: object     | Nulos:  1962 | Únicos:  3574
+   9. Status                         | Tipo: object     | Nulos:     0 | Únicos:    42
+  10. Analista                       | Tipo: object     | Nulos:  3171 | Únicos:    71
+  11. Solicitação                    | Tipo: object     | Nulos:     0 | Únicos:  4002
+  12. Ano_Relatorio                  | Tipo: int64      | Nulos:     0 | Únicos:     9
+
+
+📊 ARQUIVO 2: ICM por Faixas (A, B, C, D)
+--------------------------------------------------------------------------------
+Dimensões: 5613 linhas x 33 colunas
+
+Colunas:
+   1. Unnamed: 0                     | Tipo: object     | Nulos:    12 | Únicos:  5449
+   2. Unnamed: 1                     | Tipo: object     | Nulos:    16 | Únicos:    28
+   3. Unnamed: 2                     | Tipo: object     | Nulos:    16 | Únicos:    28
+   4. Unnamed: 3                     | Tipo: object     | Nulos:    16 | Únicos:  5187
+   5. Unnamed: 4                     | Tipo: object     | Nulos:    16 | Únicos:     8
+   6. Unnamed: 5                     | Tipo: object     | Nulos:    16 | Únicos:     6
+   7. Unnamed: 6                     | Tipo: object     | Nulos:    12 | Únicos:     4
+   8. Unnamed: 7                     | Tipo: float64    | Nulos:    16 | Únicos:     3
+   9. Unnamed: 8                     | Tipo: float64    | Nulos:    16 | Únicos:     3
+  10. Unnamed: 9                     | Tipo: float64    | Nulos:    16 | Únicos:     3
+  11. Unnamed: 10                    | Tipo: float64    | Nulos:    16 | Únicos:     3
+  12. Unnamed: 11                    | Tipo: float64    | Nulos:    16 | Únicos:     3
+  13. Unnamed: 12                    | Tipo: float64    | Nulos:    16 | Únicos:     3
+  14. Unnamed: 13                    | Tipo: float64    | Nulos:    16 | Únicos:     3
+  15. Unnamed: 14                    | Tipo: float64    | Nulos:    16 | Únicos:     3
+  16. Unnamed: 15                    | Tipo: float64    | Nulos:    16 | Únicos:     3
+  17. Unnamed: 16                    | Tipo: float64    | Nulos:    16 | Únicos:     3
+  18. Unnamed: 17                    | Tipo: float64    | Nulos:    16 | Únicos:     3
+  19. Unnamed: 18                    | Tipo: float64    | Nulos:    16 | Únicos:     3
+  20. Unnamed: 19                    | Tipo: float64    | Nulos:    16 | Únicos:     3
+  21. Unnamed: 20                    | Tipo: float64    | Nulos:    16 | Únicos:     3
+  22. Unnamed: 21                    | Tipo: float64    | Nulos:    16 | Únicos:     3
+  23. Unnamed: 22                    | Tipo: float64    | Nulos:    16 | Únicos:     3
+  24. Unnamed: 23                    | Tipo: float64    | Nulos:    16 | Únicos:     3
+  25. Unnamed: 24                    | Tipo: float64    | Nulos:    16 | Únicos:     3
+  26. Unnamed: 25                    | Tipo: float64    | Nulos:    16 | Únicos:     3
+  27. Unnamed: 26                    | Tipo: object     | Nulos:    16 | Únicos:     3
+  28. Unnamed: 27                    | Tipo: object     | Nulos:    16 | Únicos:     3
+  29. Unnamed: 28                    | Tipo: object     | Nulos:    10 | Únicos:    12
+  30. Unnamed: 29                    | Tipo: object     | Nulos:    14 | Únicos:    11
+  31. Unnamed: 30                    | Tipo: object     | Nulos:    16 | Únicos:     7
+  32. Unnamed: 31                    | Tipo: object     | Nulos:    16 | Únicos:    21
+  33. Faixa                          | Tipo: object     | Nulos:     0 | Únicos:     4
+
+
+🔗 ANÁLISE DE POSSÍVEIS CHAVES DE JUNÇÃO
+--------------------------------------------------------------------------------
+Colunas em comum: Nenhuma coluna exatamente igual
+
+Possíveis chaves de junção:
+  • Município            - Acompanhamento: ✓  |  Faixas: ✗
+  • UF                   - Acompanhamento: ✓  |  Faixas: ✗
+
+
+📈 ESTATÍSTICAS DESCRITIVAS
+--------------------------------------------------------------------------------
+
+Acompanhamento - Distribuição temporal:
+Ano_Relatorio
+2017     567
+2018     409
+2019     287
+2020     488
+2021     382
+2022    1156
+2023     979
+2024    1490
+2025     627
+Name: count, dtype: int64
+
+Faixas ICM - Distribuição por faixa:
+Faixa
+A     590
+B    1393
+C    2021
+D    1609
+Name: count, dtype: int64
+
+
+Colunas numéricas em Acompanhamento:
+  ['Ano_Relatorio']
+
+Colunas numéricas em Faixas ICM:
+  ['Unnamed: 7', 'Unnamed: 8', 'Unnamed: 9', 'Unnamed: 10', 'Unnamed: 11', 'Unnamed: 12', 'Unnamed: 13', 'Unnamed: 14', 'Unnamed: 15', 'Unnamed: 16', 'Unnamed: 17', 'Unnamed: 18', 'Unnamed: 19', 'Unnamed: 20', 'Unnamed: 21', 'Unnamed: 22', 'Unnamed: 23', 'Unnamed: 24', 'Unnamed: 25']
+
+================================================================================
+
+
+📊 ARQUIVO 3: ICM LIMPO (Consolidado e Sem Duplicatas)
+--------------------------------------------------------------------------------
+Dimensões: 5444 linhas x 33 colunas
+
+Colunas:
+   1. Codigo_IBGE                    | Tipo: int64      | Nulos:     0 | Únicos:  5444
+   2. UF                             | Tipo: object     | Nulos:     0 | Únicos:    27
+   3. Codigo_UF                      | Tipo: int64      | Nulos:     0 | Únicos:    27
+   4. Municipio                      | Tipo: object     | Nulos:     0 | Únicos:  5186
+   5. Faixa_Populacional             | Tipo: object     | Nulos:     0 | Únicos:     7
+   6. Regiao                         | Tipo: object     | Nulos:     0 | Únicos:     5
+   7. Unnamed: 6                     | Tipo: int64      | Nulos:     0 | Únicos:     2
+   8. Unnamed: 7                     | Tipo: int64      | Nulos:     0 | Únicos:     2
+   9. Unnamed: 8                     | Tipo: int64      | Nulos:     0 | Únicos:     2
+  10. Unnamed: 9                     | Tipo: int64      | Nulos:     0 | Únicos:     2
+  11. Unnamed: 10                    | Tipo: int64      | Nulos:     0 | Únicos:     2
+  12. Unnamed: 11                    | Tipo: int64      | Nulos:     0 | Únicos:     2
+  13. Unnamed: 12                    | Tipo: int64      | Nulos:     0 | Únicos:     2
+  14. Unnamed: 13                    | Tipo: int64      | Nulos:     0 | Únicos:     2
+  15. Unnamed: 14                    | Tipo: int64      | Nulos:     0 | Únicos:     2
+  16. Unnamed: 15                    | Tipo: int64      | Nulos:     0 | Únicos:     2
+  17. Unnamed: 16                    | Tipo: int64      | Nulos:     0 | Únicos:     2
+  18. Unnamed: 17                    | Tipo: int64      | Nulos:     0 | Únicos:     2
+  19. Unnamed: 18                    | Tipo: int64      | Nulos:     0 | Únicos:     2
+  20. Unnamed: 19                    | Tipo: int64      | Nulos:     0 | Únicos:     2
+  21. Unnamed: 20                    | Tipo: int64      | Nulos:     0 | Únicos:     2
+  22. Unnamed: 21                    | Tipo: int64      | Nulos:     0 | Únicos:     2
+  23. Unnamed: 22                    | Tipo: int64      | Nulos:     0 | Únicos:     2
+  24. Unnamed: 23                    | Tipo: int64      | Nulos:     0 | Únicos:     2
+  25. Unnamed: 24                    | Tipo: int64      | Nulos:     0 | Únicos:     2
+  26. Unnamed: 25                    | Tipo: int64      | Nulos:     0 | Únicos:     2
+  27. Unnamed: 26                    | Tipo: object     | Nulos:     0 | Únicos:     2
+  28. Unnamed: 27                    | Tipo: object     | Nulos:     0 | Únicos:     2
+  29. Unnamed: 28                    | Tipo: int64      | Nulos:     0 | Únicos:     9
+  30. Unnamed: 29                    | Tipo: int64      | Nulos:     0 | Únicos:     8
+  31. Unnamed: 30                    | Tipo: int64      | Nulos:     0 | Únicos:     6
+  32. Unnamed: 31                    | Tipo: int64      | Nulos:     0 | Únicos:    20
+  33. Faixa_ICM                      | Tipo: object     | Nulos:     0 | Únicos:     4
+
+Distribuição por Faixa (Dados Limpos):
+Faixa_ICM
+A     585
+B    1388
+C    2016
+D    1455
+Name: count, dtype: int64

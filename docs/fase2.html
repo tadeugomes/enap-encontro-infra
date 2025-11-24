@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 2 | Clusterização - ENAP</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <i class="fas fa-chart-network"></i> ENAP <span
+                        style="font-weight: 300; color: var(--text-secondary)">| Infra Encontro</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Visão Geral</a>
+                    <a href="analise_descritiva.html">Análise Descritiva</a>
+                    <a href="fase1.html">1. Diagnóstico</a>
+                    <a href="fase2.html" class="active">2. Clusterização</a>
+                    <a href="fase3.html">3. Classificação</a>
+                    <a href="fase4.html">4. Detecção de Anomalias</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <span class="badge badge-success">Fase 2 Concluída</span>
+            <h1>Clusterização Comportamental</h1>
+            <div
+                style="background: rgba(255,255,255,0.05); border-left: 4px solid #8b5cf6; padding: 1rem; margin: 1.5rem 0; border-radius: 0 0.5rem 0.5rem 0;">
+                <i class="fas fa-question-circle" style="color: #8b5cf6; margin-right: 0.5rem;"></i>
+                <strong>Pergunta de Negócio:</strong> <em>"Os municípios se comportam na realidade conforme sua
+                    classificação oficial (ICM)? Podemos agrupá-los por similaridade real?"</em>
+            </div>
+            <p>Segmentação de municípios baseada no comportamento real de solicitações (K-Means), superando a
+                classificação estática do ICM.</p>
+        </section>
+
+        <section class="grid grid-2" style="margin-top: 3rem;">
+            <div class="card">
+                <h3><i class="fas fa-project-diagram" style="color: #8b5cf6;"></i> Os 4 Perfis Reais</h3>
+                <p>O algoritmo identificou grupos distintos de municípios com base em frequência de desastres e valores
+                    solicitados.</p>
+
+                <div style="margin-top: 1.5rem;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <span class="badge" style="background: #94a3b8; color: #0f172a;">Cluster 0: Baixo Impacto
+                            (76%)</span>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">A grande maioria dos municípios. Poucos
+                            eventos e valores baixos (Média R$ 3,8M).</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <span class="badge" style="background: #3b82f6; color: white;">Cluster 1: Alto Custo
+                            (22%)</span>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Municípios com desastres caros (Média R$
+                            42,8M), mas frequência moderada.</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <span class="badge" style="background: #f59e0b; color: white;">Cluster 3: Alta Frequência
+                            (1%)</span>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">28 municípios atingidos repetidamente (Média
+                            25 processos).</p>
+                    </div>
+                    <div>
+                        <span class="badge" style="background: #ef4444; color: white;">Cluster 2: Outlier Extremo (
+                            <0.1%)< /span>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;"><strong>Porto Alegre (RS)</strong>.
+                                    Caso único com 148 processos e R$ 48M.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-map-marked-alt" style="color: #10b981;"></i> Mapa de Clusters (PCA)</h3>
+                <p>Visualização 2D dos grupos identificados. Note como Porto Alegre (Cluster 2) se isola completamente.
+                </p>
+                <div class="chart-container">
+                    <img src="assets/images/mapa_clusters_pca.png" alt="Mapa de Clusters">
+                </div>
+            </div>
+        </section>
+
+        <section class="card"
+            style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1)); border: 1px solid rgba(139, 92, 246, 0.3); margin-top: 3rem;">
+            <h3><i class="fas fa-search-plus"></i> O Paradoxo da Faixa D (Resolvido)</h3>
+            <p><strong>Dúvida Comum:</strong> <em>"Na Fase 1, vimos que a Faixa D tem média de valor 3x maior. Como
+                    agora na Fase 2 dizemos que 81% deles são de 'Baixo Impacto'?"</em></p>
+
+            <div class="grid grid-2" style="margin-top: 1.5rem;">
+                <div>
+                    <p>A resposta está na <strong>Concentração Extrema</strong>. A média "mente" porque é puxada por
+                        poucos casos gigantescos.</p>
+                    <ul style="margin-top: 1rem; list-style: none;">
+                        <li style="margin-bottom: 1rem;">
+                            <i class="fas fa-check-circle" style="color: #34d399; margin-right: 0.5rem;"></i>
+                            <strong>A Maioria (81%)</strong> dos municípios Faixa D está no Cluster 0. Eles pedem pouco
+                            e representam apenas <strong>6,6%</strong> do custo total.
+                        </li>
+                        <li>
+                            <i class="fas fa-exclamation-circle" style="color: #ef4444; margin-right: 0.5rem;"></i>
+                            <strong>A Minoria (18%)</strong> está no Cluster 1. Mas eles sozinhos consomem <strong>93%
+                                do orçamento</strong> da Faixa D (R$ 13 Bilhões!).
+                        </li>
+                    </ul>
+                </div>
+                <div style="background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 0.5rem; text-align: center;">
+                    <div style="font-size: 3rem; font-weight: bold; color: #fff;">93%</div>
+                    <div style="color: var(--text-secondary);">do Custo da Faixa D</div>
+                    <div style="margin: 0.5rem 0; font-size: 0.9rem;">vem de apenas</div>
+                    <div style="font-size: 2rem; font-weight: bold; color: #ef4444;">18%</div>
+                    <div style="color: var(--text-secondary);">dos Municípios</div>
+                </div>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #cbd5e1;">
+                <strong>Conclusão de Gestão:</strong> Não trate toda a Faixa D como "problemática". Foque a fiscalização
+                pesada nos 18% que estão no Cluster 1.
+            </p>
+        </section>
+
+        <section>
+            <h2>Quebra de Paradigmas</h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h4>Faixa D não é Destino</h4>
+                    <p>81% dos municípios de Faixa D estão no Cluster de "Baixo Impacto". Ser vulnerável não significa
+                        necessariamente ter altos prejuízos recorrentes.</p>
+                    <div class="chart-container">
+                        <img src="assets/images/heatmap_cluster_vs_icm.png" alt="Heatmap Cluster vs ICM">
+                    </div>
+                </div>
+                <div class="card">
+                    <h4>Faixa A não é Escudo</h4>
+                    <p>46 municípios de "Alta Capacidade" (Faixa A) caíram no Cluster de "Alto Custo". Capacidade
+                        institucional não blinda contra grandes desastres.</p>
+                    <div class="chart-container">
+                        <img src="assets/images/boxplot_valor_cluster.png" alt="Boxplot por Cluster">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card"
+            style="background: rgba(139, 92, 246, 0.1); border-color: rgba(139, 92, 246, 0.3); margin-top: 3rem;">
+            <h3><i class="fas fa-clipboard-check"></i> Conclusão Detalhada</h3>
+            <p style="color: #e2e8f0; margin-bottom: 1rem;">
+                <strong>A resposta é NÃO.</strong> O ICM oficial não reflete a realidade operacional. Identificamos 4
+                perfis comportamentais distintos que cruzam todas as faixas de ICM.
+            </p>
+            <ul style="list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check"
+                        style="color: #34d399; margin-right: 0.5rem;"></i> <strong>Heterogeneidade da Faixa D:</strong>
+                    A maioria (81%) é de baixo impacto, mas uma minoria (18%) é responsável por quase todo o custo.</li>
+                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check"
+                        style="color: #34d399; margin-right: 0.5rem;"></i> <strong>Clusterização é Superior:</strong>
+                    Para fins de alocação de recursos e fiscalização, o "Cluster" a que o município pertence é uma
+                    métrica muito mais útil do que sua "Faixa ICM".</li>
+            </ul>
+            <p
+                style="margin-top: 1rem; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                <strong>Impacto na Gestão:</strong> Abandonar a visão monolítica da "Faixa D". Criar uma força-tarefa
+                específica para os municípios do <strong>Cluster 1 (Alto Custo)</strong>, independentemente de seu ICM.
+            </p>
+        </section>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="fase3.html" class="btn btn-primary">Próxima Fase: Classificação <i
+                    class="fas fa-arrow-right"></i></a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ENAP - Escola Nacional de Administração Pública.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

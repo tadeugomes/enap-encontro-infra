@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 4 | Detecção de Anomalias - ENAP</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <i class="fas fa-chart-network"></i> ENAP <span
+                        style="font-weight: 300; color: var(--text-secondary)">| Infra Encontro</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Visão Geral</a>
+                    <a href="analise_descritiva.html">Análise Descritiva</a>
+                    <a href="fase1.html">1. Diagnóstico</a>
+                    <a href="fase2.html">2. Clusterização</a>
+                    <a href="fase3.html">3. Classificação</a>
+                    <a href="fase4.html" class="active">4. Detecção de Anomalias</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <span class="badge badge-success">Fase 4 Concluída</span>
+            <h1>Detecção de Anomalias (Valor Justo)</h1>
+            <div
+                style="background: rgba(255,255,255,0.05); border-left: 4px solid #ef4444; padding: 1rem; margin: 1.5rem 0; border-radius: 0 0.5rem 0.5rem 0;">
+                <i class="fas fa-question-circle" style="color: #ef4444; margin-right: 0.5rem;"></i>
+                <strong>Pergunta de Negócio:</strong> <em>"Quanto deveria custar esta reconstrução? O valor solicitado é
+                    justo ou há indícios de anomalia?"</em>
+            </div>
+            <p>Implementamos uma <strong>Regressão Quantílica</strong> para responder à pergunta mais difícil:
+                <em>"Quanto deveria custar esta reconstrução?"</em>. O modelo define uma "faixa de preço justo" para
+                cada pedido.</p>
+        </section>
+
+        <section class="grid grid-2" style="margin-top: 3rem;">
+            <div class="card">
+                <h3><i class="fas fa-calculator" style="color: #ef4444;"></i> Como funciona o "Preço Justo"?</h3>
+                <p>Diferente de uma média simples, nosso modelo calcula um <strong>Intervalo de Confiança</strong>
+                    personalizado para cada município e tipo de desastre.</p>
+
+                <div
+                    style="margin-top: 1.5rem; margin-bottom: 1.5rem; border-left: 3px solid #3b82f6; padding-left: 1rem;">
+                    <h4 style="color: #3b82f6; margin-bottom: 0.5rem; font-size: 1rem;">Exemplo Prático: O Contexto
+                        Importa</h4>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">Imagine dois pedidos idênticos de <strong>R$ 5
+                            Milhões</strong> para "Chuvas Intensas":</p>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 0.5rem;">
+                            <div style="font-weight: bold; color: #fff; margin-bottom: 0.5rem; font-size: 0.9rem;">
+                                Município Pequeno (Cluster 0)</div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary);">Faixa Esperada: R$ 100k - R$
+                                800k</div>
+                            <div style="margin-top: 0.5rem; color: #ef4444; font-weight: bold; font-size: 0.85rem;">R$
+                                5M = ANOMALIA GRAVE 🚨</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 0.5rem;">
+                            <div style="font-weight: bold; color: #fff; margin-bottom: 0.5rem; font-size: 0.9rem;">
+                                Metrópole (Cluster 1)</div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary);">Faixa Esperada: R$ 2M - R$ 15M
+                            </div>
+                            <div style="margin-top: 0.5rem; color: #34d399; font-weight: bold; font-size: 0.85rem;">R$
+                                5M = NORMAL ✅</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.8rem; margin-top: 1rem; color: var(--text-secondary);">
+                        Uma média simples julgaria ambos iguais. O modelo entende que o contexto muda tudo.
+                    </p>
+                </div>
+
+                <div style="margin-top: 2rem; background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 0.5rem;">
+                    <div
+                        style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                        <span style="color: #34d399;">Limite Inferior (P10)</span>
+                        <span style="color: #fff; font-weight: bold;">R$ 100.000</span>
+                    </div>
+                    <div
+                        style="height: 4px; background: linear-gradient(90deg, #34d399, #60a5fa, #ef4444); border-radius: 2px; margin: 0.5rem 0;">
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 1rem;">
+                        <span style="color: #ef4444;">Limite Superior (P90)</span>
+                        <span style="color: #fff; font-weight: bold;">R$ 5.000.000</span>
+                    </div>
+                    <p style="font-size: 0.8rem; text-align: center; margin-top: 1rem; color: var(--text-secondary);">
+                        Exemplo: Se um município pedir <strong>R$ 20.000.000</strong>, o sistema dispara um alerta
+                        vermelho, pois está muito acima do P90.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-search-dollar" style="color: #f59e0b;"></i> Resultados da Análise</h3>
+                <p>Aplicamos o modelo em 3.893 processos históricos. O resultado mostra onde a auditoria humana deve
+                    focar.</p>
+
+                <div style="margin-top: 2rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div
+                            style="width: 12px; height: 12px; background: #34d399; border-radius: 50%; margin-right: 1rem;">
+                        </div>
+                        <div style="flex: 1;">
+                            <strong>NORMAL (66%)</strong>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary);">2.556 processos dentro da
+                                faixa esperada.</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div
+                            style="width: 12px; height: 12px; background: #60a5fa; border-radius: 50%; margin-right: 1rem;">
+                        </div>
+                        <div style="flex: 1;">
+                            <strong>BAIXO (19%)</strong>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary);">757 processos com valor
+                                suspeitamente baixo (risco de obra incompleta).</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div
+                            style="width: 12px; height: 12px; background: #ef4444; border-radius: 50%; margin-right: 1rem;">
+                        </div>
+                        <div style="flex: 1;">
+                            <strong>ALTO RISCO (15%)</strong>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary);">580 processos com indícios de
+                                valores extremos (outliers).</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-2">
+            <div class="card">
+                <h3><i class="fas fa-tachometer-alt" style="color: #8b5cf6;"></i> Métricas de Performance (Técnico)</h3>
+                <p>Transparência sobre a capacidade e limitações do modelo preditivo:</p>
+
+                <div style="margin-top: 1.5rem;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="font-weight: bold;">Cobertura (P10-P90): 76.3%</span>
+                            <span class="badge badge-success">Alta Confiabilidade</span>
+                        </div>
+                        <div
+                            style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 76%; height: 100%; background: #34d399;"></div>
+                        </div>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-secondary);">
+                            O modelo consegue "enquadrar" corretamente o valor de 3 em cada 4 processos, validando a
+                            utilidade das faixas de preço sugeridas.
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="font-weight: bold;">R² (Log Space): 0.11</span>
+                            <span class="badge badge-warning">Esperado</span>
+                        </div>
+                        <div
+                            style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 11%; height: 100%; background: #f59e0b;"></div>
+                        </div>
+                        <div style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-secondary);">
+                            <p><strong>Isso é ruim? Não neste caso.</strong></p>
+                            <p style="margin-top: 0.5rem;">
+                                O R² é baixo porque <strong>não temos dados físicos</strong> (ex: "quantas pontes
+                                caíram?"). Sem saber o dano real, é impossível prever o valor exato.
+                            </p>
+                            <p style="margin-top: 0.5rem;">
+                                Por isso, mudamos o objetivo: não queremos acertar o valor na mosca (Impossível), mas
+                                sim definir uma <strong>Faixa de Aceitação</strong>. Se o valor estiver dentro do
+                                intervalo P10-P90 (o que acontece em 76% dos casos), o modelo cumpriu seu papel de
+                                triagem.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-chart-line" style="color: #8b5cf6;"></i> Precisão da Estimativa</h3>
+                <p>Comparação entre Valor Real (Eixo X) e Valor Previsto (Eixo Y) em escala logarítmica.</p>
+                <div class="chart-container">
+                    <img src="assets/images/real_vs_previsto.png" alt="Real vs Previsto">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Evidências de Anomalias</h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h4>Distribuição de Desvios</h4>
+                    <p>Este gráfico mostra o quanto os valores reais se desviam do esperado. A "cauda longa" à direita
+                        representa os casos de valores extremos (outliers).</p>
+                    <div class="chart-container">
+                        <img src="assets/images/distribuicao_desvios.png" alt="Distribuição de Desvios">
+                    </div>
+                </div>
+                <div class="card">
+                    <h4>Top 3 Casos Críticos Detectados</h4>
+                    <p>Exemplos reais de anomalias que o modelo "pescou" automaticamente:</p>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.9rem;">
+                        <thead>
+                            <tr style="border-bottom: 1px solid var(--border-color); text-align: left;">
+                                <th style="padding: 0.5rem;">Município</th>
+                                <th style="padding: 0.5rem;">Desvio</th>
+                                <th style="padding: 0.5rem;">Diagnóstico</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 0.5rem;">Nova Monte Verde (MT)</td>
+                                <td style="padding: 0.5rem; color: #ef4444;">+235.558%</td>
+                                <td style="padding: 0.5rem;">Provável Erro de Digitação (R$ 2.5 Bi)</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 0.5rem;">Jaboatão (PE)</td>
+                                <td style="padding: 0.5rem; color: #ef4444;">+29.866%</td>
+                                <td style="padding: 0.5rem;">Valor Extremo (Outlier)</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 0.5rem;">Rio de Janeiro (RJ)</td>
+                                <td style="padding: 0.5rem; color: #ef4444;">+10.219%</td>
+                                <td style="padding: 0.5rem;">Valor Atípico para o Desastre</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="card"
+            style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1)); border: 1px solid rgba(239, 68, 68, 0.3);">
+            <h3><i class="fas fa-shield-alt"></i> Impacto na Gestão</h3>
+            <p>A implementação deste modelo permite que a auditoria foque 100% de sua energia nos <strong>15% de casos
+                    críticos</strong>, em vez de analisar aleatoriamente. Isso multiplica a eficiência da fiscalização e
+                protege o erário público.</p>
+        </section>
+
+        <section class="card"
+            style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); margin-top: 3rem;">
+            <h3><i class="fas fa-clipboard-check"></i> Conclusão Detalhada</h3>
+            <p style="color: #e2e8f0; margin-bottom: 1rem;">
+                <strong>A resposta é SIM, é possível auditar.</strong> O modelo estabelece, pela primeira vez, uma régua
+                objetiva para o "preço justo" de obras de desastre, considerando o contexto local.
+            </p>
+            <ul style="list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check"
+                        style="color: #34d399; margin-right: 0.5rem;"></i> <strong>Eficiência Máxima:</strong>
+                    Identificamos que 66% dos processos são "Normais". A auditoria humana não precisa perder tempo com
+                    eles.</li>
+                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check"
+                        style="color: #34d399; margin-right: 0.5rem;"></i> <strong>Foco no Risco:</strong> Apenas 15%
+                    dos processos (580 casos) apresentam indícios fortes de anomalia. É aqui que o auditor deve atuar.
+                </li>
+            </ul>
+            <p
+                style="margin-top: 1rem; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                <strong>Impacto na Gestão:</strong> Mudança de paradigma de "Auditoria Amostral Aleatória" para
+                "Auditoria Direcionada por Risco". O potencial de economia e recuperação de recursos é imenso.
+            </p>
+        </section>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="index.html" class="btn btn-primary"><i class="fas fa-home"></i> Voltar ao Início</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ENAP - Escola Nacional de Administração Pública.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
