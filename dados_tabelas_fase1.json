@@ -1,0 +1,144 @@
+{
+  "top_desastres": {
+    "Faixa_A": {
+      "Tempestade Local/Convectiva - Chuvas Intensas": 451,
+      "Enxurradas": 88,
+      "Tempestade Local/Convectiva - Vendaval": 46,
+      "Inundações": 44,
+      "Estiagem": 39
+    },
+    "Faixa_B": {
+      "Tempestade Local/Convectiva - Chuvas Intensas": 1322,
+      "Enxurradas": 180,
+      "Estiagem": 97,
+      "Inundações": 76,
+      "Tempestade Local/Convectiva - Vendaval": 64
+    },
+    "Faixa_C": {
+      "Tempestade Local/Convectiva - Chuvas Intensas": 1514,
+      "Enxurradas": 240,
+      "Inundações": 159,
+      "Estiagem": 112,
+      "Tempestade Local/Convectiva - Vendaval": 74
+    },
+    "Faixa_D": {
+      "Tempestade Local/Convectiva - Chuvas Intensas": 726,
+      "Enxurradas": 123,
+      "Inundações": 101,
+      "Estiagem": 93,
+      "Seca": 36
+    }
+  },
+  "valores_medios": [
+    {
+      "Desastre": "Tempestade Local/Convectiva - Chuvas Intensas",
+      "Faixa_A": "R$ 4,458,968.64",
+      "Faixa_A_casos": 368,
+      "Faixa_B": "R$ 4,219,980.83",
+      "Faixa_B_casos": 1052,
+      "Faixa_C": "R$ 3,294,204.55",
+      "Faixa_C_casos": 1153,
+      "Faixa_D": "R$ 6,899,999.57",
+      "Faixa_D_casos": 537
+    },
+    {
+      "Desastre": "Enxurradas",
+      "Faixa_A": "R$ 1,453,284.14",
+      "Faixa_A_casos": 62,
+      "Faixa_B": "R$ 3,610,497.46",
+      "Faixa_B_casos": 115,
+      "Faixa_C": "R$ 2,534,405.16",
+      "Faixa_C_casos": 167,
+      "Faixa_D": "R$ 1,932,703.11",
+      "Faixa_D_casos": 82
+    },
+    {
+      "Desastre": "Inundações",
+      "Faixa_A": "R$ 4,782,936.08",
+      "Faixa_A_casos": 26,
+      "Faixa_B": "R$ 4,041,096.54",
+      "Faixa_B_casos": 49,
+      "Faixa_C": "R$ 3,297,400.15",
+      "Faixa_C_casos": 93,
+      "Faixa_D": "R$ 3,117,402.02",
+      "Faixa_D_casos": 61
+    },
+    {
+      "Desastre": "Estiagem",
+      "Faixa_A": "R$ 812,036.54",
+      "Faixa_A_casos": 8,
+      "Faixa_B": "R$ 855,198.06",
+      "Faixa_B_casos": 8,
+      "Faixa_C": "R$ 952,610.09",
+      "Faixa_C_casos": 13,
+      "Faixa_D": "R$ 3,273,241.12",
+      "Faixa_D_casos": 8
+    },
+    {
+      "Desastre": "Tempestade Local/Convectiva - Vendaval",
+      "Faixa_A": "R$ 755,314.95",
+      "Faixa_A_casos": 36,
+      "Faixa_B": "R$ 1,092,066.53",
+      "Faixa_B_casos": 37,
+      "Faixa_C": "R$ 871,802.21",
+      "Faixa_C_casos": 48,
+      "Faixa_D": "R$ 677,364.85",
+      "Faixa_D_casos": 23
+    },
+    {
+      "Desastre": "Alagamentos",
+      "Faixa_A": "R$ 1,100,471.93",
+      "Faixa_A_casos": 14,
+      "Faixa_B": "R$ 3,788,226.06",
+      "Faixa_B_casos": 28,
+      "Faixa_C": "R$ 2,896,408.76",
+      "Faixa_C_casos": 38,
+      "Faixa_D": "R$ 2,196,660.90",
+      "Faixa_D_casos": 21
+    },
+    {
+      "Desastre": "Seca",
+      "Faixa_A": "R$ 4,141,221.15",
+      "Faixa_A_casos": 1,
+      "Faixa_B": "R$ 251,522.54",
+      "Faixa_B_casos": 1,
+      "Faixa_C": "R$ 639,360.00",
+      "Faixa_C_casos": 1,
+      "Faixa_D": "-",
+      "Faixa_D_casos": 0
+    },
+    {
+      "Desastre": "Tempestade Local/Convectiva - Granizo",
+      "Faixa_A": "R$ 466,496.05",
+      "Faixa_A_casos": 3,
+      "Faixa_B": "R$ 785,928.69",
+      "Faixa_B_casos": 10,
+      "Faixa_C": "R$ 526,224.45",
+      "Faixa_C_casos": 14,
+      "Faixa_D": "R$ 195,056.91",
+      "Faixa_D_casos": 3
+    },
+    {
+      "Desastre": "Doenças infecciosas virais",
+      "Faixa_A": "-",
+      "Faixa_A_casos": 0,
+      "Faixa_B": "R$ 1,147,286.88",
+      "Faixa_B_casos": 1,
+      "Faixa_C": "R$ 8,550,786.39",
+      "Faixa_C_casos": 3,
+      "Faixa_D": "-",
+      "Faixa_D_casos": 0
+    },
+    {
+      "Desastre": "Deslizamentos",
+      "Faixa_A": "R$ 3,684,323.06",
+      "Faixa_A_casos": 5,
+      "Faixa_B": "R$ 12,630,365.08",
+      "Faixa_B_casos": 10,
+      "Faixa_C": "R$ 4,044,413.50",
+      "Faixa_C_casos": 7,
+      "Faixa_D": "R$ 1,487,500.00",
+      "Faixa_D_casos": 2
+    }
+  ]
+}
