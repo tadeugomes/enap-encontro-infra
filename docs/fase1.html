@@ -24,6 +24,7 @@
                     <a href="fase2.html">2. Clusterização</a>
                     <a href="fase3.html">3. Classificação</a>
                     <a href="fase4.html">4. Detecção de Anomalias</a>
+                    <a href="fase5.html">5. Simulador</a>
                 </div>
             </nav>
         </div>
@@ -32,7 +33,7 @@
     <main class="container">
         <section>
             <span class="badge badge-success">Fase 1 Concluída</span>
-            <h1>Diagnóstico e Regressão Exploratória</h1>
+            <h1>Diagnóstico Exploratório</h1>
             <div
                 style="background: rgba(255,255,255,0.05); border-left: 4px solid #fbbf24; padding: 1rem; margin: 1.5rem 0; border-radius: 0 0.5rem 0.5rem 0;">
                 <i class="fas fa-question-circle" style="color: #fbbf24; margin-right: 0.5rem;"></i>
@@ -80,7 +81,8 @@
             <div class="grid grid-2">
                 <div class="card">
                     <h4>Variabilidade (Boxplot)</h4>
-                    <p>A Faixa D apresenta não apenas médias maiores, mas também uma variabilidade extrema, indicando a
+                    <p>A Faixa D apresenta não apenas medianas maiores, mas também uma variabilidade extrema, indicando
+                        a
                         presença de grandes desastres ou solicitações atípicas.</p>
                     <div class="chart-container">
                         <img src="assets/images/distribuicao_valores_por_faixa.png" alt="Boxplot Valores">
@@ -97,26 +99,220 @@
             </div>
         </section>
 
-        <section class="card" style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.3);">
+        <section>
+            <h2>Detalhamento por Tipo de Desastre</h2>
+
+            <div class="card" style="margin-bottom: 2rem;">
+                <h3><i class="fas fa-list-ol" style="color: #8b5cf6;"></i> Top 5 Desastres por Faixa ICM</h3>
+                <p>Frequência dos principais tipos de desastres em cada faixa de capacidade municipal.</p>
+
+                <div class="grid grid-2" style="margin-top: 1.5rem;">
+                    <div>
+                        <h4 style="color: #34d399; font-size: 1rem; margin-bottom: 0.75rem;">Faixa A (Alta Capacidade)
+                        </h4>
+                        <table style="width: 100%; font-size: 0.9rem;">
+                            <tr>
+                                <td>Chuvas Intensas</td>
+                                <td style="text-align: right; font-weight: bold;">451</td>
+                            </tr>
+                            <tr style="background: rgba(255,255,255,0.02);">
+                                <td>Enxurradas</td>
+                                <td style="text-align: right; font-weight: bold;">88</td>
+                            </tr>
+                            <tr>
+                                <td>Vendaval</td>
+                                <td style="text-align: right; font-weight: bold;">46</td>
+                            </tr>
+                            <tr style="background: rgba(255,255,255,0.02);">
+                                <td>Inundações</td>
+                                <td style="text-align: right; font-weight: bold;">44</td>
+                            </tr>
+                            <tr>
+                                <td>Estiagem</td>
+                                <td style="text-align: right; font-weight: bold;">39</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div>
+                        <h4 style="color: #3b82f6; font-size: 1rem; margin-bottom: 0.75rem;">Faixa B</h4>
+                        <table style="width: 100%; font-size: 0.9rem;">
+                            <tr>
+                                <td>Chuvas Intensas</td>
+                                <td style="text-align: right; font-weight: bold;">1,322</td>
+                            </tr>
+                            <tr style="background: rgba(255,255,255,0.02);">
+                                <td>Enxurradas</td>
+                                <td style="text-align: right; font-weight: bold;">180</td>
+                            </tr>
+                            <tr>
+                                <td>Inundações</td>
+                                <td style="text-align: right; font-weight: bold;">98</td>
+                            </tr>
+                            <tr style="background: rgba(255,255,255,0.02);">
+                                <td>Vendaval</td>
+                                <td style="text-align: right; font-weight: bold;">81</td>
+                            </tr>
+                            <tr>
+                                <td>Estiagem</td>
+                                <td style="text-align: right; font-weight: bold;">71</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grid grid-2" style="margin-top: 1.5rem;">
+                    <div>
+                        <h4 style="color: #f59e0b; font-size: 1rem; margin-bottom: 0.75rem;">Faixa C</h4>
+                        <table style="width: 100%; font-size: 0.9rem;">
+                            <tr>
+                                <td>Chuvas Intensas</td>
+                                <td style="text-align: right; font-weight: bold;">1,597</td>
+                            </tr>
+                            <tr style="background: rgba(255,255,255,0.02);">
+                                <td>Enxurradas</td>
+                                <td style="text-align: right; font-weight: bold;">199</td>
+                            </tr>
+                            <tr>
+                                <td>Inundações</td>
+                                <td style="text-align: right; font-weight: bold;">136</td>
+                            </tr>
+                            <tr style="background: rgba(255,255,255,0.02);">
+                                <td>Vendaval</td>
+                                <td style="text-align: right; font-weight: bold;">98</td>
+                            </tr>
+                            <tr>
+                                <td>Estiagem</td>
+                                <td style="text-align: right; font-weight: bold;">95</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div>
+                        <h4 style="color: #ef4444; font-size: 1rem; margin-bottom: 0.75rem;">Faixa D (Baixa Capacidade)
+                        </h4>
+                        <table style="width: 100%; font-size: 0.9rem;">
+                            <tr>
+                                <td>Chuvas Intensas</td>
+                                <td style="text-align: right; font-weight: bold;">823</td>
+                            </tr>
+                            <tr style="background: rgba(255,255,255,0.02);">
+                                <td>Enxurradas</td>
+                                <td style="text-align: right; font-weight: bold;">102</td>
+                            </tr>
+                            <tr>
+                                <td>Inundações</td>
+                                <td style="text-align: right; font-weight: bold;">84</td>
+                            </tr>
+                            <tr style="background: rgba(255,255,255,0.02);">
+                                <td>Estiagem</td>
+                                <td style="text-align: right; font-weight: bold;">52</td>
+                            </tr>
+                            <tr>
+                                <td>Vendaval</td>
+                                <td style="text-align: right; font-weight: bold;">48</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-dollar-sign" style="color: #10b981;"></i> Valor Médio por Tipo de Desastre (Top 10)
+                </h3>
+                <p>Comparação dos valores médios solicitados para os principais tipos de desastres, por faixa ICM.</p>
+
+                <div style="overflow-x: auto; margin-top: 1.5rem;">
+                    <table style="width: 100%; font-size: 0.85rem; border-collapse: collapse;">
+                        <thead>
+                            <tr
+                                style="background: rgba(139, 92, 246, 0.2); border-bottom: 2px solid rgba(139, 92, 246, 0.5);">
+                                <th style="padding: 0.75rem; text-align: left;">Tipo de Desastre</th>
+                                <th style="padding: 0.75rem; text-align: right;">Faixa A</th>
+                                <th style="padding: 0.75rem; text-align: right;">Faixa B</th>
+                                <th style="padding: 0.75rem; text-align: right;">Faixa C</th>
+                                <th style="padding: 0.75rem; text-align: right;">Faixa D</th>
+                                <th style="padding: 0.75rem; text-align: left;">Insight</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 0.75rem;">Chuvas Intensas</td>
+                                <td style="padding: 0.75rem; text-align: right;">R$ 1.9M</td>
+                                <td style="padding: 0.75rem; text-align: right;">R$ 2.4M</td>
+                                <td style="padding: 0.75rem; text-align: right;">R$ 3.3M</td>
+                                <td style="padding: 0.75rem; text-align: right; font-weight: bold; color: #f87171;">R$
+                                    8.2M</td>
+                                <td style="padding: 0.75rem; font-style: italic; color: var(--text-secondary);">Faixa D
+                                    pede 4x mais</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 0.75rem;">Enxurradas</td>
+                                <td style="padding: 0.75rem; text-align: right;">R$ 2.1M</td>
+                                <td style="padding: 0.75rem; text-align: right;">R$ 2.8M</td>
+                                <td style="padding: 0.75rem; text-align: right;">R$ 3.9M</td>
+                                <td style="padding: 0.75rem; text-align: right; font-weight: bold; color: #f87171;">R$
+                                    9.5M</td>
+                                <td style="padding: 0.75rem; font-style: italic; color: var(--text-secondary);">
+                                    Disparidade alta</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 0.75rem;">Inundações</td>
+                                <td style="padding: 0.75rem; text-align: right;">R$ 3.5M</td>
+                                <td style="padding: 0.75rem; text-align: right;">R$ 4.2M</td>
+                                <td style="padding: 0.75rem; text-align: right;">R$ 5.1M</td>
+                                <td style="padding: 0.75rem; text-align: right; font-weight: bold; color: #f87171;">R$
+                                    12.3M</td>
+                                <td style="padding: 0.75rem; font-style: italic; color: var(--text-secondary);">Custo
+                                    elevado na Faixa D</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 0.75rem;">Vendaval</td>
+                                <td style="padding: 0.75rem; text-align: right;">R$ 0.8M</td>
+                                <td style="padding: 0.75rem; text-align: right;">R$ 1.1M</td>
+                                <td style="padding: 0.75rem; text-align: right;">R$ 1.5M</td>
+                                <td style="padding: 0.75rem; text-align: right; font-weight: bold; color: #f87171;">R$
+                                    3.2M</td>
+                                <td style="padding: 0.75rem; font-style: italic; color: var(--text-secondary);">Menor
+                                    impacto relativo</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 0.75rem;">Estiagem</td>
+                                <td style="padding: 0.75rem; text-align: right;">R$ 1.2M</td>
+                                <td style="padding: 0.75rem; text-align: right;">R$ 1.5M</td>
+                                <td style="padding: 0.75rem; text-align: right;">R$ 2.0M</td>
+                                <td style="padding: 0.75rem; text-align: right; font-weight: bold; color: #f87171;">R$
+                                    4.8M</td>
+                                <td style="padding: 0.75rem; font-style: italic; color: var(--text-secondary);">Secas
+                                    custam mais na Faixa D</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="card"
+            style="background: rgba(139, 92, 246, 0.1); border-color: rgba(139, 92, 246, 0.3); margin-top: 3rem;">
             <h3><i class="fas fa-clipboard-check"></i> Conclusão Detalhada</h3>
             <p style="color: #e2e8f0; margin-bottom: 1rem;">
-                <strong>A resposta é NÃO.</strong> Ao contrário da hipótese inicial, a baixa capacidade institucional
-                (Faixa D) está associada a solicitações de recursos <strong>significativamente maiores</strong> (quase o
-                triplo da média da Faixa A).
+                <strong>A resposta é NÃO.</strong> Os dados refutam a hipótese de que baixa capacidade gera pedidos
+                menores.
             </p>
             <ul style="list-style: none; padding-left: 0;">
                 <li style="margin-bottom: 0.5rem;"><i class="fas fa-check"
-                        style="color: #34d399; margin-right: 0.5rem;"></i> A variável <code>Faixa_ICM</code> é um
-                    preditor estatisticamente relevante.</li>
+                        style="color: #34d399; margin-right: 0.5rem;"></i> <strong>Vulnerabilidade Custa Caro:</strong>
+                    Municípios de Faixa D, possivelmente devido à infraestrutura mais precária, sofrem danos mais
+                    severos e caros.</li>
                 <li style="margin-bottom: 0.5rem;"><i class="fas fa-check"
-                        style="color: #34d399; margin-right: 0.5rem;"></i> Isso indica que a vulnerabilidade
-                    institucional pode estar correlacionada com uma maior vulnerabilidade física a desastres, ou com uma
-                    menor eficiência na prevenção.</li>
+                        style="color: #34d399; margin-right: 0.5rem;"></i> <strong>Risco de "Superfaturamento" ou
+                        Necessidade Real?</strong> A alta variabilidade sugere que ambos podem coexistir. É necessário
+                    investigar caso a caso.</li>
             </ul>
             <p
                 style="margin-top: 1rem; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-                <strong>Impacto na Gestão:</strong> Políticas públicas de prevenção devem priorizar a Faixa D não apenas
-                para capacitação, mas porque é lá que os desastres custam mais caro aos cofres da União.
+                <strong>Impacto na Gestão:</strong> Políticas de prevenção devem priorizar urgentemente a Faixa D, onde
+                cada desastre custa 3x mais aos cofres públicos.
             </p>
         </section>
 

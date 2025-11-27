@@ -24,6 +24,7 @@
                     <a href="fase2.html" class="active">2. Clusterização</a>
                     <a href="fase3.html">3. Classificação</a>
                     <a href="fase4.html">4. Detecção de Anomalias</a>
+                    <a href="fase5.html">5. Simulador</a>
                 </div>
             </nav>
         </div>
@@ -230,105 +231,65 @@
                                 <div
                                     style="color: var(--text-secondary); font-size: 0.7rem; text-transform: uppercase;">
                                     Frequência</div>
-                                <div style="font-weight: bold; color: #fff;">Extrema (148)</div>
+                                <div style="font-weight: bold; color: #fff;">Baixa (1.0)</div>
                             </div>
                         </div>
-                        <p style="font-size: 0.85rem; color: #cbd5e1;"><strong>Porto Alegre (RS)</strong>. Caso único.
-                        </p>
+                        <p style="font-size: 0.85rem; color: #cbd5e1;">Apenas 2 municípios. Casos isolados de valor
+                            extremo.</p>
                     </div>
                 </div>
             </div>
 
             <div class="card">
-                <h3><i class="fas fa-map-marked-alt" style="color: #10b981;"></i> Mapa de Clusters (PCA)</h3>
-                <p>Visualização 2D dos grupos identificados. Note como Porto Alegre (Cluster 2) se isola completamente.
-                </p>
-                <div class="chart-container">
-                    <img src="assets/images/mapa_clusters_pca.png" alt="Mapa de Clusters">
-                </div>
-            </div>
-        </section>
+                <h3><i class="fas fa-search-plus" style="color: #3b82f6;"></i> Análise Visual dos Clusters</h3>
+                <p>Visualização da distribuição dos municípios nos clusters identificados.</p>
 
-        <section class="card"
-            style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1)); border: 1px solid rgba(139, 92, 246, 0.3); margin-top: 3rem;">
-            <h3><i class="fas fa-search-plus"></i> O Paradoxo da Faixa D (Resolvido)</h3>
-            <p><strong>Dúvida Comum:</strong> <em>"Na Fase 1, vimos que a Faixa D tem média de valor 3x maior. Como
-                    agora na Fase 2 dizemos que 81% deles são de 'Baixo Impacto'?"</em></p>
-
-            <div class="grid grid-2" style="margin-top: 1.5rem;">
-                <div>
-                    <p>A resposta está na <strong>Concentração Extrema</strong>. A média "mente" porque é puxada por
-                        poucos casos gigantescos.</p>
-                    <ul style="margin-top: 1rem; list-style: none;">
-                        <li style="margin-bottom: 1rem;">
-                            <i class="fas fa-check-circle" style="color: #34d399; margin-right: 0.5rem;"></i>
-                            <strong>A Maioria (81%)</strong> dos municípios Faixa D está no Cluster 0. Eles pedem pouco
-                            e representam apenas <strong>6,6%</strong> do custo total.
-                        </li>
-                        <li>
-                            <i class="fas fa-exclamation-circle" style="color: #ef4444; margin-right: 0.5rem;"></i>
-                            <strong>A Minoria (18%)</strong> está no Cluster 1. Mas eles sozinhos consomem <strong>93%
-                                do orçamento</strong> da Faixa D (R$ 13 Bilhões!).
-                        </li>
-                    </ul>
-                </div>
-                <div style="background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 0.5rem; text-align: center;">
-                    <div style="font-size: 3rem; font-weight: bold; color: #fff;">93%</div>
-                    <div style="color: var(--text-secondary);">do Custo da Faixa D</div>
-                    <div style="margin: 0.5rem 0; font-size: 0.9rem;">vem de apenas</div>
-                    <div style="font-size: 2rem; font-weight: bold; color: #ef4444;">18%</div>
-                    <div style="color: var(--text-secondary);">dos Municípios</div>
-                </div>
-            </div>
-            <p style="margin-top: 1rem; font-size: 0.9rem; color: #cbd5e1;">
-                <strong>Conclusão de Gestão:</strong> Não trate toda a Faixa D como "problemática". Foque a fiscalização
-                pesada nos 18% que estão no Cluster 1.
-            </p>
-        </section>
-
-        <section>
-            <h2>Quebra de Paradigmas</h2>
-            <div class="grid grid-2">
-                <div class="card">
-                    <h4>Faixa D não é Destino</h4>
-                    <p>81% dos municípios de Faixa D estão no Cluster de "Baixo Impacto". Ser vulnerável não significa
-                        necessariamente ter altos prejuízos recorrentes.</p>
+                <div style="margin-top: 2rem;">
+                    <h4 style="font-size: 0.95rem; color: #e2e8f0; margin-bottom: 0.5rem;">Cluster Comportamental vs
+                        Faixa ICM oficial</h4>
                     <div class="chart-container">
-                        <img src="assets/images/heatmap_cluster_vs_icm.png" alt="Heatmap Cluster vs ICM">
+                        <img src="assets/images/heatmap_cluster_vs_icm.png" alt="Cluster vs ICM">
                     </div>
+                    <p style="margin-top:1rem; font-size:0.9rem; color: var(--text-secondary);">
+                        <strong>Lógica do gráfico:</strong> O heatmap revela como os clusters comportamentais (eixo Y)
+                        se distribuem entre as faixas oficiais de ICM (eixo X). A concentração de cores mais quentes
+                        mostra onde está a maioria dos municípios. Note que o Cluster 0 (Baixo Risco) permeia todas as
+                        faixas de ICM, provando que o "risco" não é exclusivo de municípios pobres ou ricos.
+                    </p>
                 </div>
-                <div class="card">
-                    <h4>Faixa A não é Escudo</h4>
-                    <p>46 municípios de "Alta Capacidade" (Faixa A) caíram no Cluster de "Alto Custo". Capacidade
-                        institucional não blinda contra grandes desastres.</p>
+
+                <div style="margin-top: 3rem;">
+                    <h4 style="font-size: 0.95rem; color: #e2e8f0; margin-bottom: 0.5rem;">Faixa A não é Escudo</h4>
                     <div class="chart-container">
                         <img src="assets/images/boxplot_valor_cluster.png" alt="Boxplot por Cluster">
                     </div>
+                    <p style="margin-top:1rem; font-size:0.9rem; color: var(--text-secondary);">
+                        <strong>Lógica do gráfico:</strong> O boxplot ilustra a distribuição dos valores solicitados em
+                        cada cluster. A linha central de cada caixa indica a mediana dos valores. Visualmente,
+                        confirma-se a distinção drástica entre os grupos: enquanto o Cluster 0 apresenta valores baixos
+                        e comprimidos, os Clusters 1 e 2 exibem medianas elevadas e grande dispersão, validando que o
+                        critério financeiro foi determinante na formação destes grupos de risco.
+                    </p>
                 </div>
             </div>
         </section>
 
         <section class="card"
-            style="background: rgba(139, 92, 246, 0.1); border-color: rgba(139, 92, 246, 0.3); margin-top: 3rem;">
+            style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.3); margin-top: 3rem;">
             <h3><i class="fas fa-clipboard-check"></i> Conclusão Detalhada</h3>
             <p style="color: #e2e8f0; margin-bottom: 1rem;">
-                <strong>A resposta é NÃO.</strong> O ICM oficial não reflete a realidade operacional. Identificamos 4
-                perfis comportamentais distintos que cruzam todas as faixas de ICM.
+                <strong>A resposta é NÃO.</strong> O ICM oficial não prevê o comportamento de risco.
             </p>
             <ul style="list-style: none; padding-left: 0;">
                 <li style="margin-bottom: 0.5rem;"><i class="fas fa-check"
-                        style="color: #34d399; margin-right: 0.5rem;"></i> <strong>Heterogeneidade da Faixa D:</strong>
-                    A maioria (81%) é de baixo impacto, mas uma minoria (18%) é responsável por quase todo o custo.</li>
+                        style="color: #3b82f6; margin-right: 0.5rem;"></i> <strong>O Mito da Faixa A:</strong>
+                    Municípios de "Alta Capacidade" (Faixa A) estão presentes nos clusters de alto risco e custo. Ser
+                    rico não blinda contra desastres caros.</li>
                 <li style="margin-bottom: 0.5rem;"><i class="fas fa-check"
-                        style="color: #34d399; margin-right: 0.5rem;"></i> <strong>Clusterização é Superior:</strong>
-                    Para fins de alocação de recursos e fiscalização, o "Cluster" a que o município pertence é uma
-                    métrica muito mais útil do que sua "Faixa ICM".</li>
+                        style="color: #3b82f6; margin-right: 0.5rem;"></i> <strong>Foco no Comportamento:</strong> A
+                    gestão deve olhar para o <strong>Cluster</strong> (o que acontece na realidade), não apenas para o
+                    ICM (o rótulo burocrático).</li>
             </ul>
-            <p
-                style="margin-top: 1rem; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-                <strong>Impacto na Gestão:</strong> Abandonar a visão monolítica da "Faixa D". Criar uma força-tarefa
-                específica para os municípios do <strong>Cluster 1 (Alto Custo)</strong>, independentemente de seu ICM.
-            </p>
         </section>
 
         <div style="text-align: center; margin-top: 4rem;">

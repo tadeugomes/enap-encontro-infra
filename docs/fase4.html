@@ -24,6 +24,7 @@
                     <a href="fase2.html">2. Clusterização</a>
                     <a href="fase3.html">3. Classificação</a>
                     <a href="fase4.html" class="active">4. Detecção de Anomalias</a>
+                    <a href="fase5.html">5. Simulador</a>
                 </div>
             </nav>
         </div>
@@ -36,8 +37,9 @@
             <div
                 style="background: rgba(255,255,255,0.05); border-left: 4px solid #ef4444; padding: 1rem; margin: 1.5rem 0; border-radius: 0 0.5rem 0.5rem 0;">
                 <i class="fas fa-question-circle" style="color: #ef4444; margin-right: 0.5rem;"></i>
-                <strong>Pergunta de Negócio:</strong> <em>"Quanto deveria custar esta reconstrução? O valor solicitado é
-                    justo ou há indícios de anomalia?"</em>
+                <strong>Pergunta de Negócio:</strong> <em>"Criar um modelo para estimar o 'Valor Esperado' (Fair Value)
+                    de um processo de reconstrução e identificar solicitações com valores anômalos (muito acima ou
+                    abaixo do esperado)."</em>
             </div>
             <p>Implementamos uma <strong>Regressão Quantílica</strong> para responder à pergunta mais difícil:
                 <em>"Quanto deveria custar esta reconstrução?"</em>. O modelo define uma "faixa de preço justo" para
@@ -229,93 +231,24 @@
             </div>
 
             <div class="card">
-                <h3><i class="fas fa-chart-line" style="color: #8b5cf6;"></i> Precisão da Estimativa</h3>
-                <p>Comparação entre Valor Real (Eixo X) e Valor Previsto (Eixo Y) em escala logarítmica.</p>
-                <div class="chart-container">
-                    <img src="assets/images/real_vs_previsto.png" alt="Real vs Previsto">
+                <h3><i class="fas fa-lightbulb" style="color: #34d399;"></i> Conclusão e Próximos Passos</h3>
+                <p>O modelo de detecção de anomalias encerra o ciclo de inteligência com uma ferramenta poderosa de
+                    auditoria.</p>
+                <ul style="list-style: none; padding-left: 0; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle"
+                            style="color: #34d399; margin-right: 0.5rem;"></i> <strong>Auditoria Focada:</strong> Em vez
+                        de auditar 3.800 processos aleatoriamente, focamos nos 580 (15%) com indícios de anomalia.</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle"
+                            style="color: #34d399; margin-right: 0.5rem;"></i> <strong>Justiça Fiscal:</strong>
+                        Garantimos
+                        que municípios pequenos não sejam cobrados como metrópoles, e que metrópoles não recebam menos
+                        do que precisam.</li>
+                </ul>
+                <div style="margin-top: 2rem; text-align: center;">
+                    <a href="index.html" class="btn btn-primary">Voltar ao Início</a>
                 </div>
             </div>
         </section>
-
-        <section>
-            <h2>Evidências de Anomalias</h2>
-            <div class="grid grid-2">
-                <div class="card">
-                    <h4>Distribuição de Desvios</h4>
-                    <p>Este gráfico mostra o quanto os valores reais se desviam do esperado. A "cauda longa" à direita
-                        representa os casos de valores extremos (outliers).</p>
-                    <div class="chart-container">
-                        <img src="assets/images/distribuicao_desvios.png" alt="Distribuição de Desvios">
-                    </div>
-                </div>
-                <div class="card">
-                    <h4>Top 3 Casos Críticos Detectados</h4>
-                    <p>Exemplos reais de anomalias que o modelo "pescou" automaticamente:</p>
-                    <table style="width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.9rem;">
-                        <thead>
-                            <tr style="border-bottom: 1px solid var(--border-color); text-align: left;">
-                                <th style="padding: 0.5rem;">Município</th>
-                                <th style="padding: 0.5rem;">Desvio</th>
-                                <th style="padding: 0.5rem;">Diagnóstico</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <td style="padding: 0.5rem;">Nova Monte Verde (MT)</td>
-                                <td style="padding: 0.5rem; color: #ef4444;">+235.558%</td>
-                                <td style="padding: 0.5rem;">Provável Erro de Digitação (R$ 2.5 Bi)</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <td style="padding: 0.5rem;">Jaboatão (PE)</td>
-                                <td style="padding: 0.5rem; color: #ef4444;">+29.866%</td>
-                                <td style="padding: 0.5rem;">Valor Extremo (Outlier)</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <td style="padding: 0.5rem;">Rio de Janeiro (RJ)</td>
-                                <td style="padding: 0.5rem; color: #ef4444;">+10.219%</td>
-                                <td style="padding: 0.5rem;">Valor Atípico para o Desastre</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <section class="card"
-            style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1)); border: 1px solid rgba(239, 68, 68, 0.3);">
-            <h3><i class="fas fa-shield-alt"></i> Impacto na Gestão</h3>
-            <p>A implementação deste modelo permite que a auditoria foque 100% de sua energia nos <strong>15% de casos
-                    críticos</strong>, em vez de analisar aleatoriamente. Isso multiplica a eficiência da fiscalização e
-                protege o erário público.</p>
-        </section>
-
-        <section class="card"
-            style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); margin-top: 3rem;">
-            <h3><i class="fas fa-clipboard-check"></i> Conclusão Detalhada</h3>
-            <p style="color: #e2e8f0; margin-bottom: 1rem;">
-                <strong>A resposta é SIM, é possível auditar.</strong> O modelo estabelece, pela primeira vez, uma régua
-                objetiva para o "preço justo" de obras de desastre, considerando o contexto local.
-            </p>
-            <ul style="list-style: none; padding-left: 0;">
-                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check"
-                        style="color: #34d399; margin-right: 0.5rem;"></i> <strong>Eficiência Máxima:</strong>
-                    Identificamos que 66% dos processos são "Normais". A auditoria humana não precisa perder tempo com
-                    eles.</li>
-                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check"
-                        style="color: #34d399; margin-right: 0.5rem;"></i> <strong>Foco no Risco:</strong> Apenas 15%
-                    dos processos (580 casos) apresentam indícios fortes de anomalia. É aqui que o auditor deve atuar.
-                </li>
-            </ul>
-            <p
-                style="margin-top: 1rem; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-                <strong>Impacto na Gestão:</strong> Mudança de paradigma de "Auditoria Amostral Aleatória" para
-                "Auditoria Direcionada por Risco". O potencial de economia e recuperação de recursos é imenso.
-            </p>
-        </section>
-
-        <div style="text-align: center; margin-top: 4rem;">
-            <a href="index.html" class="btn btn-primary"><i class="fas fa-home"></i> Voltar ao Início</a>
-        </div>
     </main>
 
     <footer>
