@@ -174,8 +174,10 @@ print("✓ Gráfico salvo: confusion_matrix.png")
 
 # 6.2 Feature Importance
 plt.figure(figsize=(10, 6))
-sns.barplot(data=importances, x='Importance', y='Feature', palette='viridis')
+ax = sns.barplot(data=importances, x='Importance', y='Feature', palette='viridis')
 plt.title('O que define a aprovação de um processo?', fontsize=14)
+for i in ax.containers:
+    ax.bar_label(i, fmt='%.3f', padding=3)
 plt.tight_layout()
 plt.savefig(dir_output / 'feature_importance.png', dpi=300)
 print("✓ Gráfico salvo: feature_importance.png")

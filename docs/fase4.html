@@ -41,7 +41,8 @@
             </div>
             <p>Implementamos uma <strong>Regressão Quantílica</strong> para responder à pergunta mais difícil:
                 <em>"Quanto deveria custar esta reconstrução?"</em>. O modelo define uma "faixa de preço justo" para
-                cada pedido.</p>
+                cada pedido.
+            </p>
         </section>
 
         <section class="grid grid-2" style="margin-top: 3rem;">
@@ -49,6 +50,46 @@
                 <h3><i class="fas fa-calculator" style="color: #ef4444;"></i> Como funciona o "Preço Justo"?</h3>
                 <p>Diferente de uma média simples, nosso modelo calcula um <strong>Intervalo de Confiança</strong>
                     personalizado para cada município e tipo de desastre.</p>
+
+                <div style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+                    <h4 style="color: #f59e0b; margin-bottom: 0.5rem; font-size: 1rem;"><i class="fas fa-cogs"
+                            style="margin-right: 0.5rem;"></i> Variáveis do Modelo (O que define o preço?)</h4>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">O "Preço Justo" é calculado matematicamente
+                        considerando 5 fatores principais que influenciam o custo da reconstrução:</p>
+                    <ul
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; list-style: none; padding: 0; font-size: 0.9rem;">
+                        <li
+                            style="background: rgba(255,255,255,0.05); padding: 0.5rem; border-radius: 4px; display: flex; align-items: center;">
+                            <i class="fas fa-map-marker-alt"
+                                style="color: #60a5fa; margin-right: 0.75rem; width: 20px; text-align: center;"></i>
+                            <span>UF (Estado)</span>
+                        </li>
+                        <li
+                            style="background: rgba(255,255,255,0.05); padding: 0.5rem; border-radius: 4px; display: flex; align-items: center;">
+                            <i class="fas fa-house-damage"
+                                style="color: #ef4444; margin-right: 0.75rem; width: 20px; text-align: center;"></i>
+                            <span>Tipo de Desastre</span>
+                        </li>
+                        <li
+                            style="background: rgba(255,255,255,0.05); padding: 0.5rem; border-radius: 4px; display: flex; align-items: center;">
+                            <i class="fas fa-coins"
+                                style="color: #f59e0b; margin-right: 0.75rem; width: 20px; text-align: center;"></i>
+                            <span>Capacidade Fiscal (ICM)</span>
+                        </li>
+                        <li
+                            style="background: rgba(255,255,255,0.05); padding: 0.5rem; border-radius: 4px; display: flex; align-items: center;">
+                            <i class="fas fa-layer-group"
+                                style="color: #8b5cf6; margin-right: 0.75rem; width: 20px; text-align: center;"></i>
+                            <span>Cluster Socioeconômico</span>
+                        </li>
+                        <li
+                            style="background: rgba(255,255,255,0.05); padding: 0.5rem; border-radius: 4px; display: flex; align-items: center;">
+                            <i class="fas fa-users"
+                                style="color: #34d399; margin-right: 0.75rem; width: 20px; text-align: center;"></i>
+                            <span>Tamanho da População</span>
+                        </li>
+                    </ul>
+                </div>
 
                 <div
                     style="margin-top: 1.5rem; margin-bottom: 1.5rem; border-left: 3px solid #3b82f6; padding-left: 1rem;">

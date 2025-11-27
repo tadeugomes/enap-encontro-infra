@@ -178,11 +178,17 @@ dir_graficos.mkdir(exist_ok=True)
 
 # 8.1 Distribuição temporal
 fig, ax = plt.subplots(figsize=(12, 6))
-ax.bar(tendencia['Ano'], tendencia['Num_Processos'], color='steelblue', alpha=0.7)
+bars = ax.bar(tendencia['Ano'], tendencia['Num_Processos'], color='steelblue', alpha=0.7)
 ax.set_xlabel('Ano', fontsize=12)
 ax.set_ylabel('Número de Processos', fontsize=12)
 ax.set_title('Evolução do Número de Processos de Reconstrução (2017-2025)', fontsize=14, fontweight='bold')
 ax.grid(axis='y', alpha=0.3)
+# Add labels on bars
+for bar in bars:
+    height = bar.get_height()
+    ax.text(bar.get_x() + bar.get_width()/2., height,
+            f'{int(height)}',
+            ha='center', va='bottom', fontweight='bold')
 plt.tight_layout()
 plt.savefig(dir_graficos / 'evolucao_processos.png', dpi=300, bbox_inches='tight')
 print("✓ Gráfico salvo: evolucao_processos.png")
@@ -195,6 +201,9 @@ ax.set_xlabel('Número de Processos', fontsize=12)
 ax.set_ylabel('UF', fontsize=12)
 ax.set_title('Top 10 UFs com Mais Processos de Reconstrução', fontsize=14, fontweight='bold')
 ax.grid(axis='x', alpha=0.3)
+# Add labels on bars
+for i, v in enumerate(top_ufs):
+    ax.text(v, i, f' {v}', ha='left', va='center', fontweight='bold')
 plt.tight_layout()
 plt.savefig(dir_graficos / 'top_ufs.png', dpi=300, bbox_inches='tight')
 print("✓ Gráfico salvo: top_ufs.png")
@@ -207,6 +216,9 @@ ax.set_xlabel('Número de Ocorrências', fontsize=12)
 ax.set_ylabel('Tipo de Desastre', fontsize=12)
 ax.set_title('Top 10 Tipos de Desastres Mais Frequentes', fontsize=14, fontweight='bold')
 ax.grid(axis='x', alpha=0.3)
+# Add labels on bars
+for i, v in enumerate(top_desastres):
+    ax.text(v, i, f' {v}', ha='left', va='center', fontweight='bold')
 plt.tight_layout()
 plt.savefig(dir_graficos / 'top_desastres.png', dpi=300, bbox_inches='tight')
 print("✓ Gráfico salvo: top_desastres.png")

@@ -41,6 +41,83 @@
             </div>
             <p>Segmentação de municípios baseada no comportamento real de solicitações (K-Means), superando a
                 classificação estática do ICM.</p>
+
+            <div style="margin-top: 2rem;">
+                <h4 style="color: #8b5cf6; margin-bottom: 0.5rem; font-size: 1rem;"><i class="fas fa-cogs"
+                        style="margin-right: 0.5rem;"></i> Variáveis do Modelo (O que define o grupo?)</h4>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">O algoritmo agrupou os municípios analisando 3
+                    dimensões de comportamento:</p>
+                <ul
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; list-style: none; padding: 0; font-size: 0.9rem;">
+                    <li
+                        style="background: rgba(255,255,255,0.05); padding: 0.5rem; border-radius: 4px; display: flex; align-items: center;">
+                        <i class="fas fa-history"
+                            style="color: #f59e0b; margin-right: 0.75rem; width: 20px; text-align: center;"></i>
+                        <span>Frequência (Nº Processos)</span>
+                    </li>
+                    <li
+                        style="background: rgba(255,255,255,0.05); padding: 0.5rem; border-radius: 4px; display: flex; align-items: center;">
+                        <i class="fas fa-coins"
+                            style="color: #ef4444; margin-right: 0.75rem; width: 20px; text-align: center;"></i>
+                        <span>Impacto Total (Valor Acumulado)</span>
+                    </li>
+                    <li
+                        style="background: rgba(255,255,255,0.05); padding: 0.5rem; border-radius: 4px; display: flex; align-items: center;">
+                        <i class="fas fa-chart-bar"
+                            style="color: #3b82f6; margin-right: 0.75rem; width: 20px; text-align: center;"></i>
+                        <span>Severidade Média (Valor/Processo)</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="card"
+            style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1)); border: 1px solid rgba(16, 185, 129, 0.3); margin-top: 3rem;">
+            <h3><i class="fas fa-filter"></i> Estratégia de Gestão: Prioritários vs Não Prioritários</h3>
+            <p>A clusterização revelou uma oportunidade clara de ganho de eficiência na auditoria:</p>
+
+            <div class="grid grid-2" style="margin-top: 1.5rem; gap: 2rem;">
+                <div
+                    style="text-align: center; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 0.5rem; border-bottom: 4px solid #34d399;">
+                    <div style="font-size: 1.1rem; font-weight: bold; color: #34d399; margin-bottom: 0.5rem;">NÃO
+                        PRIORITÁRIOS</div>
+
+                    <div style="margin: 1rem 0;">
+                        <div
+                            style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px;">
+                            Quantidade</div>
+                        <div style="font-size: 2.5rem; font-weight: bold; color: #fff;">1.614</div>
+                        <div style="font-size: 0.9rem; color: #34d399;">76,4% da Base</div>
+                    </div>
+
+                    <p
+                        style="font-size: 0.85rem; margin-top: 1rem; color: #cbd5e1; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                        <strong>Cluster 0 (Baixo Impacto).</strong> Representam a grande massa de municípios com poucos
+                        eventos e valores baixos. Podem ser monitorados via <strong>auditoria automatizada</strong> ou
+                        amostral.
+                    </p>
+                </div>
+
+                <div
+                    style="text-align: center; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 0.5rem; border-bottom: 4px solid #ef4444;">
+                    <div style="font-size: 1.1rem; font-weight: bold; color: #ef4444; margin-bottom: 0.5rem;">
+                        PRIORITÁRIOS</div>
+
+                    <div style="margin: 1rem 0;">
+                        <div
+                            style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px;">
+                            Quantidade</div>
+                        <div style="font-size: 2.5rem; font-weight: bold; color: #fff;">499</div>
+                        <div style="font-size: 0.9rem; color: #ef4444;">23,6% da Base</div>
+                    </div>
+
+                    <p
+                        style="font-size: 0.85rem; margin-top: 1rem; color: #cbd5e1; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                        <strong>Clusters 1, 2 e 3.</strong> Menos de 1/4 da base concentra a maior parte dos recursos e
+                        riscos. É aqui que a <strong>auditoria humana especializada</strong> deve focar 100% da energia.
+                    </p>
+                </div>
+            </div>
         </section>
 
         <section class="grid grid-2" style="margin-top: 3rem;">
@@ -50,29 +127,114 @@
                     solicitados.</p>
 
                 <div style="margin-top: 1.5rem;">
-                    <div style="margin-bottom: 1.5rem;">
-                        <span class="badge" style="background: #94a3b8; color: #0f172a;">Cluster 0: Baixo Impacto
-                            (76%)</span>
-                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">A grande maioria dos municípios. Poucos
-                            eventos e valores baixos (Média R$ 3,8M).</p>
+                    <!-- Cluster 0 -->
+                    <div
+                        style="margin-bottom: 1.5rem; background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 0.5rem;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                            <span class="badge" style="background: #94a3b8; color: #0f172a;">Cluster 0: Baixo
+                                Impacto</span>
+                            <span style="font-size: 0.8rem; color: var(--text-secondary);">76% da Base</span>
+                        </div>
+                        <div
+                            style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.85rem; margin-bottom: 0.75rem;">
+                            <div style="background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 4px;">
+                                <div
+                                    style="color: var(--text-secondary); font-size: 0.7rem; text-transform: uppercase;">
+                                    Média Valor</div>
+                                <div style="font-weight: bold; color: #fff;">R$ 3,8 Milhões</div>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 4px;">
+                                <div
+                                    style="color: var(--text-secondary); font-size: 0.7rem; text-transform: uppercase;">
+                                    Frequência</div>
+                                <div style="font-weight: bold; color: #fff;">Baixa (1.7)</div>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.85rem; color: #cbd5e1;">A grande maioria dos municípios. Poucos eventos e
+                            valores baixos.</p>
                     </div>
-                    <div style="margin-bottom: 1.5rem;">
-                        <span class="badge" style="background: #3b82f6; color: white;">Cluster 1: Alto Custo
-                            (22%)</span>
-                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Municípios com desastres caros (Média R$
-                            42,8M), mas frequência moderada.</p>
+
+                    <!-- Cluster 1 -->
+                    <div
+                        style="margin-bottom: 1.5rem; background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 0.5rem;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                            <span class="badge" style="background: #3b82f6; color: white;">Cluster 1: Alto Custo</span>
+                            <span style="font-size: 0.8rem; color: var(--text-secondary);">22% da Base</span>
+                        </div>
+                        <div
+                            style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.85rem; margin-bottom: 0.75rem;">
+                            <div style="background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 4px;">
+                                <div
+                                    style="color: var(--text-secondary); font-size: 0.7rem; text-transform: uppercase;">
+                                    Média Valor</div>
+                                <div style="font-weight: bold; color: #fff;">R$ 42,8 Milhões</div>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 4px;">
+                                <div
+                                    style="color: var(--text-secondary); font-size: 0.7rem; text-transform: uppercase;">
+                                    Frequência</div>
+                                <div style="font-weight: bold; color: #fff;">Moderada (6.1)</div>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.85rem; color: #cbd5e1;">Municípios com desastres caros, mas frequência
+                            moderada.</p>
                     </div>
-                    <div style="margin-bottom: 1.5rem;">
-                        <span class="badge" style="background: #f59e0b; color: white;">Cluster 3: Alta Frequência
-                            (1%)</span>
-                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">28 municípios atingidos repetidamente (Média
-                            25 processos).</p>
+
+                    <!-- Cluster 3 -->
+                    <div
+                        style="margin-bottom: 1.5rem; background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 0.5rem;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                            <span class="badge" style="background: #f59e0b; color: white;">Cluster 3: Alta
+                                Frequência</span>
+                            <span style="font-size: 0.8rem; color: var(--text-secondary);">1% da Base</span>
+                        </div>
+                        <div
+                            style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.85rem; margin-bottom: 0.75rem;">
+                            <div style="background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 4px;">
+                                <div
+                                    style="color: var(--text-secondary); font-size: 0.7rem; text-transform: uppercase;">
+                                    Média Valor</div>
+                                <div style="font-weight: bold; color: #fff;">R$ 49,6 Milhões</div>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 4px;">
+                                <div
+                                    style="color: var(--text-secondary); font-size: 0.7rem; text-transform: uppercase;">
+                                    Frequência</div>
+                                <div style="font-weight: bold; color: #fff;">Alta (25.0)</div>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.85rem; color: #cbd5e1;">28 municípios atingidos repetidamente.</p>
                     </div>
-                    <div>
-                        <span class="badge" style="background: #ef4444; color: white;">Cluster 2: Outlier Extremo (
-                            <0.1%)< /span>
-                                <p style="font-size: 0.9rem; margin-top: 0.5rem;"><strong>Porto Alegre (RS)</strong>.
-                                    Caso único com 148 processos e R$ 48M.</p>
+
+                    <!-- Cluster 2 -->
+                    <div style="background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 0.5rem;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                            <span class="badge" style="background: #ef4444; color: white;">Cluster 2: Outlier
+                                Extremo</span>
+                            <span style="font-size: 0.8rem; color: var(--text-secondary);">
+                                <0.1% da Base</span>
+                        </div>
+                        <div
+                            style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.85rem; margin-bottom: 0.75rem;">
+                            <div style="background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 4px;">
+                                <div
+                                    style="color: var(--text-secondary); font-size: 0.7rem; text-transform: uppercase;">
+                                    Média Valor</div>
+                                <div style="font-weight: bold; color: #fff;">R$ 48 Milhões</div>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 4px;">
+                                <div
+                                    style="color: var(--text-secondary); font-size: 0.7rem; text-transform: uppercase;">
+                                    Frequência</div>
+                                <div style="font-weight: bold; color: #fff;">Extrema (148)</div>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.85rem; color: #cbd5e1;"><strong>Porto Alegre (RS)</strong>. Caso único.
+                        </p>
                     </div>
                 </div>
             </div>

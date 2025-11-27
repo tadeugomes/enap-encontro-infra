@@ -230,6 +230,9 @@ if len(df_com_icm) > 0:
     ax1.set_title('Total de Processos de Reconstrução por Faixa ICM', fontsize=13, fontweight='bold')
     ax1.set_xticklabels(['A (Alta)', 'B', 'C', 'D (Baixa)'], rotation=0)
     ax1.grid(axis='y', alpha=0.3)
+    # Add labels
+    for i, v in enumerate(processos_faixa):
+        ax1.text(i, v, str(v), ha='center', va='bottom', fontweight='bold')
     
     # Valor total por faixa
     valor_faixa = df_com_icm.groupby('Faixa_ICM')['Valor_Total'].sum().sort_index() / 1e9  # Em bilhões
@@ -239,26 +242,13 @@ if len(df_com_icm) > 0:
     ax2.set_title('Valor Total Solicitado por Faixa ICM', fontsize=13, fontweight='bold')
     ax2.set_xticklabels(['A (Alta)', 'B', 'C', 'D (Baixa)'], rotation=0)
     ax2.grid(axis='y', alpha=0.3)
+    # Add labels
+    for i, v in enumerate(valor_faixa):
+        ax2.text(i, v, f'{v:.1f}B', ha='center', va='bottom', fontweight='bold')
     
     plt.tight_layout()
     plt.savefig(dir_graficos / 'analise_por_faixa_icm.png', dpi=300, bbox_inches='tight')
     print("✓ Gráfico salvo: analise_por_faixa_icm.png")
-    plt.close()
-
-# 8.3 Distribuição por Região
-fig, ax = plt.subplots(figsize=(12, 6))
-dist_regiao_limpa = dist_regiao[~dist_regiao.index.astype(str).str.contains('Região', na=False)]
-dist_regiao_limpa.plot(kind='barh', ax=ax, color='skyblue')
-ax.set_xlabel('Número de Municípios', fontsize=12)
-ax.set_ylabel('Região', fontsize=12)
-ax.set_title('Distribuição de Municípios por Região (ICM)', fontsize=14, fontweight='bold')
-ax.grid(axis='x', alpha=0.3)
-plt.tight_layout()
-plt.savefig(dir_graficos / 'distribuicao_por_regiao.png', dpi=300, bbox_inches='tight')
-print("✓ Gráfico salvo: distribuicao_por_regiao.png")
-plt.close()
-
-# ================================================================================
 # 9. RESUMO FINAL ATUALIZADO
 # ================================================================================
 print("\n\n" + "=" * 80)
