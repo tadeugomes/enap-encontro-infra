@@ -1,0 +1,112 @@
+[
+  {
+    "uf": "MT",
+    "municipio": "Nova Monte Verde",
+    "desastre": "Tempestade Local/Convectiva - Chuvas Intensas",
+    "status": "ANÁLISE - PLANO DE TRABALHO SALVO",
+    "valor_solicitado": "R$ 2,500,000,000.00",
+    "valor_solicitado_num": 2500000000.0,
+    "limite_p90": "R$ 3,131,467.31",
+    "limite_p90_num": 3131467.311157554,
+    "desvio_percentual": "235558.5%"
+  },
+  {
+    "uf": "PE",
+    "municipio": "Jaboatão dos Guararapes",
+    "desastre": "Tempestade Local/Convectiva - Chuvas Intensas",
+    "status": "ARQUIVADO - PLANO DE TRABALHO INDEFERIDO",
+    "valor_solicitado": "R$ 402,398,352.00",
+    "valor_solicitado_num": 402398352.0,
+    "limite_p90": "R$ 6,514,829.95",
+    "limite_p90_num": 6514829.95440061,
+    "desvio_percentual": "29866.6%"
+  },
+  {
+    "uf": "SP",
+    "municipio": "Osasco",
+    "desastre": "Tempestade Local/Convectiva - Chuvas Intensas",
+    "status": "ANÁLISE - PRORROGAÇÃO DE PRAZO PELO CGAG - ART. 11º",
+    "valor_solicitado": "R$ 268,376,257.08",
+    "valor_solicitado_num": 268376257.08,
+    "limite_p90": "R$ 13,275,505.62",
+    "limite_p90_num": 13275505.62050715,
+    "desvio_percentual": "9160.4%"
+  },
+  {
+    "uf": "RJ",
+    "municipio": "Rio de Janeiro",
+    "desastre": "Tempestade Local/Convectiva - Chuvas Intensas",
+    "status": "ARQUIVADO - PLANO DE TRABALHO INDEFERIDO",
+    "valor_solicitado": "R$ 172,431,000.00",
+    "valor_solicitado_num": 172431000.0,
+    "limite_p90": "R$ 7,202,434.90",
+    "limite_p90_num": 7202434.901942532,
+    "desvio_percentual": "10219.5%"
+  },
+  {
+    "uf": "GO",
+    "municipio": "Anápolis",
+    "desastre": "Tempestade Local/Convectiva - Chuvas Intensas",
+    "status": "ANÁLISE - PLANO DE TRABALHO SALVO",
+    "valor_solicitado": "R$ 169,198,729.23",
+    "valor_solicitado_num": 169198729.23,
+    "limite_p90": "R$ 12,001,759.99",
+    "limite_p90_num": 12001759.9867324,
+    "desvio_percentual": "3077.7%"
+  },
+  {
+    "uf": "RJ",
+    "municipio": "Barra Mansa",
+    "desastre": "Tempestade Local/Convectiva - Chuvas Intensas",
+    "status": "ACOMPANHAMENTO - RECURSO TRANSFERIDO",
+    "valor_solicitado": "R$ 127,344,038.14",
+    "valor_solicitado_num": 127344038.14,
+    "limite_p90": "R$ 6,274,358.55",
+    "limite_p90_num": 6274358.554261955,
+    "desvio_percentual": "7521.2%"
+  },
+  {
+    "uf": "PE",
+    "municipio": "Ipojuca",
+    "desastre": "Enxurradas",
+    "status": "ANÁLISE - PLANO DE TRABALHO SALVO",
+    "valor_solicitado": "R$ 112,320,000.00",
+    "valor_solicitado_num": 112320000.0,
+    "limite_p90": "R$ 5,332,724.39",
+    "limite_p90_num": 5332724.393318121,
+    "desvio_percentual": "4941.4%"
+  },
+  {
+    "uf": "RS",
+    "municipio": "Roca Sales",
+    "desastre": "Tempestade Local/Convectiva - Chuvas Intensas",
+    "status": "ARQUIVADO - PLANO DE TRABALHO INDEFERIDO",
+    "valor_solicitado": "R$ 109,436,648.01",
+    "valor_solicitado_num": 109436648.01,
+    "limite_p90": "R$ 6,331,730.54",
+    "limite_p90_num": 6331730.535685865,
+    "desvio_percentual": "9058.2%"
+  },
+  {
+    "uf": "PE",
+    "municipio": "Grupo de municípios",
+    "desastre": "Enxurradas",
+    "status": "ACOMPANHAMENTO - SOBRESTADO",
+    "valor_solicitado": "R$ 106,025,411.92",
+    "valor_solicitado_num": 106025411.92,
+    "limite_p90": "R$ 7,187,001.13",
+    "limite_p90_num": 7187001.127188003,
+    "desvio_percentual": "2259.7%"
+  },
+  {
+    "uf": "BA",
+    "municipio": "Itabuna",
+    "desastre": "Tempestade Local/Convectiva - Chuvas Intensas",
+    "status": "ACOMPANHAMENTO - RECURSO TRANSFERIDO",
+    "valor_solicitado": "R$ 104,085,931.98",
+    "valor_solicitado_num": 104085931.98,
+    "limite_p90": "R$ 47,188,300.81",
+    "limite_p90_num": 47188300.80635351,
+    "desvio_percentual": "1333.6%"
+  }
+]
