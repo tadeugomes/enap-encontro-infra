@@ -1,0 +1,9 @@
+# Dependencias para reproduzir as analises de ML (07_scripts/ml_*.py)
+# Versoes verificadas em auditoria de reprodutibilidade (jun/2026).
+# Todos os modelos usam random_state=42; rode os scripts a partir da raiz do repo.
+pandas==2.3.2
+numpy==2.3.1
+scikit-learn==1.9.0
+openpyxl==3.1.5
+matplotlib==3.10.6
+seaborn==0.13.2

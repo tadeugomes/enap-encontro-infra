@@ -10,7 +10,7 @@ import joblib
 import os
 
 # Configuração de caminhos
-BASE_DIR = r'c:\Users\tadeu\Downloads\enap_infra_encontro'
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_PROCESSOS = os.path.join(BASE_DIR, 'dados', 'dados_gerenciamento', 'Relatório_Consolidado_Acompanhamento_2017_2025.xlsx')
 DATA_ICM = os.path.join(BASE_DIR, 'dados', 'dados_faixa', 'ICM_Consolidado_LIMPO_V2.xlsx')
 OUTPUT_DIR = os.path.join(BASE_DIR, '05_modelos')

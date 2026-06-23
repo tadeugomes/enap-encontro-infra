@@ -31,7 +31,7 @@ print("=" * 80)
 # 1. CARREGAR DADOS
 # ================================================================================
 print("\n📂 1. CARREGANDO DADOS...")
-BASE_DIR = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro")
+BASE_DIR = Path(__file__).resolve().parent.parent
 arquivo_merged = BASE_DIR / "dados" / "dados_processados" / "dados_merged_acompanhamento_icm.xlsx"
 
 # Tentar carregar do local padrão ou do local organizado

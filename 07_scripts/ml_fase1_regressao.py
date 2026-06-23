@@ -24,7 +24,7 @@ print("=" * 80)
 print("\n📂 1. CARREGANDO DADOS MERGED...")
 print("-" * 80)
 
-BASE_DIR = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro")
+BASE_DIR = Path(__file__).resolve().parent.parent
 arquivo_merged = BASE_DIR / "dados_merged_acompanhamento_icm.xlsx"
 
 df = pd.read_excel(arquivo_merged)

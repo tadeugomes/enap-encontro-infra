@@ -32,7 +32,7 @@ print("=" * 80)
 # 1. CARREGAR DADOS
 # ================================================================================
 print("\n📂 1. CARREGANDO E INTEGRANDO DADOS...")
-BASE_DIR = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro")
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Arquivo de transações (Processos)
 arquivo_processos = BASE_DIR / "dados" / "dados_gerenciamento" / "Relatório_Consolidado_Acompanhamento_2017_2025.xlsx"
