@@ -2,12 +2,14 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 # Caminhos dos arquivos consolidados
-arquivo_acompanhamento = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro\dados\dados_gerenciamento\Relatório_Consolidado_Acompanhamento_2017_2025.xlsx")
-arquivo_faixas = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro\dados\dados_faixa\ICM_Consolidado_Todas_Faixas.xlsx")
+arquivo_acompanhamento = BASE_DIR / "dados" / "dados_gerenciamento" / "Relatório_Consolidado_Acompanhamento_2017_2025.xlsx"
+arquivo_faixas = BASE_DIR / "dados" / "dados_faixa" / "ICM_Consolidado_Todas_Faixas.xlsx"
 
 # Arquivo de saída
-arquivo_saida = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro\analise_estrutura.txt")
+arquivo_saida = BASE_DIR / "03_analises" / "exploratoria" / "analise_estrutura.txt"
 
 with open(arquivo_saida, 'w', encoding='utf-8') as f:
     f.write("=" * 80 + "\n")
@@ -82,7 +84,7 @@ with open(arquivo_saida, 'w', encoding='utf-8') as f:
     f.write("\n" + "=" * 80 + "\n")
 
     # Analisar arquivo ICM LIMPO
-    arquivo_icm_limpo = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro\dados\dados_faixa\ICM_Consolidado_LIMPO.xlsx")
+    arquivo_icm_limpo = BASE_DIR / "dados" / "dados_faixa" / "ICM_Consolidado_LIMPO.xlsx"
     if arquivo_icm_limpo.exists():
         f.write("\n\n📊 ARQUIVO 3: ICM LIMPO (Consolidado e Sem Duplicatas)\n")
         f.write("-" * 80 + "\n")

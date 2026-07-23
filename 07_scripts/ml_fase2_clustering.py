@@ -15,6 +15,7 @@ from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.metrics import silhouette_score
 from pathlib import Path
+import joblib
 import warnings
 
 warnings.filterwarnings('ignore')
@@ -206,6 +207,13 @@ with pd.ExcelWriter(arquivo_stats) as writer:
     crosstab.to_excel(writer, sheet_name='Cluster_vs_ICM')
 
 print(f"✓ Relatório salvo em: {arquivo_stats.name}")
+
+# Salvar modelo treinado (scaler + KMeans + features usadas)
+dir_modelos = BASE_DIR / "05_modelos" / "fase2_clustering"
+dir_modelos.mkdir(parents=True, exist_ok=True)
+joblib.dump({'scaler': scaler, 'kmeans': kmeans, 'features': features_cols},
+            dir_modelos / "kmeans_clustering.pkl")
+print(f"✓ Modelo salvo em: 05_modelos/fase2_clustering/kmeans_clustering.pkl")
 
 print("\n" + "=" * 80)
 print("✅ FASE 2 (CLUSTERIZAÇÃO) CONCLUÍDA!")

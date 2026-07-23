@@ -2,7 +2,9 @@
 import pandas as pd
 from pathlib import Path
 
-base_dir = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro")
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+base_dir = Path(__file__).resolve().parent.parent
 file_path = base_dir / "02_dados_processados" / "dados_municipios_clusterizados.xlsx"
 
 try:

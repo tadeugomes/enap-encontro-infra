@@ -12,7 +12,7 @@ print("=" * 80)
 print("LIMPEZA DO ARQUIVO ICM CONSOLIDADO - CRITÉRIO DE BENEFÍCIO")
 print("=" * 80)
 
-BASE_DIR = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro")
+BASE_DIR = Path(__file__).resolve().parent.parent
 ARQUIVO_ORIGINAL = BASE_DIR / "dados" / "dados_faixa" / "ICM_Consolidado_Todas_Faixas.xlsx"
 
 # 1. Carregar dados

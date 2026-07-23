@@ -2,8 +2,10 @@ import pandas as pd
 import os
 from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 # Diretório com os arquivos
-data_dir = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro\dados\dados_faixa")
+data_dir = BASE_DIR / "dados" / "dados_faixa"
 
 # Lista de arquivos de ICM por faixa
 faixas = ['A', 'B', 'C', 'D']

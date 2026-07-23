@@ -25,7 +25,8 @@ print("\n📂 1. CARREGANDO DADOS MERGED...")
 print("-" * 80)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-arquivo_merged = BASE_DIR / "dados_merged_acompanhamento_icm.xlsx"
+arquivo_merged = (BASE_DIR / "02_dados_processados" /
+                  "dados_merged_acompanhamento_icm.xlsx")
 
 df = pd.read_excel(arquivo_merged)
 print(f"✓ Dados carregados: {len(df):,} municípios")
@@ -155,8 +156,8 @@ print(stats_processos)
 print("\n\n📊 6. GERANDO VISUALIZAÇÕES")
 print("-" * 80)
 
-dir_graficos = BASE_DIR / "graficos_ml"
-dir_graficos.mkdir(exist_ok=True)
+dir_graficos = BASE_DIR / "04_visualizacoes" / "fase1_regressao"
+dir_graficos.mkdir(parents=True, exist_ok=True)
 
 # 6.1 Boxplot de valores por faixa
 fig, ax = plt.subplots(figsize=(12, 6))
@@ -229,7 +230,8 @@ print("\n\n💾 7. SALVANDO RESULTADOS")
 print("-" * 80)
 
 # Salvar análise por faixa
-arquivo_analise = BASE_DIR / "analise_detalhada_por_faixa.xlsx"
+arquivo_analise = (BASE_DIR / "03_analises" / "fase1_regressao" /
+                   "analise_detalhada_por_faixa.xlsx")
 with pd.ExcelWriter(arquivo_analise, engine='openpyxl') as writer:
     stats_faixa.to_excel(writer, sheet_name='Estatisticas_Valores')
     stats_processos.to_excel(writer, sheet_name='Estatisticas_Processos')
@@ -286,10 +288,10 @@ HIPÓTESES PARA VALORES ALTOS NA FAIXA D:
 
 ARQUIVOS GERADOS:
   ✓ analise_detalhada_por_faixa.xlsx
-  ✓ graficos_ml/distribuicao_valores_por_faixa.png
-  ✓ graficos_ml/valor_medio_por_faixa.png
-  ✓ graficos_ml/heatmap_desastre_faixa.png
-  ✓ graficos_ml/violinplot_valores_faixa.png
+  ✓ 04_visualizacoes/fase1_regressao/distribuicao_valores_por_faixa.png
+  ✓ 04_visualizacoes/fase1_regressao/valor_medio_por_faixa.png
+  ✓ 04_visualizacoes/fase1_regressao/heatmap_desastre_faixa.png
+  ✓ 04_visualizacoes/fase1_regressao/violinplot_valores_faixa.png
 
 PRÓXIMOS PASSOS:
   ✓ Fase 2: Clustering (segmentar municípios)

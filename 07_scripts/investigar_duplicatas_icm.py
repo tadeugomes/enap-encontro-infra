@@ -1,12 +1,14 @@
 import pandas as pd
 from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 # Carregar arquivo ICM consolidado
-arquivo_icm = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro\dados\dados_faixa\ICM_Consolidado_Todas_Faixas.xlsx")
+arquivo_icm = BASE_DIR / "dados" / "dados_faixa" / "ICM_Consolidado_Todas_Faixas.xlsx"
 df_icm = pd.read_excel(arquivo_icm)
 
 # Arquivo de saída
-arquivo_saida = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro\investigacao_duplicatas.txt")
+arquivo_saida = BASE_DIR / "03_analises" / "exploratoria" / "investigacao_duplicatas.txt"
 
 with open(arquivo_saida, 'w', encoding='utf-8') as f:
     f.write("=" * 80 + "\n")
@@ -22,7 +24,7 @@ with open(arquivo_saida, 'w', encoding='utf-8') as f:
     f.write("EXAMINANDO ARQUIVOS ORIGINAIS POR FAIXA:\n")
     f.write("-" * 80 + "\n\n")
     
-    base_dir = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro\dados\dados_faixa")
+    base_dir = BASE_DIR / "dados" / "dados_faixa"
     
     total_original = 0
     for faixa in ['A', 'B', 'C', 'D']:

@@ -6,12 +6,14 @@ Objetivo: Remover linhas de cabeçalho, duplicatas e criar arquivo limpo
 import pandas as pd
 from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 print("=" * 80)
 print("LIMPEZA DO ARQUIVO ICM CONSOLIDADO")
 print("=" * 80)
 
 # Carregar arquivo consolidado original
-arquivo_original = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro\dados\dados_faixa\ICM_Consolidado_Todas_Faixas.xlsx")
+arquivo_original = BASE_DIR / "dados" / "dados_faixa" / "ICM_Consolidado_Todas_Faixas.xlsx"
 df = pd.read_excel(arquivo_original)
 
 print(f"\n📊 ANTES DA LIMPEZA:")
@@ -116,7 +118,7 @@ if duplicatas_codigo > 0:
     
     # Salvar lista de duplicatas para análise
     df_duplicatas = df_limpo[df_limpo['Codigo_IBGE'].duplicated(keep=False)].sort_values('Codigo_IBGE')
-    arquivo_duplicatas = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro\municipios_duplicados.xlsx")
+    arquivo_duplicatas = BASE_DIR / "02_dados_processados" / "municipios_duplicados.xlsx"
     df_duplicatas.to_excel(arquivo_duplicatas, index=False)
     print(f"   ✓ Lista de duplicatas salva em: municipios_duplicados.xlsx")
     
@@ -176,7 +178,7 @@ print("\n" + "-" * 80)
 print("7. SALVANDO ARQUIVO LIMPO")
 print("-" * 80)
 
-arquivo_saida = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro\dados\dados_faixa\ICM_Consolidado_LIMPO.xlsx")
+arquivo_saida = BASE_DIR / "dados" / "dados_faixa" / "ICM_Consolidado_LIMPO.xlsx"
 df_limpo.to_excel(arquivo_saida, index=False)
 print(f"   ✓ Arquivo salvo em: {arquivo_saida}")
 

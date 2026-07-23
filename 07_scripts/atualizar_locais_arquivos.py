@@ -2,8 +2,7 @@ import shutil
 from pathlib import Path
 import os
 
-BASE_DIR = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro")
-
+BASE_DIR = Path(__file__).resolve().parent.parent
 def move_file(src_name, dest_folder):
     src = BASE_DIR / src_name
     dest_dir = BASE_DIR / dest_folder

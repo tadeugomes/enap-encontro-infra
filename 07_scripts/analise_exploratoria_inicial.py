@@ -23,7 +23,7 @@ plt.style.use('seaborn-v0_8-darkgrid')
 sns.set_palette("husl")
 
 # Caminhos dos arquivos
-BASE_DIR = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro")
+BASE_DIR = Path(__file__).resolve().parent.parent
 arquivo_acompanhamento = BASE_DIR / "dados" / "dados_gerenciamento" / "Relatório_Consolidado_Acompanhamento_2017_2025.xlsx"
 arquivo_faixas = BASE_DIR / "dados" / "dados_faixa" / "ICM_Consolidado_Todas_Faixas.xlsx"
 
@@ -155,13 +155,13 @@ print("\n\n💾 7. SALVANDO DADOS PROCESSADOS")
 print("-" * 80)
 
 # Salvar agregação por município
-arquivo_saida_municipio = BASE_DIR / "dados_agregados_municipio.xlsx"
+arquivo_saida_municipio = BASE_DIR / "02_dados_processados" / "dados_agregados_municipio.xlsx"
 agg_municipio.to_excel(arquivo_saida_municipio, index=False)
 print(f"✓ Dados agregados por município salvos em:")
 print(f"  {arquivo_saida_municipio}")
 
 # Salvar tendência temporal
-arquivo_saida_temporal = BASE_DIR / "tendencia_temporal.xlsx"
+arquivo_saida_temporal = BASE_DIR / "02_dados_processados" / "tendencia_temporal.xlsx"
 tendencia.to_excel(arquivo_saida_temporal, index=False)
 print(f"✓ Tendência temporal salva em:")
 print(f"  {arquivo_saida_temporal}")
@@ -173,8 +173,8 @@ print("\n\n📊 8. GERANDO VISUALIZAÇÕES")
 print("-" * 80)
 
 # Criar diretório para gráficos
-dir_graficos = BASE_DIR / "graficos"
-dir_graficos.mkdir(exist_ok=True)
+dir_graficos = BASE_DIR / "04_visualizacoes" / "exploratoria"
+dir_graficos.mkdir(parents=True, exist_ok=True)
 
 # 8.1 Distribuição temporal
 fig, ax = plt.subplots(figsize=(12, 6))

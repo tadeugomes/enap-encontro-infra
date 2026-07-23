@@ -1,10 +1,13 @@
 import pandas as pd
 import json
+from pathlib import Path
 
 # Carregar dados
-BASE_DIR = r"c:\Users\tadeu\Downloads\enap_infra_encontro"
-arquivo_acomp = BASE_DIR + r"\dados\dados_gerenciamento\Relatório_Consolidado_Acompanhamento_2017_2025.xlsx"
-arquivo_merged = BASE_DIR + r"\dados_merged_acompanhamento_icm.xlsx"
+BASE_DIR = Path(__file__).resolve().parent.parent
+arquivo_acomp = (BASE_DIR / "dados" / "dados_gerenciamento" /
+                 "Relatório_Consolidado_Acompanhamento_2017_2025.xlsx")
+arquivo_merged = (BASE_DIR / "02_dados_processados" /
+                  "dados_merged_acompanhamento_icm.xlsx")
 
 df_merged = pd.read_excel(arquivo_merged)
 df_acomp = pd.read_excel(arquivo_acomp)
@@ -58,7 +61,7 @@ df_tabela = pd.DataFrame(tabela_valores)
 print(df_tabela.to_string(index=False))
 
 # Salvar em JSON para uso no HTML
-with open(BASE_DIR + r'\dados_tabelas_fase1.json', 'w', encoding='utf-8') as f:
+with open(BASE_DIR / 'dados_tabelas_fase1.json', 'w', encoding='utf-8') as f:
     json.dump({
         'top_desastres': top_desastres,
         'valores_medios': tabela_valores

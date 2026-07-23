@@ -23,7 +23,7 @@ plt.style.use('seaborn-v0_8-darkgrid')
 sns.set_palette("husl")
 
 # Caminhos dos arquivos
-BASE_DIR = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro")
+BASE_DIR = Path(__file__).resolve().parent.parent
 arquivo_acompanhamento = BASE_DIR / "dados" / "dados_gerenciamento" / "Relatório_Consolidado_Acompanhamento_2017_2025.xlsx"
 arquivo_icm_limpo = BASE_DIR / "dados" / "dados_faixa" / "ICM_Consolidado_LIMPO.xlsx"  # ARQUIVO LIMPO!
 
@@ -183,12 +183,14 @@ print("\n\n💾 7. SALVANDO DADOS PROCESSADOS ATUALIZADOS")
 print("-" * 80)
 
 # Salvar agregação por município
-arquivo_saida_municipio = BASE_DIR / "dados_agregados_municipio_ATUALIZADO.xlsx"
+arquivo_saida_municipio = (BASE_DIR / "02_dados_processados" /
+                           "dados_agregados_municipio_ATUALIZADO.xlsx")
 agg_municipio.to_excel(arquivo_saida_municipio, index=False)
 print(f"✓ Dados agregados salvos em: dados_agregados_municipio_ATUALIZADO.xlsx")
 
 # Salvar merge
-arquivo_saida_merged = BASE_DIR / "dados_merged_acompanhamento_icm.xlsx"
+arquivo_saida_merged = (BASE_DIR / "02_dados_processados" /
+                        "dados_merged_acompanhamento_icm.xlsx")
 df_merged.to_excel(arquivo_saida_merged, index=False)
 print(f"✓ Dados merged salvos em: dados_merged_acompanhamento_icm.xlsx")
 
@@ -198,8 +200,8 @@ print(f"✓ Dados merged salvos em: dados_merged_acompanhamento_icm.xlsx")
 print("\n\n📊 8. GERANDO VISUALIZAÇÕES ATUALIZADAS")
 print("-" * 80)
 
-dir_graficos = BASE_DIR / "graficos"
-dir_graficos.mkdir(exist_ok=True)
+dir_graficos = BASE_DIR / "04_visualizacoes" / "exploratoria"
+dir_graficos.mkdir(parents=True, exist_ok=True)
 
 # 8.1 Distribuição por Faixa ICM (ATUALIZADA)
 fig, ax = plt.subplots(figsize=(10, 6))
@@ -249,6 +251,22 @@ if len(df_com_icm) > 0:
     plt.tight_layout()
     plt.savefig(dir_graficos / 'analise_por_faixa_icm.png', dpi=300, bbox_inches='tight')
     print("✓ Gráfico salvo: analise_por_faixa_icm.png")
+    plt.close()
+
+# 8.3 Distribuição por Região
+fig, ax = plt.subplots(figsize=(12, 6))
+dist_regiao_limpa = dist_regiao[~dist_regiao.index.astype(str).str.contains('Região', na=False)]
+dist_regiao_limpa.plot(kind='barh', ax=ax, color='skyblue')
+ax.set_xlabel('Número de Municípios', fontsize=12)
+ax.set_ylabel('Região', fontsize=12)
+ax.set_title('Distribuição de Municípios por Região (ICM)', fontsize=14, fontweight='bold')
+ax.grid(axis='x', alpha=0.3)
+plt.tight_layout()
+plt.savefig(dir_graficos / 'distribuicao_por_regiao.png', dpi=300, bbox_inches='tight')
+print("✓ Gráfico salvo: distribuicao_por_regiao.png")
+plt.close()
+
+# ================================================================================
 # 9. RESUMO FINAL ATUALIZADO
 # ================================================================================
 print("\n\n" + "=" * 80)

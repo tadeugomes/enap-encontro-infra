@@ -1,5 +1,8 @@
 import pandas as pd
+from pathlib import Path
 
-file_path = r'c:\Users\tadeu\Downloads\enap_infra_encontro\05_modelos\anomalias_isolation_forest.xlsx'
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+file_path = BASE_DIR / "05_modelos" / "anomalias_isolation_forest.xlsx"
 df = pd.read_excel(file_path)
 print(df.head(20))

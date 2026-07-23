@@ -16,6 +16,7 @@ from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import mean_absolute_error, r2_score
 from pathlib import Path
+import joblib
 import warnings
 
 warnings.filterwarnings('ignore')
@@ -238,6 +239,14 @@ colunas_saida = ['UF', 'Município', 'Desastres', 'Status', 'Valor_Numerico',
 df_audit[colunas_saida].to_excel(dir_analises / "auditoria_valores_reconstrucao.xlsx", index=False)
 
 print(f"✓ Relatório de auditoria salvo em: {dir_analises}")
+
+# Salvar os tres modelos quantilicos (P10, P50, P90) e as colunas usadas
+dir_modelos = BASE_DIR / "05_modelos" / "fase4_regressao"
+dir_modelos.mkdir(parents=True, exist_ok=True)
+joblib.dump({'p10': gbr_10, 'p50': gbr_50, 'p90': gbr_90,
+             'encoders': encoders, 'features': X_cols},
+            dir_modelos / "regressao_quantilica.pkl")
+print(f"✓ Modelos salvos em: 05_modelos/fase4_regressao/regressao_quantilica.pkl")
 
 print("\n" + "=" * 80)
 print("✅ FASE 4 (REGRESSÃO PREDITIVA) CONCLUÍDA!")

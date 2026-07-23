@@ -12,8 +12,7 @@ print("=" * 80)
 print("ORGANIZANDO ESTRUTURA DE PASTAS DO PROJETO")
 print("=" * 80)
 
-BASE_DIR = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro")
-
+BASE_DIR = Path(__file__).resolve().parent.parent
 # ================================================================================
 # DEFINIR ESTRUTURA DE PASTAS
 # ================================================================================

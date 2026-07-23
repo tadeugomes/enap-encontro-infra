@@ -10,7 +10,7 @@ print("=" * 80)
 print("LIMPEZA DE ARQUIVOS OBSOLETOS")
 print("=" * 80)
 
-BASE_DIR = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro")
+BASE_DIR = Path(__file__).resolve().parent.parent
 SCRIPTS_DIR = BASE_DIR / "07_scripts"
 RELATORIOS_DIR = BASE_DIR / "06_relatorios"
 

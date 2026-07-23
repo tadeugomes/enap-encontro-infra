@@ -1,6 +1,9 @@
 import pandas as pd
+from pathlib import Path
 
-file_path = r'c:\Users\tadeu\Downloads\enap_infra_encontro\02_dados_processados\dados_merged_acompanhamento_icm.xlsx'
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+file_path = BASE_DIR / "02_dados_processados" / "dados_merged_acompanhamento_icm.xlsx"
 df = pd.read_excel(file_path)
 print("Columns:", df.columns.tolist())
 print(df.head())

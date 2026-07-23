@@ -17,8 +17,7 @@ print("=" * 80)
 print("GERANDO GRÁFICOS DE OUTLIERS APROVADOS E LIMPANDO ARQUIVOS ANTIGOS")
 print("=" * 80)
 
-BASE_DIR = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro")
-
+BASE_DIR = Path(__file__).resolve().parent.parent
 # ================================================================================
 # 1. CARREGAR DADOS DE OUTLIERS APROVADOS
 # ================================================================================

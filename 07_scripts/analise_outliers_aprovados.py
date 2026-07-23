@@ -15,8 +15,7 @@ print("=" * 80)
 print("ANÁLISE DE OUTLIERS - APENAS PROCESSOS DEFERIDOS/APROVADOS")
 print("=" * 80)
 
-BASE_DIR = Path(r"c:\Users\tadeu\Downloads\enap_infra_encontro")
-
+BASE_DIR = Path(__file__).resolve().parent.parent
 # ================================================================================
 # 1. CARREGAR E FILTRAR DADOS
 # ================================================================================

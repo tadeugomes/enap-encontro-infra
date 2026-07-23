@@ -15,6 +15,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score, roc_curve
 from sklearn.preprocessing import LabelEncoder
 from pathlib import Path
+import joblib
 import warnings
 
 warnings.filterwarnings('ignore')
@@ -214,6 +215,13 @@ df_test_results['Probabilidade'] = y_prob
 df_test_results.to_excel(dir_analises / "analise_erros_teste.xlsx", index=False)
 
 print(f"✓ Resultados salvos em: {dir_analises}")
+
+# Salvar modelo treinado (Random Forest + encoders + colunas)
+dir_modelos = BASE_DIR / "05_modelos" / "fase3_classificacao"
+dir_modelos.mkdir(parents=True, exist_ok=True)
+joblib.dump({'modelo': rf, 'encoders': encoders, 'features': X_cols},
+            dir_modelos / "random_forest_aprovacao.pkl")
+print(f"✓ Modelo salvo em: 05_modelos/fase3_classificacao/random_forest_aprovacao.pkl")
 
 print("\n" + "=" * 80)
 print("✅ FASE 3 (CLASSIFICAÇÃO) CONCLUÍDA!")
