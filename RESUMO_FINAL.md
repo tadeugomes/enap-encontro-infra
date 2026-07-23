@@ -74,9 +74,10 @@ enap_infra_encontro/
 │   └── fase3_classificacao/       ⏳
 │
 ├── 05_modelos/                    ← Modelos de ML
-│   ├── fase1_regressao/           ✅ Análise descritiva
-│   ├── fase2_clustering/          ⏳
-│   └── fase3_classificacao/       ⏳
+│   ├── fase1_regressao/           ✅ Análise descritiva (sem .pkl)
+│   ├── fase2_clustering/          ✅ kmeans_clustering.pkl
+│   ├── fase3_classificacao/       ✅ random_forest_aprovacao.pkl
+│   └── fase4_regressao/           ✅ regressao_quantilica.pkl
 │
 ├── 06_relatorios/                 ← Documentação ✅
 │   ├── README_ANALISE_ATUALIZADO.md
