@@ -1,279 +1,80 @@
-# 🎉 IMPLEMENTAÇÃO DO PLANO DE ML - PROGRESSO
+# PROGRESSO DA IMPLEMENTAÇÃO
 
-**Data**: 22/11/2025  
-**Status**: Fase 1 Concluída ✅ | Ambiente Virtual em Configuração 🔄
-
----
-
-## ✅ O QUE FOI FEITO ATÉ AGORA
-
-### **1. Consolidação dos Dados** ✅
-- [x] Juntar arquivos de Acompanhamento (2017-2025) → 6.385 processos
-- [x] Juntar arquivos de ICM por Faixas → 5.613 registros iniciais
-- [x] **Limpeza de dados ICM** → 5.445 municípios únicos (168 registros problemáticos removidos)
-- [x] **Merge dos datasets** → 97,7% de cobertura (2.065 municípios)
-
-### **2. Análise Exploratória** ✅
-- [x] Estatísticas descritivas completas
-- [x] Visualizações atualizadas com dados limpos
-- [x] Identificação de padrões temporais
-- [x] Análise por UF e tipo de desastre
-
-### **3. Descoberta Crítica** 🔥
-- [x] **Identificado**: Faixa D tem valores **2,94x maiores** que Faixa A
-  - Faixa A: R$ 9,74 milhões
-  - Faixa B: R$ 9,79 milhões
-  - Faixa C: R$ 6,63 milhões
-  - **Faixa D: R$ 28,68 milhões** ⚠️
-
-### **4. FASE 1: Análise de Regressão** ✅ CONCLUÍDA
-- [x] Análise descritiva detalhada por faixa
-- [x] Análise de tipos de desastres por faixa
-- [x] Análise de distribuição (percentis)
-- [x] Análise de número de processos
-- [x] **4 visualizações geradas**:
-  - Boxplot de valores por faixa
-  - Barras de valor médio por faixa
-  - Heatmap desastre × faixa
-  - Violin plot de distribuições
+**Última atualização**: 23/07/2026
+**Status geral**: pipeline analítico concluído; artigo científico em revisão
 
 ---
 
-## 📊 PRINCIPAIS DESCOBERTAS DA FASE 1
+## Situação atual
 
-### **Valores por Faixa ICM**:
+As cinco fases previstas no plano de ML foram implementadas, documentadas e
+publicadas no site do projeto (`docs/`). O trabalho corrente é o artigo
+científico e a manutenção da reprodutibilidade do repositório.
 
-| Faixa | Municípios | Valor Médio | Mediana | Desvio Padrão | Total |
-|-------|------------|-------------|---------|---------------|-------|
-| A (Alta) | 225 | R$ 9,74 M | R$ 1,53 M | R$ 28,76 M | R$ 2,19 B |
-| B | 565 | R$ 9,79 M | R$ 1,22 M | R$ 41,97 M | R$ 5,53 B |
-| C | 779 | R$ 6,63 M | R$ 1,40 M | R$ 19,64 M | R$ 5,16 B |
-| **D (Baixa)** | **496** | **R$ 28,68 M** | **R$ 915 K** | **R$ 462,68 M** | **R$ 14,23 B** |
-
-### **Insights Críticos**:
-
-1. **Faixa D concentra 51% do valor total** (R$ 14,23 bi de R$ 27,68 bi)
-2. **Variabilidade extrema na Faixa D** (desvio padrão 16x maior que média!)
-3. **Mediana da Faixa D é MENOR** que outras faixas, mas média é MUITO maior
-   - Indica: **Poucos casos com valores EXTREMAMENTE altos** puxam a média
-4. **Percentil 95 da Faixa D**: R$ 16 milhões (vs R$ 38-47 milhões nas outras)
-   - Confirma: Outliers extremos na Faixa D
-
-### **Hipóteses Levantadas**:
-
-1. ✅ **Infraestrutura precária** → Danos maiores
-2. ✅ **Menor capacidade de prevenção** → Desastres mais graves
-3. ✅ **Acúmulo de problemas** → Múltiplos desastres simultâneos
-4. ⚠️ **Possíveis outliers/superfaturamento** → Investigar casos extremos
-5. 📊 **Tipos de desastres diferentes** → Ver heatmap
+| Fase | Técnica | Situação | Artefatos |
+|---|---|---|---|
+| 1 — Diagnóstico e regressão descritiva | Estatística por faixa ICM | Concluída | `03_analises/fase1_regressao/`, `04_visualizacoes/fase1_regressao/` |
+| 1b — Detecção de anomalias | Isolation Forest | Concluída | `05_modelos/isolation_forest_model.pkl`, `RELATORIO_ANOMALIAS_FASE1.md` |
+| 2 — Clusterização | K-Means (K = 4) | Concluída | `03_analises/fase2_clustering/`, `05_modelos/fase2_clustering/` |
+| 3 — Classificação | Random Forest | Concluída (ROC-AUC 0,80) | `03_analises/fase3_classificacao/`, `05_modelos/fase3_classificacao/` |
+| 4 — Valor justo | Regressão quantílica | Concluída (580 alertas) | `03_analises/fase4_regressao/`, `05_modelos/fase4_regressao/` |
+| 5 — Simulador | App Streamlit externo | Publicado | `docs/fase5.html` |
 
 ---
 
-## 📁 ARQUIVOS GERADOS
+## Base de dados
 
-### **Dados Consolidados**:
-- ✅ `Relatório_Consolidado_Acompanhamento_2017_2025.xlsx`
-- ✅ `ICM_Consolidado_LIMPO.xlsx` (sem duplicatas)
-- ✅ `dados_merged_acompanhamento_icm.xlsx` (merge dos datasets)
-- ✅ `dados_agregados_municipio_ATUALIZADO.xlsx`
-- ✅ `municipios_duplicados.xlsx` (152 removidos)
+* 6.385 processos de acompanhamento (2017–2025).
+* 5.445 municípios no ICM consolidado, após remoção de 168 registros
+  problemáticos pelo critério de risco (assume-se a pior faixa em conflitos).
+* 2.065 municípios no merge, com 97,7% de cobertura.
+* R$ 27,68 bilhões em valores solicitados.
 
-### **Análises**:
-- ✅ `analise_detalhada_por_faixa.xlsx` (Fase 1)
-- ✅ `analise_estrutura.txt`
-- ✅ `investigacao_duplicatas.txt`
+## Principais resultados
 
-### **Visualizações** (11 gráficos):
-#### Análise Exploratória:
-- ✅ `graficos/evolucao_processos.png`
-- ✅ `graficos/top_ufs.png`
-- ✅ `graficos/top_desastres.png`
-- ✅ `graficos/distribuicao_icm_ATUALIZADO.png`
-- ✅ `graficos/analise_por_faixa_icm.png`
-- ✅ `graficos/distribuicao_por_regiao.png`
+**O paradoxo da capacidade institucional.** Municípios de Faixa D (menor
+capacidade) apresentam valor médio de R$ 28,68 milhões, 2,94 vezes o da Faixa A,
+e concentram 51% do valor total. A mediana da Faixa D, porém, é a menor de
+todas — poucos casos extremos puxam a média, o que motivou as fases de
+clusterização e detecção de anomalias.
 
-#### Fase 1 - ML:
-- ✅ `graficos_ml/distribuicao_valores_por_faixa.png`
-- ✅ `graficos_ml/valor_medio_por_faixa.png`
-- ✅ `graficos_ml/heatmap_desastre_faixa.png`
-- ✅ `graficos_ml/violinplot_valores_faixa.png`
+| Faixa | Municípios | Valor médio | Mediana | Total |
+|---|---|---|---|---|
+| A (alta) | 225 | R$ 9,74 M | R$ 1,53 M | R$ 2,19 B |
+| B | 565 | R$ 9,79 M | R$ 1,22 M | R$ 5,53 B |
+| C | 779 | R$ 6,63 M | R$ 1,40 M | R$ 5,16 B |
+| D (baixa) | 496 | R$ 28,68 M | R$ 915 K | R$ 14,23 B |
 
-### **Documentação**:
-- ✅ `README_ANALISE_ATUALIZADO.md` (relatório executivo)
-- ✅ `ESTRATEGIAS_ML.md` (7 estratégias detalhadas)
-- ✅ `INVESTIGACAO_DUPLICATAS.md` (limpeza de dados)
-- ✅ `IMPACTO_LIMPEZA_NO_PLANO_ML.md` (análise de impacto)
+**Clusterização.** Quatro perfis comportamentais que não coincidem com as faixas
+oficiais: baixo impacto, alto custo, outlier extremo e alta frequência.
 
-### **Scripts**:
-- ✅ `juntar_relatorios.py`
-- ✅ `juntar_faixas.py`
-- ✅ `limpar_arquivo_icm.py`
-- ✅ `analise_exploratoria_ATUALIZADA.py`
-- ✅ `ml_fase1_regressao.py`
-- ✅ `setup_venv.bat` (ambiente virtual)
+**Classificação.** ROC-AUC de 0,80 na previsão de aprovação; o valor solicitado
+é a variável de maior importância.
+
+**Valor justo.** 580 processos (15%) acima do P90 estimado e 757 abaixo do P10,
+sobre uma base auditada de 3.893 processos.
 
 ---
 
-## 🔄 PRÓXIMAS FASES DO PLANO DE ML
+## Reprodutibilidade
 
-### **Fase 2: Clustering** 📊 (PRÓXIMA)
-**Objetivo**: Segmentar municípios em grupos com características similares
+Ambiente fixado em `requirements.txt`; todos os modelos usam `random_state=42`.
+Os scripts devem ser executados a partir da raiz do repositório e resolvem
+caminhos relativos a `__file__` — não há mais caminhos absolutos no código.
 
-**Algoritmos**:
-- K-Means
-- DBSCAN
-- Hierarchical Clustering
+Verificação de julho de 2026, em macOS com scikit-learn 1.9.0:
 
-**Features**:
-- Número de processos
-- Valor total/médio
-- Faixa ICM
-- Região
-- Faixa populacional
-- Tipos de desastres
-
-**Entregáveis**:
-- Segmentação de municípios (3-5 clusters)
-- Perfis de risco
-- Recomendações por cluster
+* Fase 2 e Fase 3 reproduzem os resultados publicados (ROC-AUC 0,8001).
+* Fase 4 sinaliza 593 processos "ALTO" contra os 580 publicados — variação de
+  2,2% atribuível à versão do `GradientBoostingRegressor`. Os artefatos
+  versionados em `03_analises/fase4_regressao/` seguem correspondendo aos
+  números do artigo e do site.
+* `gerar_artigo_docx.py` regenera o artigo com texto idêntico ao versionado.
 
 ---
 
-### **Fase 3: Classificação** 🎯
-**Objetivo**: Prever outcomes e identificar municípios em risco
+## Pendências
 
-**Problemas**:
-1. Prever status de aprovação
-2. Classificar municípios em risco (Alto/Médio/Baixo)
-3. Prever se valor será alto (> R$ 20 milhões)
-
-**Algoritmos**:
-- Random Forest
-- XGBoost
-- LightGBM
-
----
-
-### **Fase 4: Modelos Avançados** 🚀
-**Opções**:
-- Séries temporais (previsão 2026)
-- Detecção de anomalias (outliers)
-- Análise de redes (municípios similares)
-
----
-
-## 🛠️ AMBIENTE VIRTUAL
-
-### **Status**: 🔄 Em Configuração
-
-**Comando**:
-```bash
-.\setup_venv.bat
-```
-
-**Pacotes a instalar**:
-- pandas
-- numpy
-- matplotlib
-- seaborn
-- scikit-learn
-- xgboost
-- openpyxl
-
-**Uso**:
-```bash
-# Ativar
-venv_ml\Scripts\activate
-
-# Executar scripts
-python ml_fase2_clustering.py
-
-# Desativar
-deactivate
-```
-
----
-
-## 📋 CHECKLIST DE PROGRESSO
-
-### ✅ Preparação de Dados (100%)
-- [x] Consolidar arquivos
-- [x] Limpar dados
-- [x] Fazer merge
-- [x] Validar qualidade
-
-### ✅ Análise Exploratória (100%)
-- [x] Estatísticas descritivas
-- [x] Visualizações
-- [x] Identificar padrões
-- [x] Documentar insights
-
-### ✅ Fase 1: Regressão (100%)
-- [x] Análise descritiva por faixa
-- [x] Análise de desastres
-- [x] Visualizações
-- [x] Documentação
-
-### 🔄 Configuração de Ambiente (80%)
-- [x] Criar script de setup
-- [x] Criar ambiente virtual
-- [ ] Instalar dependências (em andamento)
-- [ ] Testar ambiente
-
-### ⏳ Fase 2: Clustering (0%)
-- [ ] Preparar features
-- [ ] Treinar modelos
-- [ ] Avaliar clusters
-- [ ] Visualizar resultados
-- [ ] Documentar insights
-
-### ⏳ Fase 3: Classificação (0%)
-- [ ] Definir targets
-- [ ] Preparar dados
-- [ ] Treinar modelos
-- [ ] Avaliar performance
-- [ ] Documentar resultados
-
----
-
-## 🎯 PRÓXIMOS PASSOS IMEDIATOS
-
-1. ✅ **Aguardar conclusão do ambiente virtual**
-2. ✅ **Testar ambiente** com script simples
-3. ✅ **Implementar Fase 2: Clustering**
-4. ✅ **Gerar relatório de clusters**
-5. ✅ **Implementar Fase 3: Classificação**
-
----
-
-## 💡 PERGUNTAS DE NEGÓCIO RESPONDIDAS
-
-### ✅ Já Respondidas:
-1. **Municípios de Faixa D têm valores muito maiores?** → SIM, 2,94x maior
-2. **Qual a distribuição de valores por faixa?** → Ver análise detalhada
-3. **Quais tipos de desastres por faixa?** → Ver heatmap
-4. **Quantos municípios têm dados de ICM?** → 97,7% de cobertura
-
-### ⏳ A Responder (Próximas Fases):
-5. **Por que alguns municípios Faixa D têm valores extremos?** → Clustering + Anomalias
-6. **É possível prever quais municípios terão valores altos?** → Classificação
-7. **Quais municípios são similares?** → Clustering
-8. **Qual a probabilidade de aprovação por faixa?** → Classificação
-
----
-
-## 📊 ESTATÍSTICAS DO PROJETO
-
-- **Linhas de código**: ~2.500
-- **Arquivos criados**: 25+
-- **Gráficos gerados**: 11
-- **Dados processados**: 11.830 registros (6.385 + 5.445)
-- **Municípios analisados**: 2.065 (com merge)
-- **Período analisado**: 2017-2025 (9 anos)
-- **Valor total**: R$ 27,68 bilhões
-
----
-
-**Última atualização**: 22/11/2025 17:15  
-**Status geral**: ✅ 40% Concluído  
-**Próxima entrega**: Fase 2 - Clustering
+* Publicar o código-fonte do simulador da Fase 5, hoje mantido fora deste
+  repositório.
+* Revisão final do artigo científico.

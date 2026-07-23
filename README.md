@@ -38,7 +38,8 @@ O projeto está estruturado em 5 fases estratégicas, cobrindo desde o diagnóst
 
 ## 📂 Estrutura do Repositório
 
-*   `01_dados_originais/`: Dados brutos recebidos (não versionados por sigilo/tamanho).
+*   `dados/`: Dados brutos versionados (acompanhamento 2017-2025 e ICM por faixa).
+*   `01_dados_originais/`: Reservada a dados recebidos não versionados (sigilo/tamanho).
 *   `02_dados_processados/`: Dados limpos e tratados prontos para análise.
 *   `03_analises/`: Notebooks, relatórios e documentação técnica de cada fase.
 *   `04_visualizacoes/`: Gráficos e imagens gerados pelos modelos.
@@ -65,6 +66,10 @@ O projeto está estruturado em 5 fases estratégicas, cobrindo desde o diagnóst
 
 2.  Crie e ative o ambiente virtual:
     ```bash
+    # macOS / Linux
+    python3 -m venv venv_ml
+    source venv_ml/bin/activate
+
     # Windows
     python -m venv venv_ml
     venv_ml\Scripts\activate
@@ -76,10 +81,31 @@ O projeto está estruturado em 5 fases estratégicas, cobrindo desde o diagnóst
     ```
 
 ### Executando as Análises
-Os scripts principais estão na pasta `07_scripts`. Exemplo para rodar a análise exploratória:
+
+Os scripts ficam em `07_scripts` e devem ser executados **a partir da raiz do repositório** — os caminhos são resolvidos em relação ao próprio arquivo. Exemplo:
 
 ```bash
 python 07_scripts/analise_exploratoria_ATUALIZADA.py
+```
+
+O pipeline de ML tem ordem obrigatória, porque as Fases 3 e 4 consomem os clusters gerados pela Fase 2:
+
+```bash
+python 07_scripts/ml_fase2_clustering.py
+python 07_scripts/ml_fase3_classificacao.py
+python 07_scripts/ml_fase4_regressao_preditiva.py
+```
+
+Todos os modelos usam `random_state=42` e são salvos em `05_modelos/`. Reexecutar os scripts sobrescreve os artefatos versionados: consulte a seção de reprodutibilidade em [06_relatorios/PROGRESSO_IMPLEMENTACAO.md](06_relatorios/PROGRESSO_IMPLEMENTACAO.md) antes de regravá-los.
+
+---
+
+## 📄 Artigo Científico
+
+O artigo que sistematiza as cinco fases está em [`06_relatorios/artigo_cientifico_enap.docx`](06_relatorios/artigo_cientifico_enap.docx) e é gerado por código, com formatação ABNT:
+
+```bash
+python 07_scripts/gerar_artigo_docx.py
 ```
 
 ---

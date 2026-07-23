@@ -1,76 +1,92 @@
-# 📁 ÍNDICE DO PROJETO: Análise de Reconstrução e ICM
+# ÍNDICE DO PROJETO: Análise de Reconstrução e ICM
 
-**Última Atualização**: 22/11/2025
-**Status**: Fase 1 Concluída (Regressão/Outliers) | Dados Corrigidos ✅
-
----
-
-## 📚 DOCUMENTAÇÃO PRINCIPAL
-
-1. **[RESUMO_FINAL.md](RESUMO_FINAL.md)** - Resumo executivo do projeto e entregas.
-2. **[CORRECAO_DADOS_ICM.md](CORRECAO_DADOS_ICM.md)** - 🚨 Detalhes sobre a correção crítica de duplicatas (Critério de Risco).
-3. **[06_relatorios/README_ANALISE_ATUALIZADO.md](06_relatorios/README_ANALISE_ATUALIZADO.md)** - Relatório detalhado da análise exploratória.
-4. **[06_relatorios/ESTRATEGIAS_ML.md](06_relatorios/ESTRATEGIAS_ML.md)** - Plano estratégico de Machine Learning.
-5. **[06_relatorios/PROGRESSO_IMPLEMENTACAO.md](06_relatorios/PROGRESSO_IMPLEMENTACAO.md)** - Log de progresso do projeto.
+**Última atualização**: 23/07/2026
+**Status**: cinco fases concluídas e publicadas | artigo científico em revisão
 
 ---
 
-## 📂 ESTRUTURA DE PASTAS E ARQUIVOS
+## Documentação principal
 
-### 1. Dados (`01_dados_originais` e `02_dados_processados`)
-- **`ICM_Consolidado_LIMPO.xlsx`**: Base ICM oficial (limpa com critério de risco).
-- **`dados_merged_acompanhamento_icm.xlsx`**: Base unificada (Processos + ICM).
-- **`dados_agregados_municipio_ATUALIZADO.xlsx`**: Estatísticas por município.
-
-### 2. Análises (`03_analises`)
-- **`exploratoria/`**:
-  - `IMPACTO_LIMPEZA_DADOS.md`: Validação da limpeza inicial.
-  - `INVESTIGACAO_DUPLICATAS_DETALHADA.md`: Diagnóstico das duplicatas conflitantes.
-- **`outliers_extremos/`**:
-  - `RELATORIO_OUTLIERS_APROVADOS.md`: Análise de risco em processos aprovados.
-  - `analise_outliers_APROVADOS.xlsx`: Planilha detalhada de outliers.
-
-### 3. Visualizações (`04_visualizacoes`)
-- **`exploratoria/`**: Gráficos gerais (distribuição, faixas, etc.).
-- **`outliers/`**: Gráficos de risco (Top 20, status, valores médios).
-
-### 4. Scripts (`07_scripts`)
-
-#### Processamento e Limpeza:
-- `juntar_relatorios.py`: Consolida relatórios de processos.
-- `juntar_faixas.py`: Consolida arquivos ICM.
-- `limpar_arquivo_icm_v2.py`: **Script Oficial de Limpeza ICM** (Critério de Risco).
-
-#### Análise e ML:
-- `analise_exploratoria_ATUALIZADA.py`: Gera estatísticas e gráficos gerais.
-- `analise_outliers_aprovados.py`: Identifica e relata outliers de risco.
-- `ml_fase1_regressao.py`: Análise descritiva focada em regressão (Fase 1).
-
-#### Utilitários:
-- `atualizar_graficos_outliers.py`: Regenera gráficos de outliers.
-- `organizar_projeto.py`: Organiza estrutura de pastas.
-- `setup_venv.bat`: Configura ambiente virtual.
+1. [README.md](README.md) — visão geral do projeto e das cinco fases.
+2. [06_relatorios/PROGRESSO_IMPLEMENTACAO.md](06_relatorios/PROGRESSO_IMPLEMENTACAO.md) — situação atual, resultados e reprodutibilidade.
+3. [06_relatorios/README_ANALISE_ATUALIZADO.md](06_relatorios/README_ANALISE_ATUALIZADO.md) — relatório detalhado da análise exploratória.
+4. [06_relatorios/ESTRATEGIAS_ML.md](06_relatorios/ESTRATEGIAS_ML.md) — plano estratégico de machine learning.
+5. [CORRECAO_DADOS_ICM.md](CORRECAO_DADOS_ICM.md) — correção crítica de duplicatas (critério de risco).
+6. [06_relatorios/artigo_cientifico_enap.docx](06_relatorios/artigo_cientifico_enap.docx) — artigo científico, gerado por `07_scripts/gerar_artigo_docx.py`.
 
 ---
 
-## 🚀 COMO EXECUTAR
+## Estrutura de pastas
 
-1. **Ativar ambiente virtual**:
-   ```bash
-   venv_ml\Scripts\activate
-   ```
+| Pasta | Conteúdo |
+|---|---|
+| `dados/` | Dados brutos: relatórios de acompanhamento (2017–2025) e ICM por faixa. |
+| `01_dados_originais/` | Reservada a dados originais não versionados. |
+| `02_dados_processados/` | Bases limpas e consolidadas prontas para análise. |
+| `03_analises/` | Planilhas e relatórios por fase, mais a análise exploratória e de outliers. |
+| `04_visualizacoes/` | Gráficos por fase. É a origem das imagens publicadas em `docs/assets/images/`. |
+| `05_modelos/` | Modelos treinados em `.pkl` — ver o README da pasta para o formato. |
+| `06_relatorios/` | Relatórios gerenciais, log de progresso e artigo científico. |
+| `07_scripts/` | Todo o código-fonte Python. |
+| `docs/` | Site do projeto (GitHub Pages). |
 
-2. **Atualizar dados e análises** (se necessário):
-   ```bash
-   python 07_scripts/limpar_arquivo_icm_v2.py
-   python 07_scripts/analise_exploratoria_ATUALIZADA.py
-   python 07_scripts/analise_outliers_aprovados.py
-   python 07_scripts/atualizar_graficos_outliers.py
-   ```
+Bases de referência: `02_dados_processados/ICM_Consolidado_LIMPO.xlsx` (ICM
+oficial limpo), `dados_merged_acompanhamento_icm.xlsx` (processos + ICM) e
+`dados_municipios_clusterizados.xlsx` (com os clusters da Fase 2, insumo das
+Fases 3 e 4).
 
 ---
 
-## ⚠️ NOTAS IMPORTANTES
+## Scripts
 
-- **Critério de Risco**: Em caso de conflito de dados no ICM, o sistema assume a **PIOR FAIXA** (maior vulnerabilidade).
-- **Foco em Aprovados**: A análise de outliers prioriza processos com recursos transferidos ou aprovados.
+**Preparação e limpeza**
+* `juntar_relatorios.py` — consolida os relatórios de acompanhamento.
+* `juntar_faixas.py` — consolida os arquivos ICM por faixa.
+* `limpar_arquivo_icm_v2.py` — limpeza oficial do ICM (critério de risco).
+* `investigar_duplicatas_icm.py` — diagnóstico de duplicatas conflitantes.
+
+**Análise e modelagem**
+* `analise_exploratoria_ATUALIZADA.py` — estatísticas e gráficos gerais.
+* `analise_outliers_aprovados.py` — outliers em processos aprovados.
+* `ml_fase1_regressao.py` — análise descritiva por faixa ICM.
+* `ml_fase1_isolation_forest.py` — detecção de anomalias.
+* `ml_fase2_clustering.py` — K-Means.
+* `ml_fase3_classificacao.py` — Random Forest de aprovação.
+* `ml_fase4_regressao_preditiva.py` — regressão quantílica (valor justo).
+
+**Publicação**
+* `gerar_artigo_docx.py` — gera o artigo científico em `.docx`.
+* `adicionar_top10_fase4.py`, `extrair_top10_alto_risco.py` — tabelas do site.
+
+---
+
+## Como executar
+
+```bash
+# 1. Ambiente (macOS/Linux)
+python3 -m venv venv_ml
+source venv_ml/bin/activate
+pip install -r requirements.txt
+
+# 2. Pipeline de ML, a partir da raiz do repositório e nesta ordem
+python 07_scripts/ml_fase2_clustering.py        # gera os clusters usados adiante
+python 07_scripts/ml_fase3_classificacao.py
+python 07_scripts/ml_fase4_regressao_preditiva.py
+```
+
+No Windows, ative o ambiente com `venv_ml\Scripts\activate`.
+
+A Fase 2 precisa rodar antes das Fases 3 e 4: ambas consomem
+`02_dados_processados/dados_municipios_clusterizados.xlsx`.
+
+---
+
+## Notas importantes
+
+* **Critério de risco**: em conflito de dados no ICM, assume-se a pior faixa
+  (maior vulnerabilidade).
+* **Foco em aprovados**: a análise de outliers e o modelo de valor justo
+  priorizam processos com recursos transferidos.
+* **Reexecução sobrescreve artefatos publicados**: os números do artigo e do
+  site vêm dos arquivos versionados. Ver a seção de reprodutibilidade em
+  `06_relatorios/PROGRESSO_IMPLEMENTACAO.md` antes de regravá-los.
