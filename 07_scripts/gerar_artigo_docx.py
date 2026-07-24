@@ -748,10 +748,15 @@ add_par(
     "fixas (random_state = 42) em todos os modelos, de modo a assegurar a "
     "reprodutibilidade dos resultados. O código-fonte, os dados de trabalho e "
     "os artefatos de saída encontram-se disponíveis no repositório do projeto, "
-    "o que permite a verificação independente dos números aqui reportados. Os "
-    "resultados das cinco fases foram auditados por reexecução dos modelos, "
-    "tendo sido reproduzidos dentro de margens compatíveis com pequenas "
-    "variações entre versões das bibliotecas."
+    "com as versões das bibliotecas fixadas, o que permite a verificação "
+    "independente dos números aqui reportados. Os resultados das cinco fases "
+    "foram auditados por reexecução dos modelos e reproduzidos de forma exata "
+    "no ambiente especificado. Registre-se que a regressão quantílica da quarta "
+    "fase é sensível à versão da biblioteca, uma vez que o comportamento do "
+    "algoritmo de gradient boosting com perda quantílica se altera a partir da "
+    "versão 1.9 do scikit-learn; por essa razão, o ambiente de referência foi "
+    "fixado em versão anterior, na qual a contagem de processos sinalizados "
+    "reproduz exatamente a aqui reportada."
 )
 
 # ===========================================================================
