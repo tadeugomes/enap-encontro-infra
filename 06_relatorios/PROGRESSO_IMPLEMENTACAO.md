@@ -95,3 +95,10 @@ reconferir a auditoria contra os números do artigo e do site.
 * Publicar o código-fonte do simulador da Fase 5, hoje mantido fora deste
   repositório.
 * Revisão final do artigo científico.
+* **Confirmar a referência da fonte de dados** (BRASIL, 2017-2025). A entrada
+  atual — Ministério da Integração e Desenvolvimento Regional / Secretaria
+  Nacional de Proteção e Defesa Civil, "Relatório gerencial de reconstrução:
+  acompanhamento de processos", relatórios anuais — foi redigida como melhor
+  esforço a partir das pistas nos arquivos (protocolos 59053, SIAFI, COBRADE).
+  Verificar o órgão emissor, o sistema de origem (S2ID, Transferegov ou outro)
+  e o ano/forma de extração, e ajustar a referência e as chamadas no texto.
