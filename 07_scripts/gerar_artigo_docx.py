@@ -224,7 +224,7 @@ resumo = (
     "referência e sinalizar gastos atípicos. A metodologia mobiliza "
     "classificação, agrupamento, regressão quantílica e detecção de anomalias, "
     "aplicadas a 6.385 processos de reconstrução registrados entre 2017 e 2025 "
-    "(BRASIL, 2025), que somam R$ 27,68 bilhões. Os resultados indicam que "
+    "(BRASIL, 2017-2025), que somam R$ 27,68 bilhões. Os resultados indicam que "
     "municípios de baixa capacidade concentram 51% dos recursos e demandam "
     "valor médio 2,94 vezes superior ao dos de alta capacidade; que o "
     "comportamento real de demanda supera o rótulo oficial de capacidade; e "
@@ -259,7 +259,7 @@ intro = [
     "ano, a necessidade de mobilizar recursos federais para a reconstrução de "
     "infraestrutura urbana e de serviços essenciais em municípios atingidos. "
     "Entre 2017 e 2025, os relatórios gerenciais de acompanhamento de "
-    "processos de reconstrução (BRASIL, 2025) reúnem 6.385 processos e "
+    "processos de reconstrução (BRASIL, 2017-2025) reúnem 6.385 processos e "
     "R$ 27,68 bilhões em valores solicitados, distribuídos por 2.113 "
     "municípios e 26 unidades da federação. A "
     "magnitude desses números revela que a política de reconstrução "
@@ -592,7 +592,7 @@ add_heading("3.1 Fontes de dados e tratamento", level=2)
 met1 = [
     "O estudo apoia-se em duas bases de dados administrativos. A primeira "
     "corresponde aos relatórios gerenciais de acompanhamento de processos de "
-    "reconstrução (BRASIL, 2025), abrangendo o período de 2017 a 2025, e reúne "
+    "reconstrução (BRASIL, 2017-2025), abrangendo o período de 2017 a 2025, e reúne "
     "informações "
     "sobre unidade da federação, município, tipo de desastre, valor "
     "solicitado, situação do processo e datas de criação e solicitação. Após "
@@ -1318,7 +1318,8 @@ refs = [
 
     "BRASIL. Ministério da Integração e Desenvolvimento Regional. Secretaria "
     "Nacional de Proteção e Defesa Civil. Relatório gerencial de reconstrução: "
-    "acompanhamento de processos, 2017-2025. Brasília, DF: MIDR, 2025.",
+    "acompanhamento de processos. Brasília, DF: MIDR, 2017-2025. Relatórios "
+    "anuais. Dados administrativos.",
 
     "BRASIL. Ministério do Meio Ambiente. Plano Nacional de Adaptação à "
     "Mudança do Clima: estratégia setorial de gestão de risco de desastres. "
