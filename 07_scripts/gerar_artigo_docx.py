@@ -74,10 +74,31 @@ def add_footnote_ref(paragraph, fid):
 doc = Document()
 
 sec = doc.sections[0]
-sec.top_margin = Cm(3)
+# Papel A4 (norma RSP/ABNT); python-docx usa Carta por padrao.
+sec.page_width = Cm(21)
+sec.page_height = Cm(29.7)
+# Margens RSP: superior/inferior 2,5 cm; laterais 3 cm.
+sec.top_margin = Cm(2.5)
+sec.bottom_margin = Cm(2.5)
 sec.left_margin = Cm(3)
-sec.bottom_margin = Cm(2)
-sec.right_margin = Cm(2)
+sec.right_margin = Cm(3)
+
+# Numeracao de paginas no rodape (obrigatoria na RSP).
+_footer_p = sec.footer.paragraphs[0]
+_footer_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+_fld_a = OxmlElement("w:fldChar")
+_fld_a.set(qn("w:fldCharType"), "begin")
+_instr = OxmlElement("w:instrText")
+_instr.set(qn("xml:space"), "preserve")
+_instr.text = "PAGE"
+_fld_b = OxmlElement("w:fldChar")
+_fld_b.set(qn("w:fldCharType"), "end")
+_run_pg = _footer_p.add_run()
+_run_pg._element.append(_fld_a)
+_run_pg._element.append(_instr)
+_run_pg._element.append(_fld_b)
+_run_pg.font.name = "Times New Roman"
+_run_pg.font.size = Pt(10)
 
 normal = doc.styles["Normal"]
 normal.font.name = "Times New Roman"
@@ -187,12 +208,15 @@ def add_source(text):
 # CONTEUDO
 # ===========================================================================
 
-# Registra as duas notas de rodape (ids 1 e 2)
+# Registra as duas notas de rodape (ids 1 e 2).
+# URLs omitidas para avaliacao cega; a serem inseridas no copidesque, se aprovado.
 setup_footnotes(doc, [
-    "Repositório do projeto disponível em: "
-    "https://github.com/tadeugomes/enap-encontro-infra.",
-    "Aplicação de demonstração do modelo preditivo de severidade disponível "
-    "em: https://github.com/fabiokp/defesa_civil_deploy.",
+    "Repositório do projeto, com o código-fonte, os dados de trabalho e os "
+    "artefatos de saída. URL omitida para avaliação cega; será incluída na "
+    "fase de copidesque, caso o artigo seja aprovado.",
+    "Aplicação de demonstração do modelo preditivo de severidade, de acesso "
+    "público. URL omitida para avaliação cega; será incluída na fase de "
+    "copidesque, caso o artigo seja aprovado.",
 ])
 
 # --- Titulo ---
@@ -206,9 +230,8 @@ titulo_par = add_par(
 add_footnote_ref(titulo_par, 1)
 
 add_par(
-    "Tadeu Gomes Teixeira; Fábio Paim; Alexandre Galardinovic; Bruno Gustavo; "
-    "Rafael Giacomin; Rafael Prata; Thiago Mello",
-    indent=False, align="center", size=11, space_after=12,
+    "[Identificação de autoria omitida para avaliação cega]",
+    indent=False, align="center", size=11, italic=True, space_after=12,
 )
 
 # --- Resumo (<= 200 palavras) ---
@@ -1344,10 +1367,6 @@ refs = [
     "Estudos_Tecnicos/ET_DEFCIVIVL_05-2025_Panorama_dos_Desastres_no_Brasil_"
     "2013_a_2024.pdf. Acesso em: 23 jun. 2026.",
 
-    "EQUIPE 5 - INFRAESTRUTURA. Modelo preditivo de severidade de desastres "
-    "para a defesa civil: aplicação de demonstração. [S. l.], 2025. Disponível "
-    "em: https://github.com/fabiokp/defesa_civil_deploy. Acesso em: 23 jun. 2026.",
-
     "FRIEDMAN, Jerome H. Greedy function approximation: a gradient boosting "
     "machine. The Annals of Statistics, v. 29, n. 5, p. 1189-1232, 2001.",
 
@@ -1378,6 +1397,10 @@ refs = [
     "MARENCO, André; STROHSCHOEN, Maria Tereza Blanco; JONER, William. "
     "Capacidade estatal, burocracia e tributação nos municípios brasileiros. "
     "Revista de Sociologia e Política, Curitiba, v. 25, n. 64, p. 3-21, 2017.",
+
+    "MODELO preditivo de severidade de desastres para a defesa civil: "
+    "aplicação de demonstração. [S. l.], 2025. URL omitida para avaliação "
+    "cega; será incluída na fase de copidesque, caso o artigo seja aprovado.",
 
     "SPECK, Bruno Wilhelm (org.). Caminhos da transparência: análise dos "
     "componentes de um sistema nacional de integridade. Campinas: Editora da "
