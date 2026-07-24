@@ -229,6 +229,20 @@ titulo_par = add_par(
 # Nota de rodape 1 (repositorio do projeto) ancorada ao titulo
 add_footnote_ref(titulo_par, 1)
 
+# Titulo em espanhol e ingles (norma RSP: titulo nos tres idiomas)
+add_par(
+    "Inteligencia artificial en la gestión de recursos de reconstrucción "
+    "posdesastre: capacidad municipal, comportamiento de la demanda y "
+    "auditoría automatizada del gasto público en Brasil (2017-2025)",
+    indent=False, align="center", bold=True, size=11, space_after=6,
+)
+add_par(
+    "Artificial intelligence in the management of post-disaster reconstruction "
+    "resources: municipal capacity, demand behavior, and automated auditing of "
+    "public spending in Brazil (2017-2025)",
+    indent=False, align="center", bold=True, size=11, space_after=12,
+)
+
 add_par(
     "[Identificação de autoria omitida para avaliação cega]",
     indent=False, align="center", size=11, italic=True, space_after=12,
@@ -271,6 +285,67 @@ add_par(
     indent=False, space_before=6,
 )
 
+# --- Resumen (espanhol) ---
+add_heading("Resumen")
+add_par(
+    "Entre 2013 y 2024, los desastres provocaron cerca de R$ 732 mil millones "
+    "en pérdidas en Brasil y afectaron al 95% de los municipios, en un "
+    "contexto de marcada heterogeneidad de las capacidades estatales "
+    "subnacionales. El artículo investiga por qué los municipios de menor "
+    "capacidad institucional demandan más recursos de reconstrucción, si el "
+    "comportamiento efectivo de la demanda supera la clasificación oficial de "
+    "capacidad en la explicación de las decisiones y en qué medida las "
+    "técnicas de aprendizaje automático permiten estimar valores de referencia "
+    "y señalar gastos atípicos. La metodología moviliza clasificación, "
+    "agrupamiento, regresión cuantílica y detección de anomalías, aplicadas a "
+    "6.385 procesos de reconstrucción registrados entre 2017 y 2025 (BRASIL, "
+    "2017-2025), que suman R$ 27,68 mil millones. Los resultados indican que "
+    "los municipios de baja capacidad concentran el 51% de los recursos y "
+    "demandan un valor medio 2,94 veces superior al de los de alta capacidad; "
+    "que el comportamiento real de la demanda supera la clasificación oficial; "
+    "y que un modelo de cribado identificó 580 procesos con valores "
+    "potencialmente sobredimensionados, evidenciando el potencial y los "
+    "límites de la auditoría algorítmica en el sector público. Como solución "
+    "complementaria, se ofrece un motor de predicción de la severidad de los "
+    "desastres.",
+    indent=False,
+)
+add_par(
+    "Palabras clave: capacidad estatal municipal; gestión de desastres; "
+    "aprendizaje automático; predicción de desastres; auditoría del gasto "
+    "público.",
+    indent=False, space_before=6,
+)
+
+# --- Abstract (ingles) ---
+add_heading("Abstract")
+add_par(
+    "Between 2013 and 2024, disasters caused about R$ 732 billion in losses in "
+    "Brazil and affected 95% of municipalities, in a context of marked "
+    "heterogeneity of subnational state capacities. This article investigates "
+    "why municipalities with lower institutional capacity demand more "
+    "reconstruction resources, whether the actual demand behavior outperforms "
+    "the official capacity label in explaining decisions, and to what extent "
+    "machine learning techniques allow estimating reference values and "
+    "flagging atypical spending. The methodology employs classification, "
+    "clustering, quantile regression, and anomaly detection, applied to 6,385 "
+    "reconstruction cases recorded between 2017 and 2025 (BRASIL, 2017-2025), "
+    "totaling R$ 27.68 billion. The results indicate that low-capacity "
+    "municipalities concentrate 51% of resources and demand an average value "
+    "2.94 times higher than high-capacity ones; that actual demand behavior "
+    "outperforms the official capacity label; and that a screening model "
+    "identified 580 cases with potentially oversized values, revealing the "
+    "potential and the limits of algorithmic auditing in the public sector. As "
+    "a complementary solution, a disaster severity prediction engine is made "
+    "available.",
+    indent=False,
+)
+add_par(
+    "Keywords: municipal state capacity; disaster management; machine "
+    "learning; disaster prediction; public spending audit.",
+    indent=False, space_before=6,
+)
+
 # ===========================================================================
 add_heading("1 Introdução")
 
@@ -299,13 +374,10 @@ intro = [
     "prejuízos econômicos e atingiram 95% dos municípios brasileiros, que "
     "registraram 70.361 decretos de situação de emergência ou de calamidade "
     "pública (CONFEDERAÇÃO NACIONAL DE MUNICÍPIOS, 2025). No mesmo período, as "
-    "decretações de anormalidade cresceram 64%, mesmo quando excluídos os "
-    "registros associados à pandemia de Covid-19. O impacto humano acompanha "
-    "essa escala: foram contabilizados 2.978 óbitos, mais de um milhão de "
-    "desabrigados e cerca de cinco milhões de desalojados, com os danos "
-    "econômicos concentrados em dois extremos climáticos, a seca e o excesso "
-    "de chuvas, que respondem, somados, por 68,9% das decretações de "
-    "anormalidade no país.",
+    "decretações de anormalidade cresceram 64%, mesmo excluídos os registros "
+    "associados à pandemia de Covid-19, e os danos concentraram-se em dois "
+    "extremos climáticos, a seca e o excesso de chuvas, responsáveis somados "
+    "por 68,9% das decretações no país.",
 
     "A despeito da existência de uma política nacional estruturada, persiste "
     "um abismo entre o dano registrado e a ação executada. Dos R$ 732,2 "
@@ -321,20 +393,17 @@ intro = [
     "constituem desafios cuja superação depende, em larga medida, da "
     "capacidade de extrair inteligência dos dados disponíveis.",
 
-    "A capacidade de um município responder a um desastre, contudo, não se "
-    "distribui de maneira uniforme pelo território nacional. A literatura "
-    "sobre capacidades estatais subnacionais tem demonstrado que os "
-    "municípios brasileiros apresentam dotações muito desiguais de recursos "
-    "administrativos, fiscais e técnicos, o que condiciona sua aptidão para "
-    "formular projetos, executar obras e prestar contas (GRIN; ABRUCIO, 2018; "
-    "MARENCO; STROHSCHOEN; JONER, 2017). Essa heterogeneidade é relevante "
-    "porque os mecanismos de transferência voluntária de recursos pressupõem, "
-    "em alguma medida, que o ente subnacional disponha de estrutura para "
-    "acessar e operar os instrumentos disponíveis. Nesse sentido, a "
-    "desigualdade de capacidades pode reproduzir, no momento da reconstrução, "
-    "as mesmas assimetrias que tornaram certos municípios mais vulneráveis, de "
-    "modo que o desastre opera menos como um evento puramente natural e mais "
-    "como o desfecho de processos sociais e institucionais de longa duração.",
+    "A capacidade de responder a um desastre, contudo, não se distribui de "
+    "maneira uniforme pelo território. A literatura sobre capacidades estatais "
+    "subnacionais demonstra que os municípios brasileiros têm dotações muito "
+    "desiguais de recursos administrativos, fiscais e técnicos, o que "
+    "condiciona sua aptidão para formular projetos, executar obras e prestar "
+    "contas (GRIN; ABRUCIO, 2018; MARENCO; STROHSCHOEN; JONER, 2017). Como os "
+    "instrumentos de transferência pressupõem estrutura para operá-los, a "
+    "desigualdade de capacidades tende a reproduzir, na reconstrução, as "
+    "assimetrias que tornaram certos municípios mais vulneráveis, de modo que "
+    "o desastre opera menos como evento puramente natural e mais como desfecho "
+    "de processos sociais e institucionais de longa duração.",
 
     "O reconhecimento dessa desigualdade motivou a construção de indicadores "
     "sintéticos de capacidade institucional, entre os quais o Índice de "
@@ -379,32 +448,25 @@ intro = [
     "Civil, razão pela qual a segunda é igualmente apresentada, ainda que o "
     "foco da análise recaia sobre a primeira.",
 
-    "A justificativa do estudo assenta-se em duas ordens de consideração. Do "
-    "ponto de vista acadêmico, a articulação entre a literatura de capacidades "
-    "estatais e as técnicas de ciência de dados ainda é incipiente no Brasil, "
-    "de modo que a aplicação desse instrumental a um problema concreto de "
-    "política pública contribui para um campo em formação. Do ponto de vista "
-    "prático, o volume de recursos envolvidos e a recorrência crescente dos "
-    "desastres tornam imperativo dispor de mecanismos capazes de qualificar "
-    "tanto a alocação quanto o controle dos gastos. A análise individualizada "
-    "de milhares de processos excede a capacidade operacional dos órgãos de "
-    "controle, o que recoloca, em novos termos, a velha tensão entre a "
-    "amplitude da fiscalização e a escassez dos meios disponíveis para "
-    "exercê-la.",
+    "A justificativa é dupla. No plano acadêmico, a articulação entre a "
+    "literatura de capacidades estatais e as técnicas de ciência de dados é "
+    "ainda incipiente no Brasil, de modo que aplicá-las a um problema concreto "
+    "de política pública contribui para um campo em formação. No plano "
+    "prático, o volume de recursos e a recorrência dos desastres tornam "
+    "imperativo qualificar a alocação e o controle dos gastos, tarefa cuja "
+    "escala excede a análise individualizada pelos órgãos de controle e "
+    "recoloca a tensão entre a amplitude da fiscalização e a escassez dos "
+    "meios para exercê-la.",
 
-    "O argumento desenvolvido ao longo do texto sustenta que os indicadores "
-    "formais de capacidade, embora úteis para a focalização de políticas, "
-    "capturam de modo apenas parcial o comportamento real dos municípios "
-    "diante dos desastres, e que a observação desse comportamento por meio de "
-    "dados transacionais oferece subsídios mais precisos tanto para a alocação "
-    "quanto para o controle. Esse argumento será sustentado pela convergência "
-    "de resultados de fases analíticas distintas, que apontam, de maneira "
-    "independente, para a limitação explicativa do rótulo oficial quando "
-    "confrontado com o comportamento observado. Cabe registrar que o estudo se "
-    "apoia em dados administrativos secundários, com as limitações inerentes a "
-    "essa natureza, e que os modelos aqui apresentados são concebidos como "
-    "instrumentos de apoio à decisão, e não como substitutos do julgamento "
-    "técnico.",
+    "O argumento que percorre o texto sustenta que os indicadores formais de "
+    "capacidade, embora úteis para a focalização, capturam apenas parcialmente "
+    "o comportamento real dos municípios, e que a observação desse "
+    "comportamento por meio de dados transacionais oferece subsídios mais "
+    "precisos para a alocação e o controle, tese que a convergência de fases "
+    "analíticas distintas sustenta. Cabe registrar que o estudo se apoia em "
+    "dados administrativos secundários, com as limitações inerentes, e que os "
+    "modelos são concebidos como apoio à decisão, e não como substitutos do "
+    "julgamento técnico.",
 
     "O artigo está organizado em seis seções, além desta introdução. A segunda "
     "seção apresenta o referencial teórico, que articula a discussão sobre "
@@ -475,30 +537,21 @@ ref1 = [
     "física dos eventos.",
 
     "Essa distinção entre ameaça e vulnerabilidade é central para a "
-    "interpretação dos resultados que se seguem. Se o dano decorresse apenas da "
-    "intensidade física do evento, seria de esperar que a demanda por recursos "
-    "se distribuísse de modo relativamente independente da capacidade "
-    "institucional. A constatação de uma associação sistemática entre baixa "
-    "capacidade e maior demanda sugere, ao contrário, que a vulnerabilidade "
-    "social e institucional desempenha papel ativo na determinação dos danos. "
-    "Diante disso, o estudo da reconstrução pós-desastre não pode prescindir de "
-    "uma leitura que articule as condições materiais de cada município à sua "
-    "trajetória institucional, sob pena de reduzir um fenômeno social complexo "
-    "a uma questão meramente técnica de dimensionamento de obras.",
+    "interpretação dos resultados. Se o dano decorresse apenas da intensidade "
+    "física do evento, a demanda se distribuiria de modo independente da "
+    "capacidade institucional; a associação sistemática entre baixa capacidade "
+    "e maior demanda sugere, ao contrário, que a vulnerabilidade social e "
+    "institucional desempenha papel ativo na determinação dos danos, o que "
+    "impede reduzir a reconstrução a uma questão meramente técnica de "
+    "dimensionamento de obras.",
 
-    "A organização federativa brasileira acrescenta complexidade ao quadro. As "
-    "transferências de recursos para reconstrução articulam competências da "
-    "União, dos estados e dos municípios, em um arranjo no qual a "
-    "responsabilidade pela execução recai, em última instância, sobre o ente "
-    "local, ainda que os recursos e os critérios de elegibilidade sejam "
-    "definidos em âmbito federal. Esse desenho pressupõe que o município "
-    "disponha de burocracia capaz de traduzir a necessidade local na linguagem "
-    "técnica exigida pelos instrumentos de transferência, o que recoloca a "
-    "questão da capacidade estatal no centro da política. Diante disso, a "
-    "análise da demanda por reconstrução não pode dissociar-se das condições "
-    "institucionais em que essa demanda é formulada, sob risco de atribuir ao "
-    "comportamento do município características que, na verdade, decorrem das "
-    "regras e dos constrangimentos do próprio arranjo federativo.",
+    "A organização federativa acrescenta complexidade: as transferências "
+    "articulam competências da União, dos estados e dos municípios, mas a "
+    "execução recai sobre o ente local, ainda que recursos e critérios de "
+    "elegibilidade sejam definidos em âmbito federal. Esse desenho pressupõe "
+    "burocracia local capaz de traduzir a necessidade na linguagem técnica "
+    "exigida, de modo que a análise da demanda não pode dissociar-se das "
+    "condições institucionais em que ela é formulada.",
 ]
 for p in ref1:
     add_par(p)
@@ -520,65 +573,48 @@ ref2 = [
     "sofrimento das populações atingidas, mas a liberação sem o devido "
     "escrutínio abre margem para o desperdício e a apropriação indevida.",
 
-    "O exame de grandes volumes de processos, contudo, esbarra em limites "
-    "práticos do controle tradicional, fundado na análise individualizada de "
-    "cada solicitação. Diante de milhares de processos e bilhões de reais, a "
-    "capacidade de escrutínio dos órgãos de controle é necessariamente "
-    "seletiva, o que reforça a relevância de instrumentos capazes de priorizar "
-    "casos a partir de critérios objetivos. Sendo assim, a detecção de "
-    "anomalias em dados de gasto público desponta como estratégia para "
-    "direcionar a atenção dos auditores aos processos que mais se afastam dos "
-    "padrões esperados, otimizando o uso de recursos escassos de fiscalização. "
-    "Essa abordagem não substitui o controle convencional, mas o qualifica, ao "
-    "permitir que o esforço humano de verificação se concentre nos casos de "
-    "maior risco potencial, em vez de dispersar-se de modo uniforme por todo o "
-    "universo de processos.",
+    "O exame de grandes volumes, contudo, esbarra nos limites do controle "
+    "tradicional, fundado na análise individualizada. Diante de milhares de "
+    "processos e bilhões de reais, o escrutínio é necessariamente seletivo, o "
+    "que valoriza instrumentos capazes de priorizar casos por critérios "
+    "objetivos. A detecção de anomalias em dados de gasto desponta, assim, "
+    "como estratégia para direcionar a atenção dos auditores aos processos "
+    "mais afastados do padrão, qualificando o controle convencional em vez de "
+    "substituí-lo.",
 
-    "Importa, no entanto, situar os limites dessa estratégia. A sinalização de "
-    "um processo como atípico não equivale a um juízo de irregularidade, pois "
-    "o desvio em relação ao padrão pode decorrer de circunstâncias legítimas, "
-    "de erros de registro ou, de fato, de práticas irregulares. A confusão "
-    "entre essas possibilidades pode produzir tanto a estigmatização indevida "
-    "de gestores honestos quanto a falsa sensação de que o controle algorítmico "
-    "dispensa o julgamento técnico. Dessa maneira, a incorporação de "
-    "ferramentas automatizadas ao controle de gastos exige que se preserve, em "
-    "todas as etapas, o caráter de apoio à decisão, reservando-se ao auditor "
-    "humano a competência para distinguir, no exame dos casos priorizados, "
-    "entre o que é apenas incomum e o que é efetivamente irregular.",
+    "Importa situar os limites dessa estratégia. A sinalização de um processo "
+    "como atípico não equivale a juízo de irregularidade, pois o desvio pode "
+    "decorrer de circunstâncias legítimas, de erros de registro ou de práticas "
+    "irregulares. Confundir essas possibilidades produz tanto a estigmatização "
+    "de gestores honestos quanto a falsa sensação de que o algoritmo dispensa "
+    "o julgamento técnico. A incorporação dessas ferramentas exige, por isso, "
+    "preservar seu caráter de apoio à decisão, reservando ao auditor a "
+    "distinção entre o que é apenas incomum e o que é efetivamente irregular.",
 ]
 for p in ref2:
     add_par(p)
 
 add_heading("2.3 Aprendizado de máquina aplicado ao setor público", level=2)
 ref3 = [
-    "A incorporação de técnicas de aprendizado de máquina à gestão pública tem "
-    "se expandido, com aplicações que vão da previsão de demanda por serviços "
-    "à detecção de fraudes em transações governamentais. Os algoritmos "
-    "mobilizados neste estudo pertencem a famílias consolidadas na literatura "
-    "estatística e computacional. O agrupamento por k-médias, formalizado por "
-    "MacQueen (1967), permite segmentar observações em grupos internamente "
-    "homogêneos sem rótulos prévios, sendo particularmente útil quando se "
-    "deseja descobrir padrões latentes em dados não rotulados. As florestas "
-    "aleatórias, propostas por Breiman (2001), combinam múltiplas árvores de "
-    "decisão para produzir classificações robustas e estimativas de "
-    "importância de variáveis, característica que as torna especialmente "
-    "valiosas em contextos nos quais a interpretabilidade dos determinantes "
-    "importa tanto quanto a acurácia da predição.",
+    "A incorporação de aprendizado de máquina à gestão pública tem se "
+    "expandido, da previsão de demanda por serviços à detecção de fraudes. Os "
+    "algoritmos aqui mobilizados pertencem a famílias consolidadas: o "
+    "agrupamento por k-médias (MACQUEEN, 1967) segmenta observações em grupos "
+    "homogêneos sem rótulos prévios, e as florestas aleatórias (BREIMAN, 2001) "
+    "combinam árvores de decisão para produzir classificações robustas e "
+    "estimativas de importância de variáveis, o que as torna valiosas quando a "
+    "interpretabilidade importa tanto quanto a acurácia.",
 
-    "Para os objetivos de auditoria, duas técnicas merecem destaque. A "
-    "regressão quantílica, introduzida por Koenker e Bassett (1978), estima "
-    "diferentes quantis da distribuição condicional da variável resposta, o "
-    "que possibilita construir faixas de valores esperados em vez de uma única "
-    "previsão pontual. Essa propriedade é decisiva para a auditoria, pois "
-    "permite definir limites inferior e superior dentro dos quais um valor "
-    "pode ser considerado compatível com casos semelhantes. O gradient "
-    "boosting, sistematizado por Friedman (2001), constrói modelos preditivos "
-    "por meio da adição sequencial de estimadores fracos, e pode ser combinado "
-    "à perda quantílica para gerar tais faixas. A floresta de isolamento, "
-    "proposta por Liu, Ting e Zhou (2008), identifica observações anômalas a "
-    "partir da facilidade com que são isoladas em partições aleatórias do "
-    "espaço de atributos, oferecendo uma via independente para a detecção de "
-    "casos atípicos.",
+    "Para a auditoria, três técnicas importam. A regressão quantílica "
+    "(KOENKER; BASSETT JR., 1978) estima quantis da distribuição condicional, "
+    "o que permite construir faixas de valores esperados em vez de uma "
+    "previsão pontual e, assim, definir limites entre os quais um valor é "
+    "compatível com casos semelhantes. O gradient boosting (FRIEDMAN, 2001) "
+    "constrói o modelo pela adição sequencial de estimadores fracos e admite a "
+    "perda quantílica para gerar essas faixas. A floresta de isolamento (LIU; "
+    "TING; ZHOU, 2008) identifica anomalias pela facilidade com que uma "
+    "observação é isolada em partições aleatórias, oferecendo via independente "
+    "de detecção.",
 
     "A combinação dessas abordagens permite tratar a auditoria não como um "
     "juízo binário sobre cada processo, mas como um exercício de posicionamento "
@@ -643,19 +679,14 @@ met1 = [
     "apenas 2,3% sem correspondência no índice de capacidade, o que assegura "
     "ampla representatividade ao cruzamento.",
 
-    "A etapa de engenharia de atributos preparou as variáveis para os modelos. "
-    "Os valores monetários, marcados por forte assimetria, foram transformados "
-    "pela função logarítmica (log1p), de modo a aproximar sua distribuição da "
-    "normalidade e a reduzir o peso desproporcional dos valores extremos. As "
-    "variáveis categóricas, como unidade da federação e tipo de desastre, "
-    "foram codificadas numericamente, ao passo que a faixa de capacidade "
-    "recebeu codificação ordinal, preservando a ordenação entre as faixas. "
-    "Para a agregação por município, computaram-se o número de processos, o "
-    "valor total e o valor médio, atributos que sintetizam o comportamento de "
-    "demanda. A depender do algoritmo, aplicaram-se padronização por escala "
-    "robusta, mais adequada na presença de valores atípicos, ou padronização "
-    "convencional, escolha orientada pela sensibilidade de cada técnica aos "
-    "valores extremos.",
+    "A engenharia de atributos preparou as variáveis para os modelos. Os "
+    "valores monetários, de forte assimetria, foram transformados pela função "
+    "logarítmica (log1p), para aproximar a distribuição da normalidade e "
+    "reduzir o peso dos extremos; as variáveis categóricas foram codificadas "
+    "numericamente e a faixa de capacidade recebeu codificação ordinal. Para a "
+    "agregação por município, computaram-se o número de processos, o valor "
+    "total e o valor médio, e aplicou-se, conforme a sensibilidade de cada "
+    "algoritmo aos valores atípicos, padronização robusta ou convencional.",
 ]
 for p in met1:
     add_par(p)
@@ -678,35 +709,26 @@ met2 = [
     "que os grupos comportamentais identificados na segunda fase, por exemplo, "
     "tornem-se atributos das fases subsequentes.",
 
-    "Na fase de agrupamento, optou-se por quatro grupos, número escolhido para "
-    "permitir comparação direta com as quatro faixas do índice de capacidade, "
-    "tendo a métrica de silhueta orientado a avaliação da coesão dos grupos. "
-    "Os atributos utilizados foram o logaritmo do valor total, o logaritmo do "
-    "valor médio e o número de processos por município, sobre os quais se "
-    "aplicou padronização por escala robusta. Na fase de classificação, a "
-    "variável resposta foi definida de modo binário, distinguindo os processos "
-    "com recurso transferido (aprovados) daqueles indeferidos, excluídos ou "
-    "sobrestados (reprovados), enquanto os processos ainda em análise foram "
-    "excluídos do treinamento. Adotou-se o classificador de florestas "
-    "aleatórias, com cem estimadores e profundidade máxima limitada, partição "
-    "dos dados em 80% para treino e 20% para teste, estratificação da variável "
-    "resposta e ponderação das classes para mitigar o desequilíbrio entre "
-    "aprovados e reprovados.",
+    "Na fase de agrupamento, adotaram-se quatro grupos, para permitir "
+    "comparação direta com as quatro faixas do índice, com a métrica de "
+    "silhueta orientando a avaliação da coesão; os atributos foram o logaritmo "
+    "do valor total, o logaritmo do valor médio e o número de processos, "
+    "padronizados por escala robusta. Na fase de classificação, a variável "
+    "resposta foi binária, distinguindo processos com recurso transferido "
+    "(aprovados) dos indeferidos, excluídos ou sobrestados (reprovados), com "
+    "os ainda em análise fora do treinamento; empregou-se floresta aleatória "
+    "com cem estimadores, profundidade limitada, partição 80/20, "
+    "estratificação e ponderação de classes.",
 
-    "Na fase de regressão preditiva, empregou-se o gradient boosting com perda "
-    "quantílica para estimar os quantis P10, P50 e P90 do valor solicitado, "
-    "condicionados à unidade da federação, ao tipo de desastre, à faixa de "
-    "capacidade, ao grupo comportamental e à faixa populacional. A variável "
-    "resposta foi o logaritmo do valor, e a análise restringiu-se aos "
-    "processos aprovados com valores superiores a R$ 1.000, de modo a evitar a "
-    "contaminação das estimativas por registros residuais. A partir das faixas "
-    "estimadas, cada processo foi classificado como normal, quando situado "
-    "entre os limites P10 e P90; baixo, quando inferior ao P10; ou alto, "
-    "quando superior ao P90, hipótese que sinaliza valor potencialmente "
-    "superdimensionado. A floresta de isolamento, por fim, foi parametrizada "
-    "para uma contaminação esperada de 5%, com pré-processamento que combinou "
-    "padronização e codificação das variáveis categóricas. O quadro a seguir "
-    "sintetiza as fases, os algoritmos e as métricas de avaliação.",
+    "Na regressão preditiva, o gradient boosting com perda quantílica estimou "
+    "os quantis P10, P50 e P90 do valor solicitado, condicionados à unidade da "
+    "federação, ao tipo de desastre, à faixa de capacidade, ao grupo "
+    "comportamental e à faixa populacional; a resposta foi o logaritmo do "
+    "valor, restrita aos processos aprovados acima de R$ 1.000. Cada processo "
+    "foi então classificado como normal (entre P10 e P90), baixo (abaixo do "
+    "P10) ou alto (acima do P90, indício de superdimensionamento). A floresta "
+    "de isolamento, por fim, usou contaminação esperada de 5%. O quadro a "
+    "seguir sintetiza as fases, os algoritmos e as métricas.",
 ]
 for p in met2:
     add_par(p)
@@ -725,17 +747,13 @@ add_table(
 add_source("Fonte: elaboração própria.")
 
 add_par(
-    "As métricas de avaliação foram escolhidas conforme a natureza de cada "
-    "tarefa. Para a classificação, privilegiou-se a área sob a curva ROC, "
-    "métrica robusta ao desequilíbrio entre classes e adequada à comparação "
-    "entre a capacidade de discriminação do modelo e o acaso. Para a regressão "
-    "quantílica, adotou-se a cobertura do intervalo entre os quantis "
-    "estimados, que mede a proporção de observações efetivamente contidas na "
-    "faixa prevista, complementada pelo coeficiente de determinação no espaço "
-    "logarítmico. Para o agrupamento, a métrica de silhueta avaliou a coesão "
-    "interna e a separação entre os grupos. Essa diversidade de métricas "
-    "reflete a heterogeneidade das tarefas e previne a avaliação inadequada de "
-    "um modelo por critérios concebidos para outra finalidade."
+    "As métricas acompanham a natureza de cada tarefa: a área sob a curva ROC, "
+    "robusta ao desequilíbrio entre classes, para a classificação; a cobertura "
+    "do intervalo entre quantis, complementada pelo coeficiente de "
+    "determinação no espaço logarítmico, para a regressão quantílica; e a "
+    "silhueta, para a coesão e a separação dos grupos no agrupamento. Essa "
+    "diversidade previne a avaliação de um modelo por critérios concebidos "
+    "para outra finalidade."
 )
 
 add_heading("3.3 O motor de previsão de severidade", level=2)
@@ -859,20 +877,6 @@ res1b = [
     "resposta e prevenção. Essa articulação, contudo, depende de uma "
     "compreensão mais fina do comportamento dos municípios, que a mera "
     "classificação por faixas não é capaz de oferecer.",
-
-    "A dimensão regional do fenômeno adiciona uma camada interpretativa que "
-    "merece atenção. A concentração de processos em determinadas unidades da "
-    "federação, com destaque para o Rio Grande do Sul, sugere que os eventos "
-    "extremos não se distribuem aleatoriamente pelo território, mas seguem "
-    "padrões geográficos e climáticos que tendem a recair, de modo recorrente, "
-    "sobre as mesmas regiões. Essa recorrência territorial dialoga com o achado "
-    "do grupo de alta frequência, identificado na segmentação comportamental, "
-    "e aponta para a existência de áreas que demandam não apenas respostas "
-    "reativas a cada desastre, mas estratégias estruturais de prevenção e "
-    "adaptação. Diante disso, a política de reconstrução, se considerada de "
-    "forma isolada, arrisca-se a operar como um ciclo de transferências "
-    "repetidas a territórios cuja vulnerabilidade permanece, no essencial, "
-    "inalterada entre um evento e o seguinte.",
 ]
 for p in res1b:
     add_par(p)
@@ -940,17 +944,13 @@ add_par(
 add_par(
     "O caso de Porto Alegre, isolado como grupo autônomo pelo agrupamento, "
     "ilustra os limites da análise uniforme. A magnitude e a recorrência de "
-    "suas solicitações, associadas aos eventos que atingiram a capital gaúcha, "
-    "produziram um padrão de demanda sem paralelo no conjunto dos municípios, a "
-    "ponto de a técnica de agrupamento o tratar como categoria própria. Esse "
-    "resultado evidencia que os grandes centros urbanos podem concentrar, em um "
-    "único ente, volumes de demanda comparáveis aos de regiões inteiras, o que "
-    "tensiona os critérios uniformes de análise e sugere a conveniência de "
-    "tratamentos diferenciados para casos de escala excepcional. Constata-se, "
-    "assim, que a heterogeneidade dos municípios brasileiros se manifesta não "
-    "apenas entre faixas de capacidade, mas também no interior de cada faixa, o "
-    "que reforça a utilidade de abordagens que combinem a classificação "
-    "estrutural à observação do comportamento."
+    "suas solicitações produziram um padrão de demanda sem paralelo, a ponto "
+    "de a técnica o tratar como categoria própria, o que evidencia que grandes "
+    "centros urbanos podem concentrar, em um único ente, volumes comparáveis "
+    "aos de regiões inteiras. A heterogeneidade dos municípios brasileiros "
+    "manifesta-se, assim, não apenas entre faixas de capacidade, mas também no "
+    "interior de cada faixa, o que reforça a utilidade de combinar a "
+    "classificação estrutural à observação do comportamento."
 )
 
 add_heading("4.3 Determinantes da aprovação dos processos", level=2)
@@ -999,18 +999,14 @@ add_table(
 add_source("Fonte: elaboração própria.")
 
 add_par(
-    "O predomínio do valor solicitado como determinante da aprovação comporta "
-    "uma leitura ambivalente. De um lado, indica que o sistema de análise "
-    "reage de modo sensível à magnitude dos pedidos, submetendo a maior "
-    "escrutínio as solicitações que mais se afastam do padrão, o que é "
-    "coerente com a expectativa de um controle atento ao risco. De outro lado, "
-    "a centralidade do valor pode sinalizar que outras dimensões relevantes, "
-    "como a severidade efetiva do evento ou a qualidade técnica do plano de "
-    "trabalho, encontram-se sub-representadas nos dados disponíveis e, por "
-    "isso, pesam menos na decisão. Diante dessa ambivalência, o modelo de "
-    "classificação deve ser compreendido como um espelho do processo "
-    "decisório existente, capaz de revelar suas regularidades, e não como um "
-    "padrão normativo do que a decisão deveria ser."
+    "O predomínio do valor solicitado comporta uma leitura ambivalente. De um "
+    "lado, indica um sistema sensível à magnitude dos pedidos, que submete a "
+    "maior escrutínio as solicitações mais afastadas do padrão; de outro, pode "
+    "sinalizar que dimensões relevantes, como a severidade efetiva do evento "
+    "ou a qualidade técnica do plano, estão sub-representadas nos dados e "
+    "pesam menos na decisão. O modelo deve, assim, ser lido como espelho do "
+    "processo decisório existente, capaz de revelar suas regularidades, e não "
+    "como padrão normativo do que a decisão deveria ser."
 )
 
 add_heading("4.4 Estimativa de “valor justo” e auditoria automatizada",
@@ -1038,25 +1034,17 @@ res4 = [
     "processos, foram classificados como alto, sinalizando valores "
     "potencialmente superdimensionados. Esse último conjunto constitui o "
     "público prioritário para auditoria, pois concentra os casos que mais se "
-    "afastam do padrão estimado a partir de processos comparáveis. A categoria "
-    "de subdimensionamento, por sua vez, embora menos associada ao risco de "
-    "desperdício, merece atenção por sinalizar a possibilidade de planos "
-    "incompletos ou de necessidades não plenamente cobertas pelos valores "
-    "solicitados.",
+    "afastam do padrão estimado a partir de processos comparáveis.",
 
-    "A categoria de subdimensionamento, embora tenha recebido menos atenção na "
-    "literatura sobre auditoria, encerra implicações relevantes para a "
-    "efetividade da política. Valores sistematicamente inferiores ao padrão "
-    "esperado podem indicar planos de trabalho elaborados sob restrição "
-    "técnica, capacidade limitada de estimar custos ou, ainda, subnotificação "
-    "de danos por municípios com menor estrutura administrativa. Sob essa "
-    "perspectiva, o subdimensionamento não é um problema oposto ao "
-    "superfaturamento, mas uma face complementar da mesma fragilidade "
-    "institucional, na medida em que ambos remetem à dificuldade de traduzir a "
-    "necessidade real em uma solicitação tecnicamente consistente. Diante "
-    "disso, a triagem automatizada presta-se não apenas a coibir excessos, mas "
-    "também a identificar municípios que poderiam estar deixando de pleitear "
-    "recursos compatíveis com os danos efetivamente sofridos.",
+    "A categoria de subdimensionamento, menos tratada na literatura de "
+    "auditoria, encerra implicações relevantes: valores sistematicamente "
+    "inferiores ao padrão podem indicar planos elaborados sob restrição "
+    "técnica, capacidade limitada de estimar custos ou subnotificação de danos "
+    "por municípios com menor estrutura. Nesse sentido, o subdimensionamento "
+    "não se opõe ao superfaturamento, mas é face complementar da mesma "
+    "fragilidade institucional, e a triagem presta-se também a identificar "
+    "municípios que talvez deixem de pleitear recursos compatíveis com os "
+    "danos sofridos.",
 ]
 for p in res4:
     add_par(p)
@@ -1180,49 +1168,35 @@ add_par(
 add_heading("5 Discussão")
 disc = [
     "Os resultados convergem para um argumento central: os indicadores formais "
-    "de capacidade institucional, embora úteis, capturam apenas parcialmente o "
-    "comportamento dos municípios diante dos desastres. O paradoxo da faixa D, "
-    "segundo o qual os municípios de menor capacidade concentram a maior "
-    "parcela dos recursos, pode ser interpretado à luz da produção social da "
-    "vulnerabilidade (VALENCIO, 2009): a fragilidade institucional, "
-    "frequentemente associada a infraestrutura precária e a baixa capacidade "
-    "de prevenção, tende a amplificar os danos quando o evento adverso se "
-    "materializa. Sob essa leitura, a maior demanda não decorre da capacidade "
-    "em si, mas das vulnerabilidades que a baixa capacidade ajuda a perpetuar. "
-    "Cabe reiterar, no entanto, que a elevada influência de valores extremos "
-    "sobre a média recomenda prudência, pois parte do diferencial observado "
-    "pode refletir casos atípicos, inclusive erros de registro, o que impõe "
-    "que a interpretação do paradoxo seja sustentada pela análise conjunta da "
-    "média e da mediana.",
+    "de capacidade capturam apenas parcialmente o comportamento dos municípios "
+    "diante dos desastres. O paradoxo da faixa D pode ser lido à luz da "
+    "produção social da vulnerabilidade (VALENCIO, 2009): a fragilidade "
+    "institucional, associada a infraestrutura precária e a baixa prevenção, "
+    "amplifica os danos quando o evento se materializa, de modo que a maior "
+    "demanda decorre menos da capacidade em si do que das vulnerabilidades que "
+    "a baixa capacidade perpetua. A forte influência de valores extremos sobre "
+    "a média, contudo, recomenda que a interpretação do paradoxo se sustente "
+    "na leitura conjunta da média e da mediana.",
 
     "A constatação de que o grupo comportamental supera a faixa de capacidade "
-    "na explicação tanto da segmentação quanto da aprovação dos processos tem "
-    "implicações práticas relevantes. Verifica-se que a observação do "
-    "comportamento efetivo, derivada de dados transacionais, oferece um "
-    "substrato informacional mais aderente à realidade do que a classificação "
-    "oficial isolada. Diante disso, a focalização de políticas de "
-    "fortalecimento institucional e de mecanismos de monitoramento poderia "
-    "beneficiar-se da combinação entre o indicador formal e a leitura "
-    "comportamental, em vez de apoiar-se exclusivamente no primeiro. Essa "
-    "combinação não significa abandonar o índice de capacidade, cuja função de "
-    "síntese estrutural permanece válida, mas integrá-lo a uma camada "
-    "adicional de informação que registra o comportamento concreto de cada "
-    "município ao longo do tempo.",
+    "na explicação da segmentação e da aprovação tem implicação prática "
+    "direta: a observação do comportamento efetivo, derivada de dados "
+    "transacionais, oferece substrato mais aderente à realidade do que a "
+    "classificação oficial isolada. A focalização de políticas de "
+    "fortalecimento e de monitoramento beneficiar-se-ia de combinar o "
+    "indicador formal a essa leitura comportamental, sem abandonar o índice, "
+    "cuja função de síntese estrutural permanece válida.",
 
-    "No que tange à auditoria, os resultados indicam que a triagem algorítmica "
-    "é viável e potencialmente valiosa para o controle de gastos públicos. A "
-    "identificação de 580 processos com valores acima do padrão esperado "
-    "permite direcionar a atenção dos órgãos de controle a um subconjunto "
-    "gerenciável de casos, em consonância com a lógica de complementaridade "
-    "entre controle e capacidade seletiva de fiscalização (SPECK, 2002). "
-    "Importa, contudo, delimitar o alcance dessa contribuição. O baixo "
-    "coeficiente de determinação do modelo de valor evidencia que as "
-    "estimativas comportam incerteza substancial, de modo que a sinalização "
-    "deve ser tomada como hipótese a verificar, e não como veredito. A "
-    "presença de casos como o de Nova Monte Verde, provável erro de digitação, "
-    "ilustra que parcela dos alertas decorre de problemas de qualidade dos "
-    "dados, e não de irregularidades substantivas, o que reforça a "
-    "indispensabilidade do julgamento humano na etapa de verificação.",
+    "No que tange à auditoria, a triagem algorítmica mostra-se viável para o "
+    "controle de gastos: a identificação de 580 processos acima do padrão "
+    "esperado concentra a atenção dos órgãos de controle em um subconjunto "
+    "gerenciável, na lógica de complementaridade entre controle e fiscalização "
+    "seletiva (SPECK, 2002). Seu alcance, porém, é limitado. O baixo "
+    "coeficiente de determinação indica incerteza substancial, de modo que a "
+    "sinalização é hipótese a verificar, e não veredito; e casos como o de "
+    "Nova Monte Verde, provável erro de digitação, mostram que parte dos "
+    "alertas decorre da qualidade dos dados, e não de irregularidade, o que "
+    "reforça a indispensabilidade do julgamento humano.",
 
     "Há, ademais, uma dimensão ética e institucional a considerar na adoção de "
     "ferramentas automatizadas no setor público. A sinalização de um processo "
@@ -1249,20 +1223,14 @@ disc = [
     "os achados, mas delimitam o terreno em que são válidos e indicam a "
     "necessidade de cautela na sua tradução para decisões de política.",
 
-    "A articulação entre as duas soluções configura um ecossistema que percorre "
-    "o ciclo completo de gestão de riscos. O motor de previsão atua a montante, "
-    "nas fases de prevenção, mitigação e preparação, ao antecipar a severidade "
-    "dos eventos e informar a alocação prévia de recursos; o sistema de "
-    "inteligência da reconstrução atua a jusante, na fase de recuperação, ao "
-    "otimizar a destinação das verbas e auditar os processos. Tomadas em "
-    "conjunto, as ferramentas deslocam a gestão de desastres de um modelo "
-    "predominantemente reativo, centrado na resposta ao evento já ocorrido, "
-    "para um modelo proativo, fundado na antecipação e no uso contínuo da "
-    "informação. Esse deslocamento, contudo, não se realiza apenas pela "
-    "disponibilidade técnica dos instrumentos, mas depende de sua integração "
-    "aos arranjos institucionais e às rotinas decisórias dos órgãos "
-    "competentes, sem a qual a inteligência de dados permanece como potencial "
-    "não realizado.",
+    "A articulação entre as duas soluções percorre o ciclo completo de gestão "
+    "de riscos: o motor de previsão atua a montante, ao antecipar a severidade "
+    "e informar a alocação prévia de recursos; o sistema de reconstrução atua "
+    "a jusante, ao otimizar a destinação das verbas e auditar os processos. Em "
+    "conjunto, deslocam a gestão de desastres de um modelo reativo para um "
+    "proativo, deslocamento que, todavia, depende da integração dos "
+    "instrumentos às rotinas decisórias dos órgãos competentes, sem a qual a "
+    "inteligência de dados permanece potencial não realizado.",
 ]
 for p in disc:
     add_par(p)
@@ -1271,17 +1239,14 @@ for p in disc:
 add_heading("6 Considerações finais")
 conc = [
     "Este artigo analisou a relação entre a capacidade institucional municipal "
-    "e o comportamento de demanda por recursos de reconstrução pós-desastre, "
-    "além de avaliar a viabilidade de auditoria automatizada desses gastos, a "
-    "partir de 6.385 processos registrados entre 2017 e 2025. Os resultados "
-    "evidenciaram que municípios de baixa capacidade concentram a maior "
-    "parcela dos recursos e exibem valor médio quase três vezes superior ao "
-    "dos municípios de alta capacidade, ainda que esse diferencial seja "
-    "fortemente moldado por casos extremos. Demonstrou-se, ademais, que o "
+    "e o comportamento de demanda por recursos de reconstrução, além da "
+    "viabilidade de auditoria automatizada desses gastos, a partir de 6.385 "
+    "processos registrados entre 2017 e 2025. Os achados sustentam que o "
     "comportamento efetivo de demanda é mais informativo que o rótulo oficial "
-    "de capacidade, tanto na segmentação dos municípios quanto na explicação "
-    "da aprovação dos processos, e que um modelo de triagem foi capaz de "
-    "sinalizar 580 processos com valores potencialmente superdimensionados.",
+    "de capacidade, tanto na segmentação quanto na explicação da aprovação, e "
+    "que a triagem algorítmica é capaz de priorizar processos para "
+    "verificação, ainda que sob a ressalva dos casos extremos e da qualidade "
+    "dos dados.",
 
     "A principal contribuição do trabalho reside em articular um diagnóstico "
     "empírico sobre a desigualdade de capacidades a uma proposta instrumental "
