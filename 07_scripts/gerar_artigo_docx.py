@@ -221,8 +221,8 @@ resumo = (
     "no âmbito da ENAP, que articula duas soluções complementares: um motor de "
     "previsão da severidade dos desastres e um sistema de inteligência para a "
     "reconstrução, voltado à alocação de recursos e à auditoria de gastos. A "
-    "metodologia mobiliza técnicas de aprendizado de máquina — classificação, "
-    "agrupamento, regressão quantílica e detecção de anomalias — aplicadas a "
+    "metodologia mobiliza técnicas de aprendizado de máquina (classificação, "
+    "agrupamento, regressão quantílica e detecção de anomalias), aplicadas a "
     "registros oficiais, entre os quais 6.385 processos de reconstrução "
     "(2017-2025), que somam R$ 27,68 bilhões. Os resultados indicam que o tipo "
     "de desastre e a localização são os principais preditores de severidade; "
@@ -691,7 +691,7 @@ add_table(
         ["1", "Regressão exploratória; Isolation Forest", "Diagnóstico e hipóteses", "Estatística descritiva"],
         ["2", "K-médias (k=4)", "Segmentação comportamental", "Silhueta"],
         ["3", "Florestas aleatórias", "Previsão de aprovação", "ROC-AUC = 0,7972"],
-        ["4", "Gradient boosting quantílico", "Faixa de valor justo", "Cobertura P10-P90 = 76,3%"],
+        ["4", "Gradient boosting quantílico", "Faixa de “valor justo”", "Cobertura P10-P90 = 76,3%"],
         ["5", "Isolation Forest; simulador", "Detecção de anomalias", "320 anomalias"],
     ],
     caption="Quadro 1 - Síntese do pipeline analítico em cinco fases",
@@ -766,8 +766,8 @@ res1 = [
     "alta capacidade, solicitam, em média, R$ 9,74 milhões. A razão entre os "
     "dois valores é de 2,94, o que significa que os municípios mais "
     "vulneráveis demandam, em média, quase três vezes mais recursos por "
-    "processo do que os mais bem estruturados. Mais expressivo ainda é o fato "
-    "de que a faixa D concentra 51% do total de recursos solicitados, embora "
+    "processo do que os mais bem estruturados. A faixa D concentra, ademais, "
+    "51% do total de recursos solicitados, embora "
     "reúna cerca de um quarto dos municípios analisados. Esse achado, que se "
     "poderia denominar paradoxo da capacidade institucional, constitui o ponto "
     "de partida das análises subsequentes.",
@@ -908,7 +908,7 @@ add_par(
 
 add_par(
     "O caso de Porto Alegre, isolado como grupo autônomo pelo agrupamento, "
-    "merece registro por seu valor ilustrativo. A magnitude e a recorrência de "
+    "ilustra os limites da análise uniforme. A magnitude e a recorrência de "
     "suas solicitações, associadas aos eventos que atingiram a capital gaúcha, "
     "produziram um padrão de demanda sem paralelo no conjunto dos municípios, a "
     "ponto de a técnica de agrupamento o tratar como categoria própria. Esse "
@@ -937,8 +937,8 @@ res3 = [
     "probabilidade de aprovação, de modo a apoiar a priorização do trabalho "
     "técnico.",
 
-    "A análise da importância das variáveis revelou-se especialmente "
-    "instrutiva. O valor solicitado respondeu por 63% da importância total, "
+    "A análise da importância das variáveis expõe os determinantes da "
+    "decisão. O valor solicitado respondeu por 63% da importância total, "
     "consolidando-se como o determinante dominante da aprovação, o que sugere "
     "que solicitações muito afastadas do padrão enfrentam escrutínio "
     "diferenciado. O conjunto formado pela faixa populacional e pelo grupo "
@@ -982,7 +982,8 @@ add_par(
     "padrão normativo do que a decisão deveria ser."
 )
 
-add_heading("4.4 Estimativa de valor justo e auditoria automatizada", level=2)
+add_heading("4.4 Estimativa de “valor justo” e auditoria automatizada",
+            level=2)
 res4 = [
     "A quarta fase voltou-se à estimativa de faixas de valor esperado e à "
     "sinalização de desvios. A regressão quantílica por gradient boosting "
@@ -1072,8 +1073,8 @@ add_table(
 add_source("Fonte: elaboração própria a partir dos dados da auditoria de valores.")
 
 res4c = [
-    "O caso de Nova Monte Verde merece comentário específico, por sintetizar "
-    "tanto a utilidade quanto os limites da auditoria automatizada. A "
+    "O caso de Nova Monte Verde sintetiza tanto a utilidade quanto os limites "
+    "da auditoria automatizada. A "
     "magnitude do desvio, da ordem de 235.000%, torna implausível que se trate "
     "de uma solicitação genuína, apontando, com grande probabilidade, para um "
     "erro de digitação no registro do valor. Esse tipo de ocorrência, embora "
