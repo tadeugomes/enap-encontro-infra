@@ -11,7 +11,7 @@
 2. [06_relatorios/PROGRESSO_IMPLEMENTACAO.md](06_relatorios/PROGRESSO_IMPLEMENTACAO.md) — situação atual, resultados e reprodutibilidade.
 3. [06_relatorios/README_ANALISE_ATUALIZADO.md](06_relatorios/README_ANALISE_ATUALIZADO.md) — relatório detalhado da análise exploratória.
 4. [06_relatorios/ESTRATEGIAS_ML.md](06_relatorios/ESTRATEGIAS_ML.md) — plano estratégico de machine learning.
-5. [CORRECAO_DADOS_ICM.md](CORRECAO_DADOS_ICM.md) — correção crítica de duplicatas (critério de risco).
+5. [CORRECAO_DADOS_ICM.md](CORRECAO_DADOS_ICM.md) — correção crítica de duplicatas (critério de benefício).
 6. [06_relatorios/artigo_cientifico_enap.docx](06_relatorios/artigo_cientifico_enap.docx) — artigo científico, gerado por `07_scripts/gerar_artigo_docx.py`.
 
 ---
@@ -42,7 +42,7 @@ Fases 3 e 4).
 **Preparação e limpeza**
 * `juntar_relatorios.py` — consolida os relatórios de acompanhamento.
 * `juntar_faixas.py` — consolida os arquivos ICM por faixa.
-* `limpar_arquivo_icm_v2.py` — limpeza oficial do ICM (critério de risco).
+* `limpar_arquivo_icm.py` — limpeza oficial do ICM (critério de benefício), gera `ICM_Consolidado_LIMPO.xlsx`, base efetivamente usada nas análises.
 * `investigar_duplicatas_icm.py` — diagnóstico de duplicatas conflitantes.
 
 **Análise e modelagem**
@@ -83,8 +83,12 @@ A Fase 2 precisa rodar antes das Fases 3 e 4: ambas consomem
 
 ## Notas importantes
 
-* **Critério de risco**: em conflito de dados no ICM, assume-se a pior faixa
-  (maior vulnerabilidade).
+* **Critério de benefício**: em conflito de faixa para o mesmo município no
+  ICM, assume-se a melhor faixa (maior capacidade), para não penalizar o
+  município por inconsistência de registro. A base oficial é
+  `ICM_Consolidado_LIMPO.xlsx` (idêntica a `ICM_Consolidado_LIMPO_Beneficio.xlsx`).
+  Ver [CORRECAO_DADOS_ICM.md](CORRECAO_DADOS_ICM.md) e
+  [ANALISE_CRITERIO_BENEFICIO.md](ANALISE_CRITERIO_BENEFICIO.md).
 * **Foco em aprovados**: a análise de outliers e o modelo de valor justo
   priorizam processos com recursos transferidos.
 * **Reexecução sobrescreve artefatos publicados**: os números do artigo e do

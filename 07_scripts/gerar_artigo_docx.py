@@ -598,7 +598,7 @@ met1 = [
     "somando R$ 27,68 bilhões em valores solicitados. A segunda base "
     "corresponde ao Índice de Capacidade Municipal (ICM), que classifica os "
     "municípios em quatro faixas de capacidade institucional, designadas de A "
-    "(alta) a D (baixa), e que, após a limpeza, contempla 5.445 municípios. A "
+    "(alta) a D (baixa), e que, após a limpeza, contempla 5.444 municípios. A "
     "natureza secundária e administrativa desses dados impõe que se reconheça, "
     "desde o início, a dependência do estudo em relação à qualidade do "
     "registro original.",

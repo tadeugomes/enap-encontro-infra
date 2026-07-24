@@ -4,7 +4,7 @@ Esta pasta contém os diagnósticos iniciais sobre a qualidade dos dados e as de
 
 ## Arquivos Principais
 
-*   **`INVESTIGACAO_DUPLICATAS_DETALHADA.md`**: Relatório crítico sobre a duplicidade de registros de municípios nas bases de dados. Explica o critério de "Risco Máximo" adotado (assumir a pior faixa de ICM em caso de conflito).
+*   **`INVESTIGACAO_DUPLICATAS_DETALHADA.md`**: Relatório sobre a duplicidade de registros de municípios nas bases de dados. O critério de desempate adotado na versão final foi o de benefício (assumir a melhor faixa de ICM em caso de conflito), conforme `../../CORRECAO_DADOS_ICM.md` e `../../ANALISE_CRITERIO_BENEFICIO.md`. Menções a "Risco Máximo" em documentos internos referem-se a uma versão anterior, substituída.
 *   **`IMPACTO_LIMPEZA_DADOS.md`**: Análise do impacto quantitativo da limpeza de dados no tamanho da amostra e na distribuição das classes.
 *   **`investigacao_duplicatas.txt`**: Log bruto da investigação de duplicatas.
 

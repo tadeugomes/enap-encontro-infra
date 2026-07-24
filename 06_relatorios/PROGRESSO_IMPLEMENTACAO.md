@@ -24,11 +24,17 @@ científico e a manutenção da reprodutibilidade do repositório.
 
 ## Base de dados
 
-* 6.385 processos de acompanhamento (2017–2025).
-* 5.445 municípios no ICM consolidado, após remoção de 168 registros
-  problemáticos pelo critério de risco (assume-se a pior faixa em conflitos).
-* 2.065 municípios no merge, com 97,7% de cobertura.
-* R$ 27,68 bilhões em valores solicitados.
+* 6.385 processos de acompanhamento (2017–2025), com protocolos únicos e sem
+  dupla contagem entre os relatórios anuais.
+* 5.444 municípios no ICM consolidado, após remoção de 169 registros
+  problemáticos (5.613 → 5.444), dos quais 152 duplicatas de município com
+  faixa conflitante e o restante cabeçalhos e linhas vazias. Em conflito de
+  faixa, adota-se o critério de benefício (melhor faixa, maior capacidade).
+* 2.113 municípios com processos; destes, 2.065 têm faixa ICM, o que resulta
+  em cobertura de 97,7% no merge.
+* R$ 27,68 bilhões em valores solicitados, somados sobre os 4.423 processos
+  com valor submetido; os demais 1.962 são rascunhos ou processos excluídos
+  sem valor informado.
 
 ## Principais resultados
 
