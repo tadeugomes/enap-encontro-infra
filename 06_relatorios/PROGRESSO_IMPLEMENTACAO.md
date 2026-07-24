@@ -62,14 +62,23 @@ Ambiente fixado em `requirements.txt`; todos os modelos usam `random_state=42`.
 Os scripts devem ser executados a partir da raiz do repositório e resolvem
 caminhos relativos a `__file__` — não há mais caminhos absolutos no código.
 
-Verificação de julho de 2026, em macOS com scikit-learn 1.9.0:
+Verificação de julho de 2026, em macOS, com o pipeline reexecutado de ponta a
+ponta nas versões de `requirements.txt`:
 
-* Fase 2 e Fase 3 reproduzem os resultados publicados (ROC-AUC 0,8001).
-* Fase 4 sinaliza 593 processos "ALTO" contra os 580 publicados — variação de
-  2,2% atribuível à versão do `GradientBoostingRegressor`. Os artefatos
-  versionados em `03_analises/fase4_regressao/` seguem correspondendo aos
-  números do artigo e do site.
+* Fase 2 gera artefatos idênticos aos versionados.
+* Fase 3 mantém o ranking de importância das variáveis e o ROC-AUC de 0,80.
+* Fase 4 reproduz exatamente a auditoria publicada: 580 alertas "ALTO", 757
+  "BAIXO" e 2.556 "NORMAL".
 * `gerar_artigo_docx.py` regenera o artigo com texto idêntico ao versionado.
+* `gerar_dados_tabelas.py` regenera o JSON das tabelas do site sem alteração.
+
+**Restrição de versão.** A Fase 4 é sensível à versão do scikit-learn: o
+`GradientBoostingRegressor` com `loss='quantile'` e `alpha=0.9` mudou de
+comportamento entre as versões. Com 1.5.2 a auditoria reproduz os 580 alertas
+publicados; com 1.9.0 o mesmo código e os mesmos dados produzem 593, com 45
+processos trocando de classificação. Os quantis P10 e P50 são estáveis, assim
+como as Fases 2 e 3. Atualizar o scikit-learn exige reconferir a auditoria
+contra os números do artigo e do site.
 
 ---
 

@@ -22,9 +22,16 @@ proba = modelo.predict_proba(X[features])[:, 1]
 
 ## Versões e reprodutibilidade
 
-Os arquivos atuais foram gerados com scikit-learn 1.9.0 e joblib 1.5.3 (ver
-`requirements.txt`), todos com `random_state=42`. Ao reexecutar os scripts, a
-Fase 3 reproduz o ROC-AUC publicado (0,80); a Fase 4 apresenta variação de
-cerca de 2% na contagem de alertas "ALTO" em relação aos artefatos publicados,
-atribuível à diferença de versão do `GradientBoostingRegressor`. Os artefatos
-versionados em `03_analises/` correspondem aos números do artigo e do site.
+Os arquivos atuais foram gerados com scikit-learn 1.5.2 e joblib 1.5.3 (ver
+`requirements.txt`), todos com `random_state=42`. Com essas versões o pipeline
+reproduz os resultados publicados: a Fase 2 gera artefatos idênticos aos
+versionados, a Fase 3 mantém o ranking de importância e o ROC-AUC de 0,80 e a
+Fase 4 reproduz exatamente os 580 alertas "ALTO", 757 "BAIXO" e 2.556
+"NORMAL" da auditoria.
+
+**A versão do scikit-learn importa.** Com 1.9.0, o mesmo código e os mesmos
+dados produzem 593 alertas "ALTO" em vez de 580, porque o
+`GradientBoostingRegressor` com `loss='quantile'` e `alpha=0.9` mudou de
+comportamento entre as versões — 45 processos trocam de classificação. Os
+quantis P10 e P50 são estáveis. Não atualize o scikit-learn sem reconferir a
+auditoria da Fase 4 contra os números publicados no artigo e no site.

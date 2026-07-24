@@ -1,10 +1,15 @@
-# Dependencias para reproduzir as analises de ML (07_scripts/ml_*.py)
-# Versoes verificadas em auditoria de reprodutibilidade (jul/2026), com o
-# pipeline das fases 2 a 4 executado de ponta a ponta em macOS.
+# Dependencias para reproduzir as analises de ML (07_scripts/ml_*.py).
 # Todos os modelos usam random_state=42; rode os scripts a partir da raiz do repo.
+#
+# ATENCAO A VERSAO DO SCIKIT-LEARN. A Fase 4 (regressao quantilica) e sensivel
+# a ela: o GradientBoostingRegressor com loss='quantile' e alpha=0.9 mudou de
+# comportamento entre versoes. Com 1.5.2 a auditoria reproduz os 580 alertas
+# "ALTO" publicados; com 1.9.0 o mesmo codigo e os mesmos dados produzem 593.
+# Os quantis P10 e P50 sao estaveis entre as duas versoes.
+# Verificado em jul/2026 com o pipeline reexecutado de ponta a ponta.
 pandas==2.3.2
 numpy==2.3.1
-scikit-learn==1.9.0
+scikit-learn==1.5.2
 openpyxl==3.1.5
 matplotlib==3.10.6
 seaborn==0.13.2
