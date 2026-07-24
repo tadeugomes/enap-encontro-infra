@@ -243,6 +243,11 @@ add_par(
     indent=False, align="center", bold=True, size=11, space_after=12,
 )
 
+# Autoria definitiva (6 autores, dentro do limite da RSP), a ser inserida na
+# versao nao-cega/copidesque e nos metadados de submissao do OJS. No manuscrito
+# submetido, a identificacao permanece omitida para a avaliacao cega.
+#   Alexandre Galardinovic; Bruno Gustavo; Fabio Paim; Rafael Giacomin;
+#   Rafael Prata; Thiago Mello.
 add_par(
     "[Identificação de autoria omitida para avaliação cega]",
     indent=False, align="center", size=11, italic=True, space_after=12,

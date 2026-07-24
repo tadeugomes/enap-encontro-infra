@@ -95,10 +95,21 @@ reconferir a auditoria contra os números do artigo e do site.
 * Publicar o código-fonte do simulador da Fase 5, hoje mantido fora deste
   repositório.
 * Revisão final do artigo científico.
-* **Confirmar a referência da fonte de dados** (BRASIL, 2017-2025). A entrada
-  atual — Ministério da Integração e Desenvolvimento Regional / Secretaria
-  Nacional de Proteção e Defesa Civil, "Relatório gerencial de reconstrução:
-  acompanhamento de processos", relatórios anuais — foi redigida como melhor
-  esforço a partir das pistas nos arquivos (protocolos 59053, SIAFI, COBRADE).
-  Verificar o órgão emissor, o sistema de origem (S2ID, Transferegov ou outro)
-  e o ano/forma de extração, e ajustar a referência e as chamadas no texto.
+
+### Submissão à RSP/ENAP
+
+* Autoria definida (6 autores, dentro do limite da RSP): Alexandre
+  Galardinovic; Bruno Gustavo; Fábio Paim; Rafael Giacomin; Rafael Prata;
+  Thiago Mello. Inserir nomes, ORCID e contribuição CRediT nos metadados do
+  OJS e na versão não-cega/copidesque (o manuscrito submetido permanece
+  anonimizado).
+* Preencher o formulário de ineditismo e o de Conformidade com a Ciência
+  Aberta.
+* Substituir os placeholders de URL (repositório e aplicação de demonstração)
+  pelos links reais na fase de copidesque, caso aprovado.
+
+## Concluído nesta rodada
+
+* Fonte de dados **confirmada**: Secretaria Nacional de Proteção e Defesa Civil
+  (SEDEC), do Ministério da Integração e Desenvolvimento Regional (MIDR). A
+  referência (BRASIL, 2017-2025) e as chamadas no texto já refletem esse órgão.
