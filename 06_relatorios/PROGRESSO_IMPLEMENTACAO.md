@@ -74,11 +74,13 @@ ponta nas versões de `requirements.txt`:
 
 **Restrição de versão.** A Fase 4 é sensível à versão do scikit-learn: o
 `GradientBoostingRegressor` com `loss='quantile'` e `alpha=0.9` mudou de
-comportamento entre as versões. Com 1.5.2 a auditoria reproduz os 580 alertas
-publicados; com 1.9.0 o mesmo código e os mesmos dados produzem 593, com 45
-processos trocando de classificação. Os quantis P10 e P50 são estáveis, assim
-como as Fases 2 e 3. Atualizar o scikit-learn exige reconferir a auditoria
-contra os números do artigo e do site.
+comportamento na versão 1.9.0. Uma varredura de versões contra a auditoria
+publicada mostrou que 1.5.0, 1.5.1, 1.5.2, 1.6.0, 1.6.1, 1.7.2 e 1.8.0 geram
+predições idênticas entre si e reproduzem os 580 alertas "ALTO"; a 1.9.0
+produz 593, com 45 processos trocando de classificação. Ou seja, qualquer
+versão `>=1.5,<1.9` reproduz os números publicados. Os quantis P10 e P50 e as
+Fases 2 e 3 são estáveis em todas as versões. Atualizar para 1.9.0+ exige
+reconferir a auditoria contra os números do artigo e do site.
 
 ---
 

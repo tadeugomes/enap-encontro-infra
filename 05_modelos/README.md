@@ -29,9 +29,12 @@ versionados, a Fase 3 mantém o ranking de importância e o ROC-AUC de 0,80 e a
 Fase 4 reproduz exatamente os 580 alertas "ALTO", 757 "BAIXO" e 2.556
 "NORMAL" da auditoria.
 
-**A versão do scikit-learn importa.** Com 1.9.0, o mesmo código e os mesmos
-dados produzem 593 alertas "ALTO" em vez de 580, porque o
+**A versão do scikit-learn importa.** Uma varredura de julho de 2026 mostrou
+que todas as versões de 1.5.0 a 1.8.0 produzem predições bit-idênticas e
+reproduzem os 580 alertas "ALTO"; a partir de 1.9.0 o
 `GradientBoostingRegressor` com `loss='quantile'` e `alpha=0.9` mudou de
-comportamento entre as versões — 45 processos trocam de classificação. Os
-quantis P10 e P50 são estáveis. Não atualize o scikit-learn sem reconferir a
-auditoria da Fase 4 contra os números publicados no artigo e no site.
+comportamento e passa a 593 alertas, com 45 processos trocando de
+classificação. Qualquer versão `>=1.5,<1.9` reproduz os números publicados; a
+quebra é exclusiva da 1.9.0. Os quantis P10 e P50 e as Fases 2 e 3 são estáveis
+em todas as versões. Não atualize para 1.9.0+ sem reconferir a auditoria da
+Fase 4 contra os números do artigo e do site.

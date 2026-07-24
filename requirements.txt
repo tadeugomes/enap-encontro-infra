@@ -3,10 +3,13 @@
 #
 # ATENCAO A VERSAO DO SCIKIT-LEARN. A Fase 4 (regressao quantilica) e sensivel
 # a ela: o GradientBoostingRegressor com loss='quantile' e alpha=0.9 mudou de
-# comportamento entre versoes. Com 1.5.2 a auditoria reproduz os 580 alertas
-# "ALTO" publicados; com 1.9.0 o mesmo codigo e os mesmos dados produzem 593.
-# Os quantis P10 e P50 sao estaveis entre as duas versoes.
-# Verificado em jul/2026 com o pipeline reexecutado de ponta a ponta.
+# comportamento na versao 1.9.0. Varredura de jul/2026 (contra a auditoria
+# publicada, com predicoes bit-identicas entre si):
+#   1.5.0, 1.5.1, 1.5.2, 1.6.0, 1.6.1, 1.7.2, 1.8.0  -> 580 alertas "ALTO" (OK)
+#   1.9.0                                            -> 593 alertas "ALTO" (quebra)
+# Ou seja, qualquer versao >=1.5,<1.9 reproduz os numeros publicados; a quebra
+# e exclusiva da 1.9.0. Mantemos 1.5.2 por ser a versao ja validada no pipeline.
+# Os quantis P10 e P50 e as Fases 2 e 3 sao estaveis em todas as versoes.
 pandas==2.3.2
 numpy==2.3.1
 scikit-learn==1.5.2
